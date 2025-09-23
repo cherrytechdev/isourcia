@@ -15,3 +15,18 @@ export const NavigationLink = [
     {label: "Projets", link: "#project"},
     {label: "Contact", link: "#contact"},
 ]
+
+export const CompetenciesInf = [
+    "Comptabilité général",
+    "États financiers",
+    "Déclaration fiscales",
+    "Audit",
+    "Excel avancé",
+    "Analyse financière"
+]
+
+export const LanguageInf = [
+    "Français",
+    "Anglais",
+    "Portugais"
+]
