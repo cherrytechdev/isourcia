@@ -1,10 +1,10 @@
-import ContactForm from "@/common/ContactForm"
+import Header from "@/Layout/Header"
 
 
 export default function Home(){
   return(
     <>
-        <ContactForm/>
+        <Header/>
     </>
   )
 }
