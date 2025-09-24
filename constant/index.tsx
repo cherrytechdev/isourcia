@@ -30,3 +30,21 @@ export const LanguageInf = [
     "Anglais",
     "Portugais"
 ]
+
+export const DateContrat = [
+    "Heure(s)",
+    "Jour(s)",
+    "Semaine(s)",
+    "Mois",
+    "Année(s)"
+]
+
+export const TimeTravelInf = [
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
+    "Dimanche"
+]
