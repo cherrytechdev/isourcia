@@ -48,3 +48,54 @@ export const TimeTravelInf = [
     "Samedi",
     "Dimanche"
 ]
+
+export const ResourceExtInf = [
+    "Comptable (saisie, bilans, déclarations fiscales)",
+    "Adjoint administratif (emails, organisation, reporting)",
+    "Développeur Web/App (sites, applications, maintenance)",
+    "Marketing digital (SEO, publicité, réseaux sociaux)",
+    "Support client (appels, chat, assistance)",
+    "Autre (préciser)"
+]
+
+export const DurationExtInf = [
+    "Ponctuelle (quelques jours)",
+    "Courte durée (1 à 3 mois)",
+    "Long terme (6 mois et +)"
+]
+
+export const TimeTravelExtInf = [
+    "Temps plein",
+    "Mi-temps",
+    "Nombre d'heures/jour (préciser)"
+]
+
+export const ExperiencesExt = [
+    "Débutant (0–2 ans)",
+    "Intermédiaire (3–5 ans)",
+    "Senior (6+ ans)"
+]
+
+export const LanguageExtInf = [
+    "Français",
+    "Anglais",
+    "Autre (préciser)"
+]
+
+export const ModalityExtInf = [
+    "Rapport quotidien",
+    "Rapport hebdomadaire",
+    "Rapport mensuel"
+]
+
+export const FacturationModExtInf = [
+    "Forfait mensuel",
+    "À la tâche",
+    "À l'heure (au temps consommé)"
+]
+
+export const BudgetExtInf = [
+    "< 500 €",
+    "500–2000 €",
+    "+2000 €"
+]
