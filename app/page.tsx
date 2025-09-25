@@ -1,12 +1,12 @@
 import Header from "@/Layout/Header"
-import DetailForm from "@/common/DetailForm"
+import ExternalisationForm from "@/common/ExteralisationForm"
 
 
 export default function Home(){
   return(
     <>
         <Header/>
-        <DetailForm/>
+        <ExternalisationForm/>
     </>
   )
 }
