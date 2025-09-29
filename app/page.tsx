@@ -1,12 +1,12 @@
 import Header from "@/Layout/Header"
-import ExternalisationForm from "@/common/ExteralisationForm"
+import MarketAnalysis from "@/common/MarketAnalysis"
 
 
 export default function Home(){
   return(
     <>
         <Header/>
-        <ExternalisationForm/>
+        <MarketAnalysis/>
     </>
   )
 }

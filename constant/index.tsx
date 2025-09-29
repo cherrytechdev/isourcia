@@ -95,7 +95,149 @@ export const FacturationModExtInf = [
 ]
 
 export const BudgetExtInf = [
-    "< 500 €",
-    "500–2000 €",
-    "+2000 €"
+    {name:"minimumExt", label:"< 500 €"},
+    {name:"mediumExt", label:"500–2000 €"},
+    {name:"maximumEXt", label:"+2000 €"}
+]
+
+export const ObjectiveMobileInf = [
+    "Application vitrine (présentation d'une entreprise/produits)",
+    "E-commerce (vente en ligne)",
+    "Réservation / Prise de rendez-vous",
+    "Réseau social / Communauté",
+    "Outil métier (ERP, CRM, gestion interne)",
+    "Autre (préciser)"
+]
+
+export const PlateformMobileInf = [
+    "Android",
+    "iOS",
+    "Autre (présiser)"
+]
+
+export const DesignMobileInf = [
+    "Minimaliste",
+    "Moderne",
+    "Corporate",
+    "Créatif"
+]
+
+export const FunctionalityMobileInf = [
+    "Formulaire d'inscription / connexion",
+    "Authentification avec réseaux sociaux",
+    "Profil utilisateur / espace personnel",
+    "Notifications push",
+    "Paiement en ligne",
+    "Chat / messagerie interne",
+    "Géolocalisation / carte intéractive",
+    "Intégration API externe",
+    "Multilingue",
+    "Autre (présiser)"
+]
+
+export const ApkContentMobileInf = [
+    {name:"readyMob", label:"Déjà prêt (textes, images, vidéos fournis)"},
+    {name:"createMob", label:"À créer (j'ai besoin de rédaction/visuels)"}
+]
+
+export const DataManageMobileInf = [
+    {name:"localDatMob", label:"Stockage local"},
+    {name:"dataBaseMob", label:"Base de données en ligne (cloud, serveur)"},
+    {name:"autres", label:"Autre (préciser)"}
+]
+
+export const MaintainMobileInf = [
+    {name:"yesMaj", label:"Oui, mises à jour simples"},
+    {name:"yesMaint", label:"Oui, maintenance complète (sécurité & évolutions)"},
+    {name:"noDelivOnl", label:"Non, seulement la livraison initiale"}
+]
+
+export const BudgetMobileInf = [
+    {name: "minimunMob", label:"< 3 000 €"},
+    {name: "mediumMob", label:"3 000 - 10 000 €"},
+    {name: "maximumMob", label:"> 10 000 €"}
+]
+
+export const DelayMVPMobileInf = [
+    "Urgent (1 mois)",
+    "Standard (2-3 mois)",
+    "Flexible"
+]
+
+export const TechMobileInf = [
+    "React Native",
+    "Flutter",
+    "Swift (iOS natif)",
+    "Kotlin / Java (Android natif)",
+    "Autre (préciser)"
+]
+
+export const MarketMainObjInf = [
+    "Générer plus de prospects (leads)",
+    "Augmenter les ventes / conversions",
+    "Gagner en visibilité / notoriété",
+    "Fidéliser mes clients existants",
+    "Autre (préciser)"
+]
+
+export const MarketExpSearchInf = [
+    "Email marketing (campagnes, newsletters, automatisations)",
+    "Publicité en ligne (Google Ads, Facebook Ads, LinkedIn Ads, etc.)",
+    "SEO – Référencement naturel",
+    "Réseaux sociaux (community management, publicité sociale)",
+    "Création de contenus marketing (textes, visuels, vidéos)",
+    "Analyse et reporting de performance",
+    "Autre (préciser)"
+]
+
+export const MarketContentInf = [
+    {name:"yesContent", label:"Oui, j'ai déjà mes textes et visuels"},
+    {name:"noContent", label:"Non, j'ai besoin d'aide pour créer du contenu"},
+    {name:"bothContent", label:"Un mélange des deux (partiellement prêt)"}
+]
+
+export const MarketMissionDelayInf = [
+    {name:"ponctual", label:"Ponctuelle (1 campagne)"},
+    {name:"short", label:"Courte durée (1 à 3 mois)"},
+    {name:"long", label:"Long terme (6 mois et +)"}
+]
+
+export const MarketMailFreqInf = [
+    "Ponctuelle",
+    "Hebdomadaire",
+    "Mensuelle"
+]
+
+export const MarketContactBaseInf = [
+    "< 1000",
+    "1000 – 5000",
+    "5000 – 20 000",
+    "20 000+"
+]
+
+export const MarketTimelineInf = [
+    "Urgent (moins de 2 semaines)",
+    "Standard (1 mois)",
+    "Flexible"
+]
+
+export const MarketOptionCompInf = [
+    "Community management (gestion réseaux sociaux)",
+    "Campagnes publicitaires (Google Ads, Facebook Ads, etc.)",
+    "Rédaction SEO (articles optimisés)",
+    "Création visuelle (bannières, vidéos, infographies)",
+    "ERP ou CRM connecté au marketing",
+    "Automatisation marketing (HubSpot, Mailchimp, etc.)",
+    "Autre (préciser)"
+]
+
+export const MarketTechToolsInf = [
+    "Mailchimp",
+    "HubSpot",
+    "Sendinblue / Brevo",
+    "ActiveCampaign",
+    "Google Ads",
+    "Facebook / Meta Ads",
+    "LinkedIn Ads",
+    "Autre (préciser)"
 ]
