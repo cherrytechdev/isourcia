@@ -93,8 +93,8 @@ export default function ExternalisationForm(){
             }}
             >
             {({values, isSubmitting}) => ( 
-            <Form className="flex justify-center shadow-2xl w-full mt-8">
-                <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
+            <Form className="flex justify-center w-full">
+                <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg shadow-2xl">
                     <div className="flex flex-col gap-4">
                         <h4>1.Ressources à externaliser</h4>
                         <div className="flex flex-col gap-2 pl-4">

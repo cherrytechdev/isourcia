@@ -16,6 +16,22 @@ export const NavigationLink = [
     {label: "Contact", link: "#contact"},
 ]
 
+export const ServicesInf = [
+    {link:"/Ressource", value:"Ressource", title:"je veux recruter des ressources en ligne"},
+    {link:"", value:"Solution ERP", title:"j'ai besoin d'une solution ERP, je choisis 8 sens"},
+    {link:"", value:"Site web", title:"je veux un site web professionnel"},
+    {link:"/Externalisation", value:"Externalisation", title:"j'externalise mes services, je les confies à un pro"},
+    {link:"/MobileApp", value:"Création d'une application", title:"je veux créer une application personnalisée"},
+    {link:"/Marketing", value:"Marketing digital", title:"je fais expert à un expert pour gérer mon marketing digital"}
+]
+
+export const RessourceInf = [
+    {link:"/Accounting", name:"Comptable"},
+    {link:"", name:"Adjoint administratif"},
+    {link:"", name:"Developpement web/application"},
+    {link:"", name:"Autres"}
+]
+
 export const CompetenciesInf = [
     "Comptabilité général",
     "États financiers",
