@@ -1,5 +1,9 @@
 import Header from "@/Layout/Header"
+import MarketAnalysis from "@/common/MarketAnalysis"
 import ExternalisationForm from "@/common/ExteralisationForm"
+import CreationMobileForm from "@/common/CreationMobileForm"
+import DetailForm from "@/common/DetailForm"
+import ContactForm from "@/common/ContactForm"
 
 
 export default function Home(){
@@ -7,6 +11,10 @@ export default function Home(){
     <>
         <Header/>
         <ExternalisationForm/>
+        <DetailForm/>
+        <CreationMobileForm/>
+        <MarketAnalysis/>
+        <ContactForm/>
     </>
   )
 }

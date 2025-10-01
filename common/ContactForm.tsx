@@ -31,7 +31,7 @@ export default function ContactForm(){
             onSubmit={async (values, {resetForm, setSubmitting}) => {
                 try {
                     const responseAPI = await axios.post("")
-                    console.log("Reponse du serveur", responseAPI.data)
+                    console.log("Reponse du serveur", values)
                     resetForm()
                 }catch(error){
                     console.error("Erreur d'envoie", error)
@@ -41,56 +41,115 @@ export default function ContactForm(){
             }}
         >
             {({isSubmitting}) => (
-            <Form>
-                <div className="flex flex-col">
-                    <label>Nom</label>
-                    <Field type="text" name="name"/>
-                    <ErrorMessage name="name" component="div" className="text-red-500 text-sm"/>
-                </div>
-                <div className="flex flex-col">
-                    <label>Prenom</label>
-                    <Field type="text" name="firstname"/>
-                    <ErrorMessage name="firstname" component="div" className="text-red-500 text-sm"/>
-                </div>
-                <div className="flex flex-col">
-                    <label htmlFor="nPhone">Numero telephone</label>
-                    <Field type="number" name="nPhone"/>
-                    <ErrorMessage name="nPhone" component="div" className="text-red-500 text-sm"/>
-                </div>
-                <div className="flex flex-col">
-                    <label>Adresse mail</label>
-                    <Field type="mail" name="mail"/>
-                    <ErrorMessage name="mail" component="div" className="text-red-500 text-sm"/>
-                </div>
-                <div className="flex flex-col">
-                    <label>Société</label>
-                    <Field type="text" name="company"/>
-                    <ErrorMessage name="company" component="div" className="text-red-500 text-sm"/>
-                </div>
-                <div className="flex flex-col">
-                    <label>Adresse physique</label>
-                    <Field type="text" name="physicalAddress"/>
-                    <ErrorMessage name="physicalAddress" component="div" className="text-red-500 text-sm"/>
-                </div>
-                <div>
-                    <p>Je souhaite être contactez par</p>
-                    <div>
-                        <label>Mail</label>
-                        <Field type="checkbox" name="contact" value="mailCheck"/>
+            <Form className="flex justify-center shadow-2xl w-full mt-8">
+                <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
+                    <div className="flex flex-col gap-2">
+                        <label>Nom</label>
+                        <Field 
+                            type="text" 
+                            name="name"
+                            />
+                        <ErrorMessage 
+                            name="name" 
+                            component="div" 
+                            className="error-message"/>
                     </div>
-                    <div>
-                        <label>Whatsapp</label>
-                        <Field type="checkbox" name="contact" value="watsappCheck"/>
+                    <div className="flex flex-col gap-2">
+                        <label>Prenom</label>
+                        <Field 
+                            type="text" 
+                            name="firstname"
+                            />
+                        <ErrorMessage 
+                            name="firstname" 
+                            component="div" 
+                            className="error-message"/>
                     </div>
-                    <div>
-                        <label>Google meet</label>
-                        <Field type="checkbox" name="contact" value="googleCheck"/>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="nPhone">Numero telephone</label>
+                        <Field 
+                            type="number" 
+                            name="nPhone"
+                            />
+                        <ErrorMessage 
+                            name="nPhone" 
+                            component="div" 
+                            className="error-message"/>
                     </div>
-                    <ErrorMessage name="contact" component="div" className="text-red-500 text-sm"/>
+                    <div className="flex flex-col gap-2">
+                        <label>Adresse mail</label>
+                        <Field 
+                            type="mail" 
+                            name="mail"
+                            />
+                        <ErrorMessage 
+                            name="mail" 
+                            component="div" 
+                            className="error-message"/>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <label>Société</label>
+                        <Field 
+                            type="text" 
+                            name="company"
+                            />
+                        <ErrorMessage 
+                            name="company" 
+                            component="div" 
+                            className="error-message"/>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <label>Adresse physique</label>
+                        <Field 
+                            type="text" 
+                            name="physicalAddress"
+                            />
+                        <ErrorMessage 
+                            name="physicalAddress" 
+                            component="div" 
+                            className="error-message"/>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                        <p>Je souhaite être contactez par</p>
+                        <div className="flex flex-col gap-2 pl-4">
+                            <div className="flex gap-4">
+                                <Field 
+                                    type="checkbox" 
+                                    name="contact" 
+                                    value="mailCheck"
+                                    />
+                                <label>Mail</label>
+                            </div>
+                            <div className="flex gap-4">
+                                <Field 
+                                    type="checkbox" 
+                                    name="contact" 
+                                    value="watsappCheck"
+                                    />
+                                <label>Whatsapp</label>
+                            </div>
+                            <div className="flex gap-4">
+                                <Field 
+                                    type="checkbox" 
+                                    name="contact" 
+                                    value="googleCheck"
+                                    />
+                                <label>Google meet</label>
+                            </div>
+                            <ErrorMessage 
+                                name="contact" 
+                                component="div" 
+                                className="error-message"/>
+                        </div>
+                    </div>
+                    <button 
+                        type="submit" 
+                        disabled={isSubmitting}
+                        className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
+                        >
+                        {isSubmitting? "Envoie..." : "Envoyer"}
+                    </button>
                 </div>
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting? "Envoie..." : "Envoyer"}
-                </button>
             </Form>
             )}
         </Formik>
