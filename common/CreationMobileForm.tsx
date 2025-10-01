@@ -57,13 +57,6 @@ const schema = Yup.object().shape({
     }),
 
     delayMvpMobile: Yup.array().min(1, "Vous devez en choisir un"),
-
-    techMobile: Yup.array().min(1, "Vous devez en choisir un"),
-    otherTechMobile: Yup.string().when("techMobile", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre gestion de donnée"),
-        otherwise: (schema) => schema.notRequired()
-    }),
 })
 
 export default function CreationMobileForm(){
@@ -74,16 +67,16 @@ export default function CreationMobileForm(){
                 otherObjectiveMobile: "",
                 plateformMobile: [] as string[],
                 otherPlateformMobile: "",
-                designMobile: "noMob",
+                designMobile: "Non (j'aimerais en créer une)",
                 designStyleMobile: "",
                 inspirationAppMobile: "",
                 functionalityMobile: [] as string[],
                 otherFunctionalityMobile: "",
-                apkContentMobile: "createMob",
-                dataManageMobile: [] as string[],
+                apkContentMobile: "À créer (j'ai besoin de rédaction/visuels)",
+                dataManageMobile: ["Stockage local"],
                 otherDataManageMobile: "",
-                maintainMobile: "yesMaj",
-                budgetMobile: "minimunMob",
+                maintainMobile: "Oui, mises à jour simples",
+                budgetMobile: "< 3 000 €",
                 delayMvpMobile: "",
                 techMobile: [] as string[],
                 otherTechMobile: ""
@@ -187,7 +180,7 @@ export default function CreationMobileForm(){
                                             <Field
                                                 type="radio"
                                                 name="designMobile"
-                                                value="yesMob"
+                                                value="Oui (je peux la fournir)"
                                                 />
                                             <label>Oui (je peux la fournir)</label>
                                         </div>
@@ -195,7 +188,7 @@ export default function CreationMobileForm(){
                                             <Field
                                                 type="radio"
                                                 name="designMobile"
-                                                value="noMob"
+                                                value="Non (j'aimerais en créer une)"
                                                 />
                                             <label>Non (j'aimerais en créer une)</label>
                                         </div>
@@ -315,6 +308,10 @@ export default function CreationMobileForm(){
                                             </div>
                                         )})}
                                         <ErrorMessage 
+                                            name="dataManageMobile" 
+                                            component="div" 
+                                            className="error-message"/>
+                                        <ErrorMessage 
                                             name="otherDataManageMobile" 
                                             component="div" 
                                             className="error-message"/>
@@ -398,14 +395,6 @@ export default function CreationMobileForm(){
                                             )}
                                         </div>
                                     )})}
-                                    <ErrorMessage 
-                                        name="techMobile" 
-                                        component="div" 
-                                        className="error-message"/>
-                                    <ErrorMessage 
-                                        name="otherTechMobile" 
-                                        component="div" 
-                                        className="error-message"/>
                                 </div>
                             </div>
                             <button 

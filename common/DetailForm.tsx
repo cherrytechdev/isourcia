@@ -143,48 +143,60 @@ export default function DetailForm() {
                 component="div" 
                 className="error-message"/>
               {openCt && (
-                <div className="flex flex-col gap-2 bg-white text-gray-700 p-4 border border-blue-500 rounded-md shadow-md absolute z-10 top-full mt-2 w-full">
-                  <div className="flex justify-between mb-2">
-                    <p className="font-semibold">Durée du contrat</p>
-                    <button 
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                  {/* Backdrop */}
+                  <div 
+                    className="absolute inset-0 bg-black/30 backdrop-blur-sm" 
+                    onClick={() => setOpenCt(false)} // optionnel si tu veux fermer en cliquant dehors
+                  ></div>
+
+                  {/* Popup */}
+                  <div className="relative z-10 flex flex-col gap-2 bg-white text-gray-700 p-4 rounded-md shadow-lg w-[40%] ">
+                    <div className="flex justify-between mb-2">
+                      <p className="font-semibold">Durée du contrat</p>
+                      <button 
+                        type="button"
+                        className="cursor-pointer font-bold"
+                        onClick={() => setOpenCt(false)}
+                      >
+                        ×
+                      </button>
+                    </div>
+
+                    <div className="xl:flex gap-4">
+                      {DateContrat.map((unit, i) => (
+                        <div key={i} className="flex flex-col">
+                          <label htmlFor={`contractUnit-${unit}`} className="text-center text-sm">{unit}</label>
+                          <input
+                            type="number"
+                            id={`contractUnit-${unit}`}
+                            min={1}
+                            className="border p-1 rounded-md w-full"
+                            value={values.contractUnits[unit] || ""}
+                            onChange={(e) => setFieldValue(`contractUnits.${unit}`, e.target.value)}
+                          />
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
                       type="button"
-                      className="cursor-pointer font-bold"
-                      onClick={() => setOpenCt(false)}
+                      className="mt-2 bg-[#60A5FA] text-white px-3 py-1 w-fit rounded-md"
+                      onClick={() => {
+                        const selected = DateContrat.map(unit => {
+                          const val = values.contractUnits[unit]
+                          return val ? `${val} ${unit}` : null
+                        }).filter(Boolean)
+                        setFieldValue("contratDuration", selected.join(" "))
+                        setOpenCt(false)
+                      }}
                     >
-                      ×
+                      Valider
                     </button>
                   </div>
-                  <div className="flex gap-4">
-                    {DateContrat.map((unit, i) => (
-                      <div key={i} className="flex flex-col">
-                        <label htmlFor={`contractUnit-${unit}`} className="text-center text-sm">{unit}</label>
-                        <input
-                          type="number"
-                          id={`contractUnit-${unit}`}
-                          min={1}
-                          className="border p-1 rounded-md w-full"
-                          value={values.contractUnits[unit] || ""}
-                          onChange={(e) => setFieldValue(`contractUnits.${unit}`, e.target.value)}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    className="mt-2 bg-blue-500 text-white px-3 py-1 w-fit rounded-md"
-                    onClick={() => {
-                      const selected = DateContrat.map(unit => {
-                        const val = values.contractUnits[unit]
-                        return val ? `${val} ${unit}` : null
-                      }).filter(Boolean)
-                      setFieldValue("contratDuration", selected.join(" "))
-                      setOpenCt(false)
-                    }}
-                  >
-                    Valider
-                  </button>
                 </div>
               )}
+
             </div>
 
             {/* Temps de travail */}
@@ -204,82 +216,102 @@ export default function DetailForm() {
                 component="div" 
                 className="error-message"/>
               {openTm && (
-                <div className={`flex flex-col gap-2 text-gray-700 p-4 border border-blue-500 rounded-md shadow-md absolute z-10 top-full mt-2 w-full transform-transition transition-all
-                                ${ activeForm === "day" ? 'bg-white text-[#040A18]' : 'bg-[#001a55] text-white' }`}>
-                  <div className="flex justify-between mb-2">
-                    <p className="font-semibold">Temps de travail</p>
-                    <button 
-                      type="button"
-                      className="cursor-pointer font-bold"
-                      onClick={() => setOpenTm(false)}
-                    >
-                      ×
-                    </button>
-                  </div>
-                  <div className={`rounded-md bg-blue-500 w-fit flex gap-2 mb-2 
-                                  ${activeForm === "night" ? 'border border-white' : '' }`}>
+                <div className="fixed inset-0 z-50 flex items-center justify-center">
+                  {/* Backdrop */}
+                  <div
+                    className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+                    // ❌ si tu veux forcer uniquement la fermeture avec "×" ou "Valider"
+                    // enlève le onClick ci-dessous
+                    onClick={() => setOpenTm(false)}
+                  ></div>
+
+                  {/* Popup */}
+                  <div className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 rounded-md shadow-lg w-[50%] transform transition-all
+                    ${activeForm === "day" ? "bg-white text-[#040A18]" : "bg-[#090F25] text-white"}`}>
+
+                    {/* Header */}
+                    <div className="flex justify-between mb-2">
+                      <p className="font-semibold">Temps de travail</p>
+                      <button
+                        type="button"
+                        className="cursor-pointer font-bold"
+                        onClick={() => setOpenTm(false)}
+                      >
+                        ×
+                      </button>
+                    </div>
+
+                    {/* Toggle jour/nuit */}
+                    <div className={`rounded-md bg-blue-500 w-fit flex gap-2 mb-2 
+                      ${activeForm === "night" ? 'border border-white' : ''}`}>
+                      <button
+                        type="button"
+                        className={`cursor-pointer transition-all 
+                      ${activeForm === "day" ? "shadow-lg rounded-l-md rounded-r-0 bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
+                        onClick={() => setActiveForm("day")}
+                      >
+                        ☀️ Jours
+                      </button>
+                      <button
+                        type="button"
+                        className={`cursor-pointer transition-all 
+                      ${activeForm === "night" ? "shadow-lg rounded-r-md rounded-l-0 bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
+                        onClick={() => setActiveForm("night")}
+                      >
+                        🌒 Nuits
+                      </button>
+                    </div>
+
+                    {/* Champs inputs */}
+                    <div className="xl:flex gap-4">
+                      {TimeTravelInf.map((item, i) => {
+                        const normalizedKey = item.toLowerCase().replace(/\s+/g, '_');
+                        return (
+                          <div key={i} className="flex flex-col items-center gap-2">
+                            <label htmlFor={`${activeForm}-${normalizedKey}`} className="text-sm">{item}</label>
+                            <input
+                              type="text"
+                              id={`${activeForm}-${normalizedKey}`}
+                              placeholder="ex: 1h 30"
+                              className="border p-1 rounded-md w-full"
+                              value={values[activeForm][normalizedKey] || ""}
+                              onChange={(e) =>
+                                setFieldValue(`${activeForm}.${normalizedKey}`, e.target.value)
+                              }
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {/* Bouton valider */}
                     <button
                       type="button"
-                      className={`cursor-pointer transform-transition transition-all 
-                                  ${activeForm === "day" ? "shadow-lg rounded-md bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
-                      onClick={() => setActiveForm("day")}
+                      className="mt-2 w-fit bg-[#60A5FA] text-white px-3 py-1 rounded-md"
+                      onClick={() => {
+                        const dayTimes = TimeTravelInf.map(unit => {
+                          const normalizedKey = unit.toLowerCase().replace(/\s+/g, '_');
+                          const val = values.day[normalizedKey]
+                          return val ? `${val} ${unit}` : null
+                        }).filter(Boolean).join(", ")
+
+                        const nightTimes = TimeTravelInf.map(unit => {
+                          const normalizedKey = unit.toLowerCase().replace(/\s+/g, '_');
+                          const val = values.night[normalizedKey]
+                          return val ? `${val} ${unit}` : null
+                        }).filter(Boolean).join(", ")
+
+                        const result = [dayTimes, nightTimes].filter(Boolean).join(" | ")
+                        setFieldValue("travelDuration", result)
+                        setOpenTm(false)
+                      }}
                     >
-                      Jours
-                    </button>
-                    <button
-                      type="button"
-                      className={`cursor-pointer transform-transition transition-all 
-                                  ${activeForm === "night" ? "shadow-lg rounded-md bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
-                      onClick={() => setActiveForm("night")}
-                    >
-                      Nuits
+                      Valider
                     </button>
                   </div>
-                  <div className="flex gap-4 flex-wrap">
-                    {TimeTravelInf.map((item, i) => {
-                      const normalizedKey = item.toLowerCase().replace(/\s+/g, '_');
-                      return (
-                        <div key={i} className="flex flex-col">
-                          <label htmlFor={`${activeForm}-${normalizedKey}`} className="text-sm">{item}</label>
-                          <input
-                            type="text"
-                            id={`${activeForm}-${normalizedKey}`}
-                            placeholder="ex: 1h 30"
-                            className="border p-1 rounded-md w-24"
-                            value={values[activeForm][normalizedKey] || ""}
-                            onChange={(e) =>
-                              setFieldValue(`${activeForm}.${normalizedKey}`, e.target.value)
-                            }
-                          />
-                        </div>
-                      )
-                    })}
-                  </div>
-                  <button
-                    type="button"
-                    className="mt-2 w-fit bg-blue-500 text-white px-3 py-1 rounded-md"
-                    onClick={() => {
-                      const dayTimes = TimeTravelInf.map(unit => {
-                        const normalizedKey = unit.toLowerCase().replace(/\s+/g, '_');
-                        const val = values.day[normalizedKey]
-                        return val ? `${val} ${unit}` : null
-                      }).filter(Boolean).join(", ")
-
-                      const nightTimes = TimeTravelInf.map(unit => {
-                        const normalizedKey = unit.toLowerCase().replace(/\s+/g, '_');
-                        const val = values.night[normalizedKey]
-                        return val ? `${val} ${unit}` : null
-                      }).filter(Boolean).join(", ")
-
-                      const result = [dayTimes, nightTimes].filter(Boolean).join(" | ")
-                      setFieldValue("travelDuration", result)
-                      setOpenTm(false)
-                    }}
-                  >
-                    Valider
-                  </button>
                 </div>
               )}
+
             </div>
 
             {/* Année d'expérience */}
