@@ -2,6 +2,7 @@
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup"
+import { useRouter } from "next/navigation";
 import { 
     DurationExtInf, 
     ExperiencesExt, 
@@ -54,6 +55,9 @@ const schema = Yup.object().shape({
 })
 
 export default function ExternalisationForm(){
+
+    const route = useRouter()
+
     return(
         <Formik
             initialValues={{
@@ -84,6 +88,7 @@ export default function ExternalisationForm(){
                     console.log("Erreur d'envoie :", error)
                 }finally{
                     setSubmitting(false)
+                    route.push("pages/Contact")
                 }
             }}
             >
@@ -376,7 +381,7 @@ export default function ExternalisationForm(){
                         disabled={isSubmitting}
                         className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
                         >
-                        {isSubmitting? "Envoie..." : "Envoyer"}
+                        Suivant
                     </button>
                 </div>
             </Form>

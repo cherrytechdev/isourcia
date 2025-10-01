@@ -3,6 +3,7 @@
 import { CompetenciesInf, LanguageInf, DateContrat, TimeTravelInf } from "@/constant"
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import * as Yup from "yup"
 
 interface FormValues {
@@ -77,6 +78,7 @@ export default function DetailForm() {
   const [openCt, setOpenCt] = useState(false)
   const [openTm, setOpenTm] = useState(false)
   const [activeForm, setActiveForm] = useState<"day" | "night">("day")
+  const route = useRouter()
 
   return (
     <Formik<FormValues>
@@ -105,6 +107,7 @@ export default function DetailForm() {
           console.error("Erreur d'envoi", error)
         } finally {
           setSubmitting(false)
+          route.push("pages/Contact")
         }
       }}
     >
@@ -450,7 +453,7 @@ export default function DetailForm() {
               />
             </div>
 
-            <button 
+            <button
               type="submit" 
               disabled={isSubmitting} 
               className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"

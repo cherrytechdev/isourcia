@@ -14,7 +14,6 @@ export default function Home(){
         <DetailForm/>
         <CreationMobileForm/>
         <MarketAnalysis/>
-        <ContactForm/>
     </>
   )
 }

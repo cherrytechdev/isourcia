@@ -14,6 +14,7 @@ import {
     DelayMVPMobileInf,
     TechMobileInf
 } from "@/constant"
+import { useRouter } from "next/navigation"
 
 
 const schema = Yup.object().shape({
@@ -60,6 +61,9 @@ const schema = Yup.object().shape({
 })
 
 export default function CreationMobileForm(){
+
+    const route = useRouter()
+
     return(
         <Formik
             initialValues={{
@@ -90,6 +94,7 @@ export default function CreationMobileForm(){
                     console.error("Erreur d'envoi", error)
                     } finally {
                     setSubmitting(false)
+                    route.push("pages/Contact")
                     }
                 }}
             >
@@ -402,7 +407,7 @@ export default function CreationMobileForm(){
                                 disabled={isSubmitting}
                                 className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
                                 >
-                                {isSubmitting? "Envoie..." : "Envoyer"}
+                                Suivant
                             </button>
                         </div>
                     </Form>
