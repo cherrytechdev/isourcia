@@ -57,6 +57,13 @@ const schema = Yup.object().shape({
     }),
 
     delayMvpMobile: Yup.array().min(1, "Vous devez en choisir un"),
+
+    techMobile: Yup.array().min(1, "Vous devez en choisir un"),
+    otherTechMobile: Yup.string().when("techMobile", {
+        is: (val: string[]) => val?.includes("autre"),
+        then: (schema) => schema.required("Vous devez préciser l'autre gestion de donnée"),
+        otherwise: (schema) => schema.notRequired()
+    }),
 })
 
 export default function CreationMobileForm(){
@@ -122,8 +129,14 @@ export default function CreationMobileForm(){
                                                 )}
                                             </div>
                                     )})}
-                                    <ErrorMessage name="objectiveMobile" component="div" className="error-message"/>
-                                    <ErrorMessage name="otherObjectiveMobile" component="div" className="error-message"/>
+                                    <ErrorMessage 
+                                        name="objectiveMobile" 
+                                        component="div" 
+                                        className="error-message"/>
+                                    <ErrorMessage 
+                                        name="otherObjectiveMobile" 
+                                        component="div" 
+                                        className="error-message"/>
                                 </div>
                             </div>
 
@@ -154,8 +167,14 @@ export default function CreationMobileForm(){
                                             </div>
                                         )
                                     })}
-                                    <ErrorMessage name="plateformMobile" component="div" className="error-message"/>
-                                    <ErrorMessage name="otherPlateformMobile" component="div" className="error-message"/>
+                                    <ErrorMessage 
+                                        name="plateformMobile" 
+                                        component="div" 
+                                        className="error-message"/>
+                                    <ErrorMessage 
+                                        name="otherPlateformMobile" 
+                                        component="div" 
+                                        className="error-message"/>
                                 </div>
                             </div>
 
@@ -194,17 +213,24 @@ export default function CreationMobileForm(){
                                                 <label>{items}</label>
                                             </div>
                                         ))}
-                                        <ErrorMessage name="designStyleMobile" component="div" className="error-message"/>
+                                        <ErrorMessage 
+                                            name="designStyleMobile" 
+                                            component="div" 
+                                            className="error-message"/>
 
                                         <p>Application d'inspiration</p>
                                         <Field
                                             as="textarea"
                                             name="inspirationAppMobile"
                                             rows={5}
+                                            placeholder="Votre inspiration"
                                             disabled={values.designMobile !== "noMob"}
                                             className={`${values.designMobile !== "noMob"? '!border !border-gray-400' : ''}`}
                                             />
-                                        <ErrorMessage name="inspirationAppMobile" component="div" className="error-message"/>
+                                        <ErrorMessage 
+                                            name="inspirationAppMobile" 
+                                            component="div" 
+                                            className="error-message"/>
                                     </div>
                                 </div>
                             </div>
@@ -235,8 +261,14 @@ export default function CreationMobileForm(){
                                                 )}
                                             </div>
                                     )})}
-                                    <ErrorMessage name="functionalityMobile" component="div" className="error-message"/>
-                                    <ErrorMessage name="otherFunctionalityMobile" component="div" className="error-message"/>
+                                    <ErrorMessage 
+                                        name="functionalityMobile" 
+                                        component="div" 
+                                        className="error-message"/>
+                                    <ErrorMessage 
+                                        name="otherFunctionalityMobile" 
+                                        component="div" 
+                                        className="error-message"/>
                                 </div>
                             </div>
 
@@ -250,9 +282,9 @@ export default function CreationMobileForm(){
                                                 <Field
                                                     type="radio"
                                                     name="apkContentMobile"
-                                                    value={items.name}
+                                                    value={items}
                                                     />
-                                                <label>{items.label}</label>
+                                                <label>{items}</label>
                                             </div>
                                         ))}
                                     </div>
@@ -267,21 +299,25 @@ export default function CreationMobileForm(){
                                                     <Field
                                                         type="radio"
                                                         name="dataManageMobile"
-                                                        value={items.name}
+                                                        value={items}
                                                         />
-                                                    <label>{items.label}</label>
+                                                    <label>{items}</label>
                                                 </div>
                                                 {i === 2 && (
                                                     <Field
                                                         type="text"
                                                         name="otherDataManageMobile"
+                                                        placeholder="Veulliez préciser les autres gestions de donnée"
                                                         disabled={!isOtherChecked}
                                                         className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
                                                         />
                                                 )}
                                             </div>
                                         )})}
-                                        <ErrorMessage name="otherDataManageMobile" component="div" className="error-message"/>
+                                        <ErrorMessage 
+                                            name="otherDataManageMobile" 
+                                            component="div" 
+                                            className="error-message"/>
                                     </div>
                                 </div>
                             </div>
@@ -295,9 +331,9 @@ export default function CreationMobileForm(){
                                             <Field
                                                 type="radio"
                                                 name="maintainMobile"
-                                                value={items.name}
+                                                value={items}
                                                 />
-                                            <label>{items.label}</label>
+                                            <label>{items}</label>
                                         </div>
                                     ))}
                                 </div>
@@ -312,9 +348,9 @@ export default function CreationMobileForm(){
                                             <Field
                                                 type="radio"
                                                 name="budgetMobile"
-                                                value={items.name}
+                                                value={items}
                                                 />
-                                            <label>{items.label}</label>
+                                            <label>{items}</label>
                                         </div>
                                     ))}
 
@@ -329,7 +365,10 @@ export default function CreationMobileForm(){
                                             <label>{items}</label>
                                         </div>
                                     ))}
-                                    <ErrorMessage name="delayMvpMobile" component="div" className="error-message"/>
+                                    <ErrorMessage 
+                                        name="delayMvpMobile" 
+                                        component="div" 
+                                        className="error-message"/>
                                 </div>
                             </div>
 
@@ -352,12 +391,21 @@ export default function CreationMobileForm(){
                                                 <Field
                                                     type="text"
                                                     name="otherTechMobile"
+                                                    placeholder="Veulliez préciser les autres technologies"
                                                     disabled={!isOtherChecked}
                                                     className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
                                                     />
                                             )}
                                         </div>
                                     )})}
+                                    <ErrorMessage 
+                                        name="techMobile" 
+                                        component="div" 
+                                        className="error-message"/>
+                                    <ErrorMessage 
+                                        name="otherTechMobile" 
+                                        component="div" 
+                                        className="error-message"/>
                                 </div>
                             </div>
                             <button 

@@ -120,7 +120,10 @@ export default function DetailForm() {
                 name="date" 
                 id="date"
               />
-              <ErrorMessage name="date" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="date" 
+                component="div" 
+                className="error-message"/>
             </div>
 
             {/* Durée du contrat */}
@@ -135,7 +138,10 @@ export default function DetailForm() {
                 readOnly
                 onClick={() => setOpenCt(true)}
               />
-              <ErrorMessage name="contratDuration" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="contratDuration" 
+                component="div" 
+                className="error-message"/>
               {openCt && (
                 <div className="flex flex-col gap-2 bg-white text-gray-700 p-4 border border-blue-500 rounded-md shadow-md absolute z-10 top-full mt-2 w-full">
                   <div className="flex justify-between mb-2">
@@ -193,7 +199,10 @@ export default function DetailForm() {
                 readOnly
                 onClick={() => setOpenTm(true)}
               />
-              <ErrorMessage name="travelDuration" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="travelDuration" 
+                component="div" 
+                className="error-message"/>
               {openTm && (
                 <div className={`flex flex-col gap-2 text-gray-700 p-4 border border-blue-500 rounded-md shadow-md absolute z-10 top-full mt-2 w-full transform-transition transition-all
                                 ${ activeForm === "day" ? 'bg-white text-[#040A18]' : 'bg-[#001a55] text-white' }`}>
@@ -280,8 +289,12 @@ export default function DetailForm() {
                 type="text" 
                 name="yearExperiences" 
                 id="yearExperiences"
+                placeholder="Veulliez préciser les années d'expériences"
               />
-              <ErrorMessage name="yearExperiences" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="yearExperiences" 
+                component="div" 
+                className="error-message"/>
             </div>
 
             {/* Compétences */}
@@ -324,7 +337,10 @@ export default function DetailForm() {
                   />
                 </div>
               </div>
-              <ErrorMessage name="competencies" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="competencies" 
+                component="div" 
+                className="error-message"/>
             </div>
 
             {/* Langues */}
@@ -367,7 +383,10 @@ export default function DetailForm() {
                   />
                 </div>
               </div>
-              <ErrorMessage name="language" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="language" 
+                component="div" 
+                className="error-message"/>
             </div>
 
             {/* Niveau d'étude */}
@@ -377,9 +396,13 @@ export default function DetailForm() {
                 type="text" 
                 name="level" 
                 id="level"
+                placeholder="Veulliez préciser le niveau d'étude"
                 className="border p-2 rounded-md focus:outline-blue-500"
               />
-              <ErrorMessage name="level" component="div" className="error-message"/>
+              <ErrorMessage 
+                name="level" 
+                component="div" 
+                className="error-message"/>
             </div>
 
             {/* Commentaire */}

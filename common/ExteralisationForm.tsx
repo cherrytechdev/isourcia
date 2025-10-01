@@ -72,7 +72,7 @@ export default function ExternalisationForm(){
                 modalityExt: "",
                 facturationModExt: "",
                 maintenanceExt: "noExt",
-                budgetExt: "minimum"
+                budgetExt: "< 500 €"
                 }}
             validationSchema={schema}
             onSubmit={async(values, {resetForm, setSubmitting}) => {
@@ -122,8 +122,9 @@ export default function ExternalisationForm(){
                                 className="error-message" 
                                 />
                             <ErrorMessage 
-                                name="otherResExt" 
-                                component="error-message" 
+                                name="otherResExt"
+                                component="div"
+                                className="error-message" 
                                 />
                         </div>
                     </div>
@@ -235,7 +236,8 @@ export default function ExternalisationForm(){
                                         <Field 
                                             type="text"
                                             name="otherLangExt" 
-                                            className={`${!isOtherChecked ? 'border border-gray-500' : 'border border-white'}`} 
+                                            placeholder="Précisez les autres langues"
+                                            className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`} 
                                             disabled={!isOtherChecked}
                                             />)}
                                 </div>
@@ -361,8 +363,8 @@ export default function ExternalisationForm(){
                                         <Field
                                             type="radio"
                                             name="budgetExt"
-                                            value={items.name} />
-                                        <label>{items.label}</label>
+                                            value={items} />
+                                        <label>{items}</label>
                                     </div>
                                 ))}
                             </div>

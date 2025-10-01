@@ -95,9 +95,9 @@ export const FacturationModExtInf = [
 ]
 
 export const BudgetExtInf = [
-    {name:"minimumExt", label:"< 500 €"},
-    {name:"mediumExt", label:"500–2000 €"},
-    {name:"maximumEXt", label:"+2000 €"}
+    "< 500 €",
+    "500–2000 €",
+    "+2000 €"
 ]
 
 export const ObjectiveMobileInf = [
@@ -136,26 +136,26 @@ export const FunctionalityMobileInf = [
 ]
 
 export const ApkContentMobileInf = [
-    {name:"readyMob", label:"Déjà prêt (textes, images, vidéos fournis)"},
-    {name:"createMob", label:"À créer (j'ai besoin de rédaction/visuels)"}
+    "Déjà prêt (textes, images, vidéos fournis)",
+    "À créer (j'ai besoin de rédaction/visuels)"
 ]
 
 export const DataManageMobileInf = [
-    {name:"localDatMob", label:"Stockage local"},
-    {name:"dataBaseMob", label:"Base de données en ligne (cloud, serveur)"},
-    {name:"autres", label:"Autre (préciser)"}
+    "Stockage local",
+    "Base de données en ligne (cloud, serveur)",
+    "Autre (préciser)"
 ]
 
 export const MaintainMobileInf = [
-    {name:"yesMaj", label:"Oui, mises à jour simples"},
-    {name:"yesMaint", label:"Oui, maintenance complète (sécurité & évolutions)"},
-    {name:"noDelivOnl", label:"Non, seulement la livraison initiale"}
+    "Oui, mises à jour simples",
+    "Oui, maintenance complète (sécurité & évolutions)",
+    "Non, seulement la livraison initiale"
 ]
 
 export const BudgetMobileInf = [
-    {name: "minimunMob", label:"< 3 000 €"},
-    {name: "mediumMob", label:"3 000 - 10 000 €"},
-    {name: "maximumMob", label:"> 10 000 €"}
+    "< 3 000 €",
+    "3 000 - 10 000 €",
+    "> 10 000 €"
 ]
 
 export const DelayMVPMobileInf = [
@@ -191,15 +191,15 @@ export const MarketExpSearchInf = [
 ]
 
 export const MarketContentInf = [
-    {name:"yesContent", label:"Oui, j'ai déjà mes textes et visuels"},
-    {name:"noContent", label:"Non, j'ai besoin d'aide pour créer du contenu"},
-    {name:"bothContent", label:"Un mélange des deux (partiellement prêt)"}
+    "Oui, j'ai déjà mes textes et visuels",
+    "Non, j'ai besoin d'aide pour créer du contenu",
+    "Un mélange des deux (partiellement prêt)"
 ]
 
 export const MarketMissionDelayInf = [
-    {name:"ponctual", label:"Ponctuelle (1 campagne)"},
-    {name:"short", label:"Courte durée (1 à 3 mois)"},
-    {name:"long", label:"Long terme (6 mois et +)"}
+    "Ponctuelle (1 campagne)",
+    "Courte durée (1 à 3 mois)",
+    "Long terme (6 mois et +)"
 ]
 
 export const MarketMailFreqInf = [
@@ -213,6 +213,12 @@ export const MarketContactBaseInf = [
     "1000 – 5000",
     "5000 – 20 000",
     "20 000+"
+]
+
+export const MarketBudgetInf = [
+    "< 500 €",
+    "500 - 2 000 €",
+    "> 2 000 €"
 ]
 
 export const MarketTimelineInf = [
