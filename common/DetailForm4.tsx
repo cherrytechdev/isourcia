@@ -1,6 +1,6 @@
 'use client'
 
-import { CompetenciesInf, LanguageInf, DateContrat, TimeTravelInf } from "@/constant"
+import { LanguageInf, DateContrat, TimeTravelInf, CompetenciesDesignerInf } from "@/constant"
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
@@ -10,6 +10,7 @@ interface FormValues {
   date: string
   contratDuration: string
   travelDuration: string
+  
   yearExperiences: string
   competencies: string[]
   otherComp: string
@@ -85,6 +86,7 @@ export default function DetailForm() {
         date: "",
         contratDuration: "",
         travelDuration: "",
+        
         yearExperiences: "",
         competencies: [],
         otherComp: "",
@@ -336,7 +338,7 @@ export default function DetailForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FieldArray name="competencies" render={arrayHelpers => (
                   <div className="flex flex-wrap gap-2">
-                    {CompetenciesInf.map((item, i) => {
+                    {CompetenciesDesignerInf.map((item, i) => {
                       const active = values.competencies.includes(item)
                       return (
                         <button
