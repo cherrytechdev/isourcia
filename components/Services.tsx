@@ -20,19 +20,21 @@ export default function Services(){
                     onSubmit={() => {}}
                 >
                     {({setFieldValue}) => (
-                    <Form className="flex justify-center w-full">
-                        <div className="grid grid-cols-3 gap-4">
+                    <Form>
+                        <div className="grid grid-cols-1 md:grid md:grid-cols-3 gap-4">
                             {ServicesInf.map((items, i) => (
                                 <button
                                     key={i}
                                     type="button"
-                                    className="flex flex-col items-center text-center p-2 font-bold text-2xl text-[#040A18] rounded-md bg-[#E1EEFF]"
                                     onClick={() => {
                                             setFieldValue("service",items.value)
                                             route.push(items.link)
                                         }}
                                     >
-                                    {items.title}
+                                    <div className="flex flex-col gap-4 items-center text-center p-2 font-bold text-2xl text-[#040A18] rounded-md bg-[#E1EEFF]">
+                                        <img src={items.image} alt={items.value} className="w-[138px]"/>
+                                        {items.title}                                        
+                                    </div>
                                 </button>                            
                             ))}
                         </div>
