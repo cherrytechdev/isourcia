@@ -2,6 +2,7 @@
 
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup"
+import { useRouter } from "next/navigation";
 import { MarketMainObjInf,
         MarketExpSearchInf,
         MarketContentInf,
@@ -45,6 +46,9 @@ const schema = Yup.object().shape({
 })
 
 export default function MarketAnalysis() {
+
+    const route = useRouter()
+
     return (
         <Formik
             initialValues={{
@@ -73,12 +77,13 @@ export default function MarketAnalysis() {
                         console.log("Erreur d'envoie :", error)
                     }finally{
                         setSubmitting(false)
+                        route.push("pages/Contact")
                     }
                 }}
         >
             {({ values, isSubmitting }) =>
-                <Form className="flex justify-center shadow-2xl w-full mt-8">
-                    <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
+                <Form className="flex justify-center  w-full">
+                    <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
                         <div className="flex flex-col gap-4">
                             <h4>1. Objectif principal</h4>
                             <div className="flex flex-col gap-2 pl-4">
@@ -339,7 +344,7 @@ export default function MarketAnalysis() {
                             disabled={isSubmitting}
                             className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
                             >
-                            {isSubmitting? "Envoie..." : "Envoyer"}
+                            Suivant
                     </button>
                     </div>
                 </Form>

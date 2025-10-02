@@ -14,6 +14,7 @@ import {
     DelayMVPMobileInf,
     TechMobileInf
 } from "@/constant"
+import { useRouter } from "next/navigation"
 
 
 const schema = Yup.object().shape({
@@ -57,16 +58,12 @@ const schema = Yup.object().shape({
     }),
 
     delayMvpMobile: Yup.array().min(1, "Vous devez en choisir un"),
-
-    techMobile: Yup.array().min(1, "Vous devez en choisir un"),
-    otherTechMobile: Yup.string().when("techMobile", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre gestion de donnée"),
-        otherwise: (schema) => schema.notRequired()
-    }),
 })
 
 export default function CreationMobileForm(){
+
+    const route = useRouter()
+
     return(
         <Formik
             initialValues={{
@@ -74,16 +71,16 @@ export default function CreationMobileForm(){
                 otherObjectiveMobile: "",
                 plateformMobile: [] as string[],
                 otherPlateformMobile: "",
-                designMobile: "noMob",
+                designMobile: "Non (j'aimerais en créer une)",
                 designStyleMobile: "",
                 inspirationAppMobile: "",
                 functionalityMobile: [] as string[],
                 otherFunctionalityMobile: "",
-                apkContentMobile: "createMob",
-                dataManageMobile: [] as string[],
+                apkContentMobile: "À créer (j'ai besoin de rédaction/visuels)",
+                dataManageMobile: ["Stockage local"],
                 otherDataManageMobile: "",
-                maintainMobile: "yesMaj",
-                budgetMobile: "minimunMob",
+                maintainMobile: "Oui, mises à jour simples",
+                budgetMobile: "< 3 000 €",
                 delayMvpMobile: "",
                 techMobile: [] as string[],
                 otherTechMobile: ""
@@ -97,12 +94,13 @@ export default function CreationMobileForm(){
                     console.error("Erreur d'envoi", error)
                     } finally {
                     setSubmitting(false)
+                    route.push("pages/Contact")
                     }
                 }}
             >
                 {({values, isSubmitting }) => (
-                    <Form className="flex justify-center shadow-2xl w-full mt-8">
-                        <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
+                    <Form className="flex justify-center w-full ">
+                        <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
                             <div className="flex flex-col gap-4">
                                 <h4>1. Objectif principal de l'application</h4>
                                 <div className="flex flex-col gap-2 pl-4">
@@ -187,7 +185,7 @@ export default function CreationMobileForm(){
                                             <Field
                                                 type="radio"
                                                 name="designMobile"
-                                                value="yesMob"
+                                                value="Oui (je peux la fournir)"
                                                 />
                                             <label>Oui (je peux la fournir)</label>
                                         </div>
@@ -195,7 +193,7 @@ export default function CreationMobileForm(){
                                             <Field
                                                 type="radio"
                                                 name="designMobile"
-                                                value="noMob"
+                                                value="Non (j'aimerais en créer une)"
                                                 />
                                             <label>Non (j'aimerais en créer une)</label>
                                         </div>
@@ -315,6 +313,10 @@ export default function CreationMobileForm(){
                                             </div>
                                         )})}
                                         <ErrorMessage 
+                                            name="dataManageMobile" 
+                                            component="div" 
+                                            className="error-message"/>
+                                        <ErrorMessage 
                                             name="otherDataManageMobile" 
                                             component="div" 
                                             className="error-message"/>
@@ -398,14 +400,6 @@ export default function CreationMobileForm(){
                                             )}
                                         </div>
                                     )})}
-                                    <ErrorMessage 
-                                        name="techMobile" 
-                                        component="div" 
-                                        className="error-message"/>
-                                    <ErrorMessage 
-                                        name="otherTechMobile" 
-                                        component="div" 
-                                        className="error-message"/>
                                 </div>
                             </div>
                             <button 
@@ -413,7 +407,7 @@ export default function CreationMobileForm(){
                                 disabled={isSubmitting}
                                 className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
                                 >
-                                {isSubmitting? "Envoie..." : "Envoyer"}
+                                Suivant
                             </button>
                         </div>
                     </Form>

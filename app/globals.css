@@ -52,7 +52,13 @@ input[type=number]:focus {
 }
 
 input[type=checkbox] {
-  width: 16px;
+  width: 13px;
+}
+
+@media (min-width: 768px) {
+  input[type=checkbox] {
+    width: 16px;
+  }
 }
 
 input[type=radio] {

@@ -3,6 +3,7 @@
 import { CompetenciesInf, LanguageInf, DateContrat, TimeTravelInf } from "@/constant"
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import * as Yup from "yup"
 
 interface FormValues {
@@ -77,6 +78,7 @@ export default function DetailForm() {
   const [openCt, setOpenCt] = useState(false)
   const [openTm, setOpenTm] = useState(false)
   const [activeForm, setActiveForm] = useState<"day" | "night">("day")
+  const route = useRouter()
 
   return (
     <Formik<FormValues>
@@ -105,6 +107,7 @@ export default function DetailForm() {
           console.error("Erreur d'envoi", error)
         } finally {
           setSubmitting(false)
+          route.push("pages/Contact")
         }
       }}
     >
@@ -146,12 +149,12 @@ export default function DetailForm() {
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
                   {/* Backdrop */}
                   <div 
-                    className="absolute inset-0 bg-white/30 backdrop-blur-sm" 
+                    className="absolute inset-0 bg-black/30 backdrop-blur-sm" 
                     onClick={() => setOpenCt(false)} // optionnel si tu veux fermer en cliquant dehors
                   ></div>
 
                   {/* Popup */}
-                  <div className="relative z-10 flex flex-col gap-2 bg-white text-gray-700 p-4 border border-blue-500 rounded-md shadow-lg w-[90%] max-w-md">
+                  <div className="relative z-10 flex flex-col gap-2 bg-white text-gray-700 p-4 rounded-md shadow-lg w-[40%] ">
                     <div className="flex justify-between mb-2">
                       <p className="font-semibold">Durée du contrat</p>
                       <button 
@@ -163,7 +166,7 @@ export default function DetailForm() {
                       </button>
                     </div>
 
-                    <div className="flex gap-4">
+                    <div className="xl:flex gap-4">
                       {DateContrat.map((unit, i) => (
                         <div key={i} className="flex flex-col">
                           <label htmlFor={`contractUnit-${unit}`} className="text-center text-sm">{unit}</label>
@@ -181,7 +184,7 @@ export default function DetailForm() {
 
                     <button
                       type="button"
-                      className="mt-2 bg-blue-500 text-white px-3 py-1 w-fit rounded-md"
+                      className="mt-2 bg-[#60A5FA] text-white px-3 py-1 w-fit rounded-md"
                       onClick={() => {
                         const selected = DateContrat.map(unit => {
                           const val = values.contractUnits[unit]
@@ -226,8 +229,9 @@ export default function DetailForm() {
                   ></div>
 
                   {/* Popup */}
-                  <div className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 border border-blue-500 rounded-md shadow-lg w-[90%] max-w-lg transform transition-all
-                    ${activeForm === "day" ? 'bg-white text-[#040A18]' : 'bg-[#001a55] text-white'}`}>
+
+                  <div className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 rounded-md shadow-lg w-[50%] transform transition-all
+                    ${activeForm === "day" ? "bg-white text-[#040A18]" : "bg-[#090F25] text-white"}`}>
 
                     {/* Header */}
                     <div className="flex justify-between mb-2">
@@ -247,33 +251,34 @@ export default function DetailForm() {
                       <button
                         type="button"
                         className={`cursor-pointer transition-all 
-                      ${activeForm === "day" ? "shadow-lg rounded-md bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
+                      ${activeForm === "day" ? "shadow-lg rounded-l-md rounded-r-0 bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
                         onClick={() => setActiveForm("day")}
                       >
-                        Jours
+                        ☀️ Jours
                       </button>
                       <button
                         type="button"
                         className={`cursor-pointer transition-all 
-                      ${activeForm === "night" ? "shadow-lg rounded-md bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
+                      ${activeForm === "night" ? "shadow-lg rounded-r-md rounded-l-0 bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
                         onClick={() => setActiveForm("night")}
                       >
-                        Nuits
+                        🌒 Nuits
+
                       </button>
                     </div>
 
                     {/* Champs inputs */}
-                    <div className="flex gap-4 flex-wrap">
+                    <div className="xl:flex gap-4">
                       {TimeTravelInf.map((item, i) => {
                         const normalizedKey = item.toLowerCase().replace(/\s+/g, '_');
                         return (
-                          <div key={i} className="flex flex-col">
+                          <div key={i} className="flex flex-col items-center gap-2"
                             <label htmlFor={`${activeForm}-${normalizedKey}`} className="text-sm">{item}</label>
                             <input
                               type="text"
                               id={`${activeForm}-${normalizedKey}`}
                               placeholder="ex: 1h 30"
-                              className="border p-1 rounded-md w-24"
+                              className="border p-1 rounded-md w-full"
                               value={values[activeForm][normalizedKey] || ""}
                               onChange={(e) =>
                                 setFieldValue(`${activeForm}.${normalizedKey}`, e.target.value)
@@ -287,7 +292,7 @@ export default function DetailForm() {
                     {/* Bouton valider */}
                     <button
                       type="button"
-                      className="mt-2 w-fit bg-blue-500 text-white px-3 py-1 rounded-md"
+                      className="mt-2 w-fit bg-[#60A5FA] text-white px-3 py-1 rounded-md"
                       onClick={() => {
                         const dayTimes = TimeTravelInf.map(unit => {
                           const normalizedKey = unit.toLowerCase().replace(/\s+/g, '_');
@@ -450,7 +455,7 @@ export default function DetailForm() {
               />
             </div>
 
-            <button 
+            <button
               type="submit" 
               disabled={isSubmitting} 
               className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
