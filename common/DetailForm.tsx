@@ -107,7 +107,7 @@ export default function DetailForm() {
           console.error("Erreur d'envoi", error)
         } finally {
           setSubmitting(false)
-          route.push("pages/Contact")
+          route.push("/Contact")
         }
       }}
     >
@@ -272,7 +272,7 @@ export default function DetailForm() {
                       {TimeTravelInf.map((item, i) => {
                         const normalizedKey = item.toLowerCase().replace(/\s+/g, '_');
                         return (
-                          <div key={i} className="flex flex-col items-center gap-2"
+                          <div key={i} className="flex flex-col items-center gap-2">
                             <label htmlFor={`${activeForm}-${normalizedKey}`} className="text-sm">{item}</label>
                             <input
                               type="text"
@@ -284,6 +284,7 @@ export default function DetailForm() {
                                 setFieldValue(`${activeForm}.${normalizedKey}`, e.target.value)
                               }
                             />
+
                           </div>
                         )
                       })}
