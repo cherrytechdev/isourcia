@@ -229,6 +229,7 @@ export default function DetailForm() {
                   ></div>
 
                   {/* Popup */}
+
                   <div className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 rounded-md shadow-lg w-[50%] transform transition-all
                     ${activeForm === "day" ? "bg-white text-[#040A18]" : "bg-[#090F25] text-white"}`}>
 
@@ -262,6 +263,7 @@ export default function DetailForm() {
                         onClick={() => setActiveForm("night")}
                       >
                         🌒 Nuits
+
                       </button>
                     </div>
 
@@ -270,7 +272,7 @@ export default function DetailForm() {
                       {TimeTravelInf.map((item, i) => {
                         const normalizedKey = item.toLowerCase().replace(/\s+/g, '_');
                         return (
-                          <div key={i} className="flex flex-col items-center gap-2">
+                          <div key={i} className="flex flex-col items-center gap-2"
                             <label htmlFor={`${activeForm}-${normalizedKey}`} className="text-sm">{item}</label>
                             <input
                               type="text"
