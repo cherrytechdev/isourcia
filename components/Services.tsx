@@ -2,12 +2,13 @@
 
 import Container from "@/common/Container"
 import { ServicesInf } from "@/constant"
+import { useFormStore } from "@/store/formStore"
 import { Form, Formik } from "formik"
 import { useRouter } from "next/navigation"
 
 
 export default function Services(){
-
+    const { setValues } = useFormStore();
     const route = useRouter()
 
     return(
@@ -27,9 +28,11 @@ export default function Services(){
                                     key={i}
                                     type="button"
                                     onClick={() => {
-                                            setFieldValue("service",items.value)
-                                            route.push(items.link)
-                                        }}
+                                        setFieldValue("service", items.value);
+                                        setValues({ service: items.title });
+                                        route.push(items.link);
+                                    }}
+                                    className="cursor-pointer"
                                     >
                                     <div className="flex flex-col gap-4 items-center text-center p-2 font-bold text-2xl text-[#040A18] rounded-md bg-[#E1EEFF]">
                                         <img src={items.image} alt={items.value} className="w-[138px]"/>

@@ -28,6 +28,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ message: 'Email envoyé avec succès' }, { status: 200 });
+    console.log(data);
   } catch (error) {
     console.error('Erreur envoi email:', error);
     return NextResponse.json({ message: 'Erreur envoi email', error }, { status: 500 });
