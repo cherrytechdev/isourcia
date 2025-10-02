@@ -227,6 +227,7 @@ export default function DetailForm() {
                   ></div>
 
                   {/* Popup */}
+
                   <div className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 rounded-md shadow-lg w-[50%] transform transition-all
                     ${activeForm === "day" ? "bg-white text-[#040A18]" : "bg-[#090F25] text-white"}`}>
 
@@ -260,6 +261,7 @@ export default function DetailForm() {
                         onClick={() => setActiveForm("night")}
                       >
                         🌒 Nuits
+
                       </button>
                     </div>
 
