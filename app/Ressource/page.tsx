@@ -4,7 +4,7 @@ import RessourceForm from "@/common/RessourceForm"
 
 export default function Ressource(){
     return(
-        <section className="bg-gradient-to-bl from-[#090F25] to-[#DA2E2B] h-screen">
+        <section className="bg-gradient-to-br from-slate-900 via-purple-900 to-red-900 h-screen">
             <Container>
                 <RessourceForm/>
             </Container>
