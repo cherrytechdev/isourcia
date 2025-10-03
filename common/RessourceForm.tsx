@@ -19,7 +19,7 @@ export default function RessourceForm(){
             {({setFieldValue}) => (
             <Form className="flex justify-center w-full">
                 <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-full rounded-lg shadow-2xl">
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-3 gap-4">
                         {RessourceInf.map((items, i) => (
                             <button
                                 key={i}

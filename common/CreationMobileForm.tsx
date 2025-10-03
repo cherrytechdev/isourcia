@@ -205,7 +205,7 @@ export default function CreationMobileForm(){
                                                 <Field
                                                     type="checkbox"
                                                     name="designStyleMobile"
-                                                    disabled={values.designMobile !== "noMob"}
+                                                    disabled={values.designMobile !== "Non (j'aimerais en créer une)"}
                                                     value={items}
                                                     />
                                                 <label>{items}</label>
@@ -222,8 +222,8 @@ export default function CreationMobileForm(){
                                             name="inspirationAppMobile"
                                             rows={5}
                                             placeholder="Votre inspiration"
-                                            disabled={values.designMobile !== "noMob"}
-                                            className={`${values.designMobile !== "noMob"? '!border !border-gray-400' : ''}`}
+                                            disabled={values.designMobile !== "Non (j'aimerais en créer une)"}
+                                            className={`${values.designMobile !== "Non (j'aimerais en créer une)"? '!border !border-gray-400' : ''}`}
                                             />
                                         <ErrorMessage 
                                             name="inspirationAppMobile" 

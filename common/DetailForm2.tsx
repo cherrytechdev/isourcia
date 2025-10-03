@@ -1,6 +1,6 @@
 'use client'
 
-import { CompetenciesInf, LanguageInf, DateContrat, TimeTravelInf } from "@/constant"
+import { LanguageInf, DateContrat, TimeTravelInf, CompetenciesWebInf } from "@/constant"
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
@@ -10,6 +10,7 @@ interface FormValues {
   date: string
   contratDuration: string
   travelDuration: string
+  
   yearExperiences: string
   competencies: string[]
   otherComp: string
@@ -85,6 +86,7 @@ export default function DetailForm() {
         date: "",
         contratDuration: "",
         travelDuration: "",
+        
         yearExperiences: "",
         competencies: [],
         otherComp: "",
@@ -227,7 +229,6 @@ export default function DetailForm() {
                   ></div>
 
                   {/* Popup */}
-
                   <div className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 rounded-md shadow-lg w-[50%] transform transition-all
                     ${activeForm === "day" ? "bg-white text-[#040A18]" : "bg-[#090F25] text-white"}`}>
 
@@ -261,7 +262,6 @@ export default function DetailForm() {
                         onClick={() => setActiveForm("night")}
                       >
                         🌒 Nuits
-
                       </button>
                     </div>
 
@@ -338,7 +338,7 @@ export default function DetailForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FieldArray name="competencies" render={arrayHelpers => (
                   <div className="flex flex-wrap gap-2">
-                    {CompetenciesInf.map((item, i) => {
+                    {CompetenciesWebInf.map((item, i) => {
                       const active = values.competencies.includes(item)
                       return (
                         <button
