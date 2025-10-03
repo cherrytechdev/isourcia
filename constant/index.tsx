@@ -29,7 +29,7 @@ export const ServicesInf = [
         value:"Solution ERP", 
         title:"j'ai besoin d'une solution ERP, je choisis 8 sens"},
     {
-        link:"", 
+        link:"/WebAppService", 
         image:"/img/sensible.png",
         value:"Site web", 
         title:"je veux un site web professionnel"
@@ -56,9 +56,11 @@ export const ServicesInf = [
 
 export const RessourceInf = [
     {link:"/Accounting", name:"Comptable"},
-    {link:"", name:"Adjoint administratif"},
-    {link:"", name:"Developpement web/application"},
-    {link:"", name:"Autres"}
+    {link:"/Assistant_Admin", name:"Adjoint administratif"},
+    {link:"/WebApp", name:"Developpement web/application"},
+    {link:"/Market_Digit", name:"Marketing digital"},
+    {link:"/Designer", name:"Designer graphique/UI-UX"},
+    {link:"/Client_Support", name:"Support client"},
 ]
 
 export const CompetenciesInf = [
@@ -68,6 +70,46 @@ export const CompetenciesInf = [
     "Audit",
     "Excel avancé",
     "Analyse financière"
+]
+
+export const CompetenciesAdminInf = [
+    "Bureautique",
+    "Gestion d’agenda",
+    "Emails",
+    "Organisation",
+    "Rédaction"
+]
+
+export const CompetenciesWebInf = [
+    "HTML/CSS",
+    "JavaScript",
+    "Backend",
+    "Base de données",
+    "Git"
+]
+
+export const CompetenciesMarketInf = [
+    "SEO",
+    "SEA (Google Ads)",
+    "Réseaux sociaux",
+    "Emailing",
+    "Analytics"
+]
+
+export const CompetenciesDesignerInf = [
+    "Figma",
+    "Photoshop",
+    "Identité visuelle",
+    "Webdesign",
+    "Retouche photo"
+]
+
+export const CompetenciesSupportInf = [
+    "Communication",
+    "CRM",
+    "Emails",
+    "Téléphone",
+    "Relation client"
 ]
 
 export const LanguageInf = [
@@ -291,4 +333,71 @@ export const MarketTechToolsInf = [
     "Facebook / Meta Ads",
     "LinkedIn Ads",
     "Autre (préciser)"
+]
+
+export const WebObjInf = [
+    "Site vitrine",
+    "E-commerce",
+    "Réservation / RDV",
+    "Plateforme personnalisée",
+    "Autre"
+]
+
+export const WebDesignInf = [
+    "Minimaliste",
+    "Moderne",
+    "Corporate",
+    "Créatif"
+]
+
+export const WebContentInf = [
+    "Accueil",
+    "À propos",
+    "Services",
+    "Blog",
+    "Portfolio",
+    "Contact",
+    "FAQ"
+]
+
+export const WebFunctionalityInf = [
+    "Formulaire de contact",
+    "Chat en ligne",
+    "Prise de RDV",
+    "Paiement en ligne",
+    "Espace membre",
+    "Newsletter",
+    "SEO",
+    "Multilingue"
+]
+
+export const WebMaintenanceInf = [
+    "Oui, mises à jour simples",
+    "Oui, sécurité & surveillance",
+    "Non, livraison uniquement"
+]
+
+export const WebDelayInf = [
+    "Urgent (1 mois)",
+    "Standard (2-3 mois)",
+    "Flexible"
+]
+
+export const WebOptionsInf = [
+    "Community management",
+    "Campagnes e-mailing",
+    "Rédaction SEO",
+    "Création de visuels",
+    "ERP intégré",
+    "Applications mobiles"
+]
+
+export const WebTechnologyInf = [
+    "WordPress",
+    "Shopify",
+    "React / Next.js",
+    "Vue.js / Nuxt",
+    "PHP / Laravel",
+    "Django / Python",
+    "Autre"
 ]

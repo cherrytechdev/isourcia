@@ -98,6 +98,22 @@ export default function ContactForm() {
                 maintenanceExt: values.maintenanceExt,
                 budgetExt: values.budgetExt,
 
+
+    webObj: values.webObj,
+  otherWebObj: values.otherWebObj,
+  chooseChart: values.chooseChart,
+  webDesign: values.webDesign,
+  inspirationWeb: values.inspirationWeb,
+  webContent: values.webContent,
+  webContentReady: values.webContentReady,
+  webFunctionality: values.webFunctionality,
+  webMaintenance: values.webMaintenance,
+  webBudget: values.webBudget,
+  webDelay: values.webDelay,
+  webOptions: values.webOptions,
+  webTechnology: values.webTechnology,
+  otherWebTechnology: values.otherWebTechnology,
+
             }}
             validationSchema={schema}
             onSubmit={async (values, { resetForm, setSubmitting }) => {
@@ -127,7 +143,7 @@ export default function ContactForm() {
         >
             {({ isSubmitting }) => (
                 <Form className="flex justify-center shadow-2xl w-full mt-8">
-                    {values.commentTxt}
+                    {values.webDesign}
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
                         <div className="flex flex-col gap-2">
                             <label>Nom</label>

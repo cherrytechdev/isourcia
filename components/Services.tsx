@@ -36,14 +36,14 @@ export default function Services() {
                                         }}
                                         className="cursor-pointer"
                                     >
-                                        <div className="flex flex-col gap-4 items-center text-center p-2 font-bold text-2xl text-[#040A18] rounded-md bg-[#E1EEFF]">
-                                            <img src={items.image} alt={items.value} className="w-[138px]" />
-                                            {items.title}
-                                        </div>
-                                    </button>
-                                ))}
-                            </div>
-                        </Form>
+                                    <div className="flex flex-col gap-4 items-center text-center p-2 font-bold text-2xl text-[#040A18] rounded-md h-full bg-[#E1EEFF]">
+                                        <img src={items.image} alt={items.value} className="w-[138px]"/>
+                                        {items.title}                                        
+                                    </div>
+                                </button>                            
+                            ))}
+                        </div>
+                    </Form>
                     )}
                 </Formik>
             </Container>

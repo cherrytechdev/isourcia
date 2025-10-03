@@ -75,6 +75,21 @@ interface FormValues {
   maintenanceExt: string;
   budgetExt: string;
 
+    webObj: string[];
+  otherWebObj: string;
+  chooseChart: string;
+  webDesign: string[];
+  inspirationWeb: string;
+  webContent: string[];
+  webContentReady: string;
+  webFunctionality: string[];
+  webMaintenance: string;
+  webBudget: string;
+  webDelay: string;
+  webOptions: string[];
+  webTechnology: string[];
+  otherWebTechnology: string;
+
 }
 
 interface FormStore {
@@ -153,6 +168,22 @@ const initialValues: FormValues = {
   facturationModExt: [],
   maintenanceExt: "noExt",
   budgetExt: "< 500 €",
+
+
+   webObj: [],
+  otherWebObj: "",
+  chooseChart: "non",
+  webDesign: [],
+  inspirationWeb: "",
+  webContent: [],
+  webContentReady: "Déjà prêt (fourni par client)",
+  webFunctionality: [],
+  webMaintenance: "Non, livraison uniquement",
+  webBudget: "",
+  webDelay: "Flexible",
+  webOptions: [],
+  webTechnology: [],
+  otherWebTechnology: "",
 
 
 };

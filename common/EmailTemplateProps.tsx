@@ -80,6 +80,21 @@ interface EmailTemplateProps {
   facturationModExt: string[];
   maintenanceExt: string;
   budgetExt: string;
+
+      webObj: string[];
+  otherWebObj: string;
+  chooseChart: string;
+  webDesign: string[];
+  inspirationWeb: string;
+  webContent: string[];
+  webContentReady: string;
+  webFunctionality: string[];
+  webMaintenance: string;
+  webBudget: string;
+  webDelay: string;
+  webOptions: string[];
+  webTechnology: string[];
+  otherWebTechnology: string;
 }
 
 const EmailTemplate: React.FC<EmailTemplateProps> = ({
@@ -160,6 +175,21 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   facturationModExt,
   maintenanceExt,
   budgetExt,
+
+   webObj,
+  otherWebObj,
+  chooseChart,
+  webDesign,
+  inspirationWeb,
+  webContent,
+  webContentReady,
+  webFunctionality,
+  webMaintenance,
+  webBudget,
+  webDelay,
+  webOptions,
+  webTechnology,
+  otherWebTechnology,
 }) => {
 
 
@@ -330,6 +360,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               </div>
             </div>
           }
+          
 
           {ressource === "Création d'une application" &&
             <div className="p-4">
@@ -535,6 +566,93 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                 <p>{budgetExt || "Non spécifié"}</p>
               </div>
             </div>
+          }
+
+          {ressource === "Site web" &&
+          <div className="p-4 border rounded shadow">
+                <h1 className="text-xl font-bold">{service}</h1>
+
+  <div>
+    <strong>Objectifs du site :</strong>
+    <ul className="list-disc ml-6">
+      {webObj.length > 0 ? (
+        webObj.map((item, index) => <li key={index}>{item}</li>)
+      ) : (
+        <li>—</li>
+      )}
+    </ul>
+  </div>
+
+  <p><strong>Autre objectif :</strong> {otherWebObj || "—"}</p>
+
+  <p><strong>Charte graphique :</strong> {chooseChart || "—"}</p>
+
+  <div>
+    <strong>Design attendu :</strong>
+    <ul className="list-disc ml-6">
+      {webDesign.length > 0 ? (
+        webDesign.map((design, index) => <li key={index}>{design}</li>)
+      ) : (
+        <li>—</li>
+      )}
+    </ul>
+  </div>
+
+  <p><strong>Sources d’inspiration :</strong> {inspirationWeb || "—"}</p>
+
+  <div>
+    <strong>Contenus du site :</strong>
+    <ul className="list-disc ml-6">
+      {webContent.length > 0 ? (
+        webContent.map((content, index) => <li key={index}>{content}</li>)
+      ) : (
+        <li>—</li>
+      )}
+    </ul>
+  </div>
+
+  <p><strong>Disponibilité du contenu :</strong> {webContentReady || "—"}</p>
+
+  <div>
+    <strong>Fonctionnalités :</strong>
+    <ul className="list-disc ml-6">
+      {webFunctionality.length > 0 ? (
+        webFunctionality.map((func, index) => <li key={index}>{func}</li>)
+      ) : (
+        <li>—</li>
+      )}
+    </ul>
+  </div>
+
+  <p><strong>Maintenance :</strong> {webMaintenance || "—"}</p>
+  <p><strong>Budget :</strong> {webBudget || "—"}</p>
+  <p><strong>Délai :</strong> {webDelay || "—"}</p>
+
+  <div>
+    <strong>Options supplémentaires :</strong>
+    <ul className="list-disc ml-6">
+      {webOptions.length > 0 ? (
+        webOptions.map((opt, index) => <li key={index}>{opt}</li>)
+      ) : (
+        <li>—</li>
+      )}
+    </ul>
+  </div>
+
+  <div>
+    <strong>Technologies :</strong>
+    <ul className="list-disc ml-6">
+      {webTechnology.length > 0 ? (
+        webTechnology.map((tech, index) => <li key={index}>{tech}</li>)
+      ) : (
+        <li>—</li>
+      )}
+    </ul>
+  </div>
+
+  <p><strong>Autre technologie :</strong> {otherWebTechnology || "—"}</p>
+</div>
+
           }
 
           <Text style={{ marginTop: '20px', color: '#6b7280' }}>
