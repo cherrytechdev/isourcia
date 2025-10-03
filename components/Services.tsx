@@ -11,7 +11,7 @@ export default function Services(){
     const route = useRouter()
 
     return(
-        <section>
+        <section id="service">
             <Container>
                 <Formik
                     initialValues={{
@@ -21,7 +21,7 @@ export default function Services(){
                 >
                     {({setFieldValue}) => (
                     <Form>
-                        <div className="grid grid-cols-1 md:grid md:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 gap-4">
                             {ServicesInf.map((items, i) => (
                                 <button
                                     key={i}
