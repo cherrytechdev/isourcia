@@ -19,6 +19,62 @@ interface FormValues {
   day: Record<string, string>
   night: Record<string, string>
 
+
+  ressource: string;
+  marketMainObj: string[];
+  otherMarketMainObj: string;
+  marketExpSearch: string[];
+  otherMarketExpSearch: string;
+  marketContent: string;
+  marketMissionDelay: string;
+  marketDateWish: string;
+  marketMailFreq: string;
+  marketContactBase: string;
+  marketBudget: string;
+  marketTimeline: string;
+  marketOptionComp: string[];
+  otherMarketOptionComp: string;
+  marketTechTools: string[];
+  otherMarketTechTools: string;
+
+
+  objectiveMobile: string[]
+  otherObjectiveMobile: string
+  plateformMobile: string[]
+  otherPlateformMobile: string
+  designMobile: string
+  designStyleMobile: string[]
+  inspirationAppMobile: string
+  functionalityMobile: string[]
+  otherFunctionalityMobile: string
+  apkContentMobile: string
+  dataManageMobile: string[]
+  otherDataManageMobile: string
+  maintainMobile: string
+  budgetMobile: string
+  delayMvpMobile: string[]
+  techMobile: string[]
+  otherTechMobile: string
+
+
+  resourceExt: string[];
+  otherResExt: string;
+  dateStartExt: string;
+  durationExt: string[];
+  timeExt: string[];
+  otherTimeExt: string;
+  competenciesExt: string;
+  experiencesExt: string[];
+  languageExt: string[];
+  otherLangExt: string;
+  chooseDeg: string;
+  yesInpExt: string;
+  commentTxt: string;
+  modalityExt: string[];
+  facturationModExt: string[];
+  maintenanceExt: string;
+  budgetExt: string;
+
 }
 
 interface FormStore {
@@ -32,17 +88,73 @@ const initialValues: FormValues = {
   service: "",
   date: "",
   contratDuration: '',
-  travelDuration:  '',
+  travelDuration: '',
   yearExperiences: '',
   competencies: [],
   otherComp: '',
   language: [],
-  otherLang:'',
+  otherLang: '',
   level: '',
   message: '',
   contractUnits: {},
   day: {},
   night: {},
+  ressource: "",
+
+
+  marketMainObj: [],
+  otherMarketMainObj: "",
+  marketExpSearch: [],
+  otherMarketExpSearch: "",
+  marketContent: "Oui, j'ai déjà mes textes et visuels",
+  marketMissionDelay: "Ponctuelle (1 campagne)",
+  marketDateWish: "",
+  marketMailFreq: "Ponctuelle",
+  marketContactBase: "< 1000",
+  marketBudget: "< 500 €",
+  marketTimeline: "Urgent (moins de 2 semaines)",
+  marketOptionComp: [],
+  otherMarketOptionComp: "",
+  marketTechTools: [],
+  otherMarketTechTools: "",
+
+  objectiveMobile: [],
+  otherObjectiveMobile: "",
+  plateformMobile: [],
+  otherPlateformMobile: "",
+  designMobile: "Non (j'aimerais en créer une)",
+  designStyleMobile: [],
+  inspirationAppMobile: "",
+  functionalityMobile: [],
+  otherFunctionalityMobile: "",
+  apkContentMobile: "À créer (j'ai besoin de rédaction/visuels)",
+  dataManageMobile: ["Stockage local"],
+  otherDataManageMobile: "",
+  maintainMobile: "Oui, mises à jour simples",
+  budgetMobile: "< 3 000 €",
+  delayMvpMobile: [],
+  techMobile: [],
+  otherTechMobile: "",
+
+  resourceExt: [],
+  otherResExt: "",
+  dateStartExt: "",
+  durationExt: [],
+  timeExt: [],
+  otherTimeExt: "",
+  competenciesExt: "",
+  experiencesExt: [],
+  languageExt: [],
+  otherLangExt: "",
+  chooseDeg: "noExt",
+  yesInpExt: "",
+  commentTxt: "",
+  modalityExt: [],
+  facturationModExt: [],
+  maintenanceExt: "noExt",
+  budgetExt: "< 500 €",
+
+
 };
 
 export const useFormStore = create<FormStore>((set) => ({

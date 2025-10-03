@@ -1,7 +1,6 @@
 'use client'
 
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import axios from "axios";
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
 
@@ -45,6 +44,59 @@ export default function ContactForm() {
                 ressourceRecrut: values.ressourceRecrut,
                 service: values.service,
 
+                ressource: values.ressource,
+                marketMainObj: values.marketMainObj,
+                otherMarketMainObj: values.otherMarketMainObj,
+                marketExpSearch: values.marketExpSearch,
+                otherMarketExpSearch: values.otherMarketExpSearch,
+                marketContent: values.marketContent,
+                marketMissionDelay: values.marketMissionDelay,
+                marketDateWish: values.marketDateWish,
+                marketMailFreq: values.marketMailFreq,
+                marketContactBase: values.marketContactBase,
+                marketBudget: values.marketBudget,
+                marketTimeline: values.marketTimeline,
+                marketOptionComp: values.marketOptionComp,
+                otherMarketOptionComp: values.otherMarketOptionComp,
+                marketTechTools: values.marketTechTools,
+                otherMarketTechTools: values.otherMarketTechTools,
+
+                objectiveMobile: values.objectiveMobile,
+                otherObjectiveMobile: values.otherObjectiveMobile,
+                plateformMobile: values.plateformMobile,
+                otherPlateformMobile: values.otherPlateformMobile,
+                designMobile: values.designMobile,
+                designStyleMobile: values.designStyleMobile,
+                inspirationAppMobile: values.inspirationAppMobile,
+                functionalityMobile: values.functionalityMobile,
+                otherFunctionalityMobile: values.otherFunctionalityMobile,
+                apkContentMobile: values.apkContentMobile,
+                dataManageMobile: values.dataManageMobile,
+                otherDataManageMobile: values.otherDataManageMobile,
+                maintainMobile: values.maintainMobile,
+                budgetMobile: values.budgetMobile,
+                delayMvpMobile: values.delayMvpMobile,
+                techMobile: values.techMobile,
+                otherTechMobile: values.otherTechMobile,
+
+
+                resourceExt: values.resourceExt,
+                otherResExt: values.otherResExt,
+                dateStartExt: values.dateStartExt,
+                durationExt: values.durationExt,
+                timeExt: values.timeExt,
+                otherTimeExt: values.otherTimeExt,
+                competenciesExt: values.competenciesExt,
+                experiencesExt: values.experiencesExt,
+                languageExt: values.languageExt,
+                otherLangExt: values.otherLangExt,
+                chooseDeg: values.chooseDeg,
+                yesInpExt: values.yesInpExt,
+                commentTxt: values.commentTxt,
+                modalityExt: values.modalityExt,
+                facturationModExt: values.facturationModExt,
+                maintenanceExt: values.maintenanceExt,
+                budgetExt: values.budgetExt,
 
             }}
             validationSchema={schema}
@@ -75,6 +127,7 @@ export default function ContactForm() {
         >
             {({ isSubmitting }) => (
                 <Form className="flex justify-center shadow-2xl w-full mt-8">
+                    {values.commentTxt}
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
                         <div className="flex flex-col gap-2">
                             <label>Nom</label>
