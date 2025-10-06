@@ -50,7 +50,7 @@ export const ServicesInf = [
         link:"/Marketing",
         image:"/img/digital-marketing.png", 
         value:"Marketing digital", 
-        title:"je fais expert à un expert pour gérer mon marketing digital"
+        title:"je fais expert à un expert pour gérer mon marketing digital"
     }
 ]
 

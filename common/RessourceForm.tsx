@@ -1,21 +1,22 @@
 'use client'
 
 import { RessourceInf } from "@/constant"
+import { useFormStore } from "@/store/formStore";
 import { Form, Formik } from "formik"
 import { useRouter } from "next/navigation"
 
 
-export default function RessourceForm(){
-
+export default function RessourceForm() {
+    const { setValues } = useFormStore();
     const route = useRouter()
 
-    return(
+    return (
         <Formik
             initialValues={{
-                ressourceRecrut:""
+                ressourceRecrut: ""
             }}
-            onSubmit={() => {}}
-        >
+            onSubmit={() => { }}
+        >                   
             {({setFieldValue}) => (
             <Form className="flex justify-center w-full">
                 <div className="flex flex-col gap-8 text-white p-10 w-full rounded-lg">
@@ -27,16 +28,17 @@ export default function RessourceForm(){
                                 className="border border-white/20 bg-white/10 backdrop-blur-2xl text-white cursor-pointer p-2 rounded-2xl transition-all 
                                             hover:scale-105 hover:border-white hover:bg-white/20"
                                 onClick={() => {
-                                        setFieldValue("ressourceRecrut",items.name)
-                                        route.push(items.link)
-                                    }}
+                                        setFieldValue("ressourceRecrut", items.name);
+                                        setValues({ ressourceRecrut: items.name });
+                                        route.push(items.link);
+                                }}
                                 >
-                                {items.name}
-                            </button>                            
-                        ))}
+                                    {items.name}
+                                </button>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </Form>
+                </Form>
             )}
         </Formik>
     )

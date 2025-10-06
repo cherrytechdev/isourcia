@@ -5,22 +5,22 @@ import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import * as Yup from "yup"
+import { useFormStore } from "@/store/formStore"
 
 interface FormValues {
-  date: string
-  contratDuration: string
-  travelDuration: string
-  
-  yearExperiences: string
-  competencies: string[]
-  otherComp: string
-  language: string[]
-  otherLang: string
-  level: string
-  message: string
-  contractUnits: Record<string, string>
-  day: Record<string, string>
-  night: Record<string, string>
+  date: string;
+  contratDuration: string;
+  travelDuration: string;
+  yearExperiences: string;
+  competencies: string[];
+  otherComp: string;
+  language: string[];
+  otherLang: string;
+  level: string;
+  message: string;
+  contractUnits: Record<string, string>;
+  day: Record<string, string>;
+  night: Record<string, string>;
 }
 
 const schema = Yup.object().shape({
@@ -35,17 +35,16 @@ const schema = Yup.object().shape({
       "at-least-one-competence",
       "Veuillez choisir au moins une compétence ou remplir le champ 'Autres'",
       function (competencies) {
-        const { otherComp } = this.parent;
-        
-        // Ne pas valider si le formulaire vient d'être initialisé
-        if (this.parent.date === "" && this.parent.contratDuration === "") {
+        const { otherComp, date, contratDuration } = this.parent as any;
+
+        // Ne pas valider si le formulaire vient d'être initialisé (logique conservée)
+        if ((date ?? "") === "" && (contratDuration ?? "") === "") {
           return true;
         }
-        
-        // Validation : au moins une compétence OU autre compétence remplie
-        const hasCompetencies = competencies && competencies.length > 0;
-        const hasOtherComp = otherComp && otherComp.trim() !== "";
-        
+
+        const hasCompetencies = Array.isArray(competencies) && competencies.length > 0;
+        const hasOtherComp = otherComp && String(otherComp).trim() !== "";
+
         return hasCompetencies || hasOtherComp;
       }
     ),
@@ -57,57 +56,78 @@ const schema = Yup.object().shape({
       "at-least-one-language",
       "Veuillez choisir au moins une langue ou remplir le champ 'Autres'",
       function (language) {
-        const { otherLang } = this.parent;
-        
-        // Ne pas valider si le formulaire vient d'être initialisé
-        if (this.parent.date === "" && this.parent.contratDuration === "") {
+        const { otherLang, date, contratDuration } = this.parent as any;
+
+        if ((date ?? "") === "" && (contratDuration ?? "") === "") {
           return true;
         }
-        
-        // Validation : au moins une langue OU autre langue remplie
-        const hasLanguage = language && language.length > 0;
-        const hasOtherLang = otherLang && otherLang.trim() !== "";
-        
+
+        const hasLanguage = Array.isArray(language) && language.length > 0;
+        const hasOtherLang = otherLang && String(otherLang).trim() !== "";
+
         return hasLanguage || hasOtherLang;
       }
     ),
   otherLang: Yup.string().nullable(),
 });
 
+const defaultValues: FormValues = {
+  date: "",
+  contratDuration: "",
+  travelDuration: "",
+  yearExperiences: "",
+  competencies: [],
+  otherComp: "",
+  language: [],
+  otherLang: "",
+  level: "",
+  message: "",
+  // initialise les objets avec les clés attendues pour éviter undefined
+  contractUnits: DateContrat.reduce((acc, k) => ({ ...acc, [k]: "" }), {} as Record<string, string>),
+  day: TimeTravelInf.reduce((acc, k) => {
+    const normalizedKey = k.toLowerCase().replace(/\s+/g, "_");
+    return { ...acc, [normalizedKey]: "" };
+  }, {} as Record<string, string>),
+  night: TimeTravelInf.reduce((acc, k) => {
+    const normalizedKey = k.toLowerCase().replace(/\s+/g, "_");
+    return { ...acc, [normalizedKey]: "" };
+  }, {} as Record<string, string>),
+};
+
 export default function DetailForm() {
-  const [openCt, setOpenCt] = useState(false)
-  const [openTm, setOpenTm] = useState(false)
-  const [activeForm, setActiveForm] = useState<"day" | "night">("day")
-  const route = useRouter()
+    const { values: storedValues, setValues } = useFormStore();
+    const [openCt, setOpenCt] = useState(false);
+    const [openTm, setOpenTm] = useState(false);
+    const [activeForm, setActiveForm] = useState<"day" | "night">("day");
+    const route = useRouter();
+  
+    // Merge sécurisé des valeurs initiales (deep-ish pour les objets utilisés)
+    const initialValues: FormValues = {
+      ...defaultValues,
+      ...storedValues,
+      contractUnits: { ...(defaultValues.contractUnits), ...(storedValues?.contractUnits ?? {}) },
+      day: { ...(defaultValues.day), ...(storedValues?.day ?? {}) },
+      night: { ...(defaultValues.night), ...(storedValues?.night ?? {}) },
+      competencies: Array.isArray(storedValues?.competencies) ? storedValues.competencies : defaultValues.competencies,
+      language: Array.isArray(storedValues?.language) ? storedValues.language : defaultValues.language,
+    };
 
   return (
     <Formik<FormValues>
-      initialValues={{
-        date: "",
-        contratDuration: "",
-        travelDuration: "",
-        
-        yearExperiences: "",
-        competencies: [],
-        otherComp: "",
-        language: [],
-        otherLang: "",
-        level: "",
-        message: "",
-        contractUnits: {},
-        day: {},
-        night: {},
-      }}
+initialValues={initialValues}
+      enableReinitialize
       validationSchema={schema}
       onSubmit={async (values, { resetForm, setSubmitting }) => {
         try {
-          console.log("Valeurs soumises:", values)
-          resetForm()
+          console.log("Valeurs soumises:", values);
+          // sauvegarde dans le store si nécessaire
+          setValues(values);
+          resetForm();
         } catch (error) {
-          console.error("Erreur d'envoi", error)
+          console.error("Erreur d'envoi", error);
         } finally {
-          setSubmitting(false)
-          route.push("pages/Contact")
+          setSubmitting(false);
+          route.push("/Contact");
         }
       }}
     >
