@@ -63,7 +63,7 @@ export default function ExternalisationForm(){
           console.log("Erreur d'envoi :", error);
         } finally {
           setSubmitting(false);
-          route.push("/Contact");
+          route.push("/pages/Contact");
         }
       }}
             >
@@ -239,7 +239,7 @@ export default function ExternalisationForm(){
                                         <Field
                                             type="radio"
                                             name="chooseDeg"
-                                            value="yesExt"
+                                            value="Oui"
                                             />
                                         <label>Oui</label>
                                     </div>
@@ -247,7 +247,7 @@ export default function ExternalisationForm(){
                                         <Field
                                             type="radio"
                                             name="chooseDeg"
-                                            value="noExt"
+                                            value="Non"
                                             />
                                         <label>Non</label>
                                     </div>
@@ -256,8 +256,8 @@ export default function ExternalisationForm(){
                                     type="text"
                                     name="yesInpExt"
                                     placeholder="Précisez les diplômes requis"
-                                    disabled={values.chooseDeg == "noExt"}
-                                    className={`${values.chooseDeg == "noExt" ? '!border !border-gray-400' : ''}`}
+                                    disabled={values.chooseDeg == "Non"}
+                                    className={`${values.chooseDeg == "Non" ? '!border !border-gray-400' : ''}`}
                                     />
                                 <ErrorMessage 
                                         name="yesInpExt" 
@@ -318,7 +318,7 @@ export default function ExternalisationForm(){
                                 <Field 
                                     type="radio" 
                                     name="maintenanceExt"
-                                    value="yesExt"
+                                    value="Oui, je souhaite un suivi continu"
                                     />
                                 <label>Oui, je souhaite un suivi continu</label>
                             </div>                       
@@ -326,7 +326,7 @@ export default function ExternalisationForm(){
                                 <Field 
                                     type="radio" 
                                     name="maintenanceExt"
-                                    value="noExt"
+                                    value="Non, uniquement la mission définie"
                                     />
                                 <label>Non, uniquement la mission définie</label>
                             </div>

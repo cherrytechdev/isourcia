@@ -76,7 +76,7 @@ export default function CreationMobileForm() {
                     console.log("Valeurs soumises:", formValues)
                     setValues(formValues)
                     resetForm()
-                    route.push("/Contact")
+                    route.push("/pages/Contact")
                 } catch (error) {
                     console.error("Erreur d'envoi", error)
                 } finally {
@@ -286,6 +286,7 @@ export default function CreationMobileForm() {
                                                         type="radio"
                                                         name="dataManageMobile"
                                                         value={items}
+                                                        checked={values.dataManageMobile[0] === items}
                                                     />
                                                     <label>{items}</label>
                                                 </div>

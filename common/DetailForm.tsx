@@ -127,7 +127,7 @@ export default function DetailForm() {
           console.error("Erreur d'envoi", error);
         } finally {
           setSubmitting(false);
-          route.push("/Contact");
+          route.push("/pages/Contact");
         }
       }}
     >

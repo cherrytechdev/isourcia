@@ -63,7 +63,7 @@ export default function MarketAnalysis() {
                     setValues(values);  
 
                     resetForm();
-                    route.push("/Contact");
+                    route.push("/pages/Contact");
                 } catch (error) {
                     console.log("Erreur d'envoi :", error);
                 } finally {
