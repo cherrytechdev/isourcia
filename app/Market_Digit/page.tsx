@@ -1,4 +1,4 @@
-import DetailForm from "@/common/DetailForm5"
+import DetailForm from "@/common/DetailForm3"
 
 
 export default function Accounted(){
