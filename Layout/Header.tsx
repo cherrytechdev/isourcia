@@ -28,7 +28,7 @@ export default function Header(){
                                 width="35" 
                                 height="35" 
                                 viewBox="0 0 24 24" 
-                                fill="none" 
+                                fill="none"
                                 stroke="currentColor" 
                                 strokeWidth="2"
                                 strokeLinecap="round" 
