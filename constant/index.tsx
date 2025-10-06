@@ -18,36 +18,36 @@ export const NavigationLink = [
 
 export const ServicesInf = [
     {
-        link:"/Ressource",
+        link:"/pages/Ressource",
         image:"/img/recrutement.png", 
         value:"Ressource", 
         title:"je veux recruter des ressources en ligne"
     },
     {
-        link:"",
+        link:"/pages/8sens",
         image:"/img/erp.png", 
         value:"Solution ERP", 
         title:"j'ai besoin d'une solution ERP, je choisis 8 sens"},
     {
-        link:"/WebAppService", 
+        link:"/pages/WebAppService", 
         image:"/img/sensible.png",
         value:"Site web", 
         title:"je veux un site web professionnel"
     },
     {
-        link:"/Externalisation", 
+        link:"/pages/Externalisation", 
         image:"/img/externalisation.png",
         value:"Externalisation", 
         title:"j'externalise mes services, je les confies à un pro"
     },
     {
-        link:"/MobileApp",
+        link:"/pages/MobileApp",
         image:"/img/application.png", 
         value:"Création d'une application", 
         title:"je veux créer une application personnalisée"
     },
     {
-        link:"/Marketing",
+        link:"/pages/Marketing",
         image:"/img/digital-marketing.png", 
         value:"Marketing digital", 
         title:"je fais expert à un expert pour gérer mon marketing digital"
@@ -55,12 +55,36 @@ export const ServicesInf = [
 ]
 
 export const RessourceInf = [
-    {link:"/Accounting", name:"Comptable"},
-    {link:"/Assistant_Admin", name:"Adjoint administratif"},
-    {link:"/WebApp", name:"Developpement web/application"},
-    {link:"/Market_Digit", name:"Marketing digital"},
-    {link:"/Designer", name:"Designer graphique/UI-UX"},
-    {link:"/Client_Support", name:"Support client"},
+    {
+        link:"/pages/Accounting", 
+        name:"Comptable",
+        image:"/img/accounting.png"
+    },
+    {
+        link:"/pages/Assistant_Admin", 
+        name:"Adjoint administratif",
+        image:"/img/assistant_admin.png"
+    },
+    {
+        link:"/pages/WebApp", 
+        name:"Developpement web/application",
+        image:"/img/web_dev.png"
+    },
+    {
+        link:"/pages/Market_Digit", 
+        name:"Marketing digital",
+        image:"/img/market_analysis.png"
+    },
+    {
+        link:"/pages/Designer", 
+        name:"Designer graphique/UI-UX",
+        image:"/img/designer.png"
+    },
+    {
+        link:"/pages/Client_Support", 
+        name:"Support client",
+        image:"/img/client_supp.png"
+    },
 ]
 
 export const CompetenciesInf = [
@@ -400,4 +424,14 @@ export const WebTechnologyInf = [
     "PHP / Laravel",
     "Django / Python",
     "Autre"
+]
+
+export const EightSensInf = [
+    "Gestion",
+    "Compta",
+    "XRM",
+    "TPV",
+    "eWMS",
+    "8print",
+    "Polices code barre",
 ]

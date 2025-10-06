@@ -132,7 +132,7 @@ export default function DetailForm() {
       }}
     >
       {({ isSubmitting, values, setFieldValue }) => (
-        <Form className="flex justify-center w-full shadow-2xl mt-8">
+        <Form className="flex justify-center w-full shadow-2xl pt-8">
 
           <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
             {/* Date de début */}
