@@ -13,84 +13,59 @@ import {
     FacturationModExtInf,
     BudgetExtInf
 } from "@/constant";
+import { useFormStore } from "@/store/formStore";
 
 
 const schema = Yup.object().shape({
-    resourceExt: Yup.array().min(1, "Vous devez en choisir un"),
-    otherResExt: Yup.string().when("resourceExt",{
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
-        otherwise: (schema) => schema.notRequired()
-    }),
-
-    dateStartExt: Yup.string().required("La date est requise"),
-    durationExt: Yup.array().min(1, "La durée est requise"),
-
-    timeExt: Yup.array().min(1, "Vous devez en choisir un"),
-    otherTimeExt: Yup.string().when("timeExt", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
-        otherwise: (schema) => schema.notRequired()
-    }),
-
-    competenciesExt: Yup.string().required("La compétence est requise"),
-    experiencesExt: Yup.array().min(1, "Vous devez en choisir un"),
-
-    languageExt: Yup.array().min(1, "Vous devez en choisir un"),
-    otherLangExt: Yup.string().when("languageExt", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
-        otherwise: (schema) => schema.notRequired()
-    }),
-
-    yesInpExt: Yup.string().when("chooseDeg", {
-        is: "YesExt",
-        then: (schema) => schema.required("Veulliez préciser le diplôme requis"),
-        otherwise: (schema) => schema.notRequired(),
-    }),
-
-    modalityExt: Yup.array().min(1, "Le suivi souhaité est requis"),
-    facturationModExt: Yup.array().min(1, "Le mode de facturation est requis"),
-
-})
+  resourceExt: Yup.array().min(1, "Vous devez en choisir un"),
+  otherResExt: Yup.string().when("resourceExt", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
+  }),
+  dateStartExt: Yup.string().required("La date est requise"),
+  durationExt: Yup.array().min(1, "La durée est requise"),
+  timeExt: Yup.array().min(1, "Vous devez en choisir un"),
+  otherTimeExt: Yup.string().when("timeExt", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
+  }),
+  competenciesExt: Yup.string().required("La compétence est requise"),
+  experiencesExt: Yup.array().min(1, "Vous devez en choisir un"),
+  languageExt: Yup.array().min(1, "Vous devez en choisir un"),
+  otherLangExt: Yup.string().when("languageExt", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
+  }),
+  yesInpExt: Yup.string().when("chooseDeg", {
+    is: "YesExt",
+    then: (schema) => schema.required("Veulliez préciser le diplôme requis"),
+  }),
+  modalityExt: Yup.array().min(1, "Le suivi souhaité est requis"),
+  facturationModExt: Yup.array().min(1, "Le mode de facturation est requis"),
+});
 
 export default function ExternalisationForm(){
 
-    const route = useRouter()
+    const route = useRouter();
+  const { values: storeValues, setValues } = useFormStore();
 
     return(
         <Formik
-            initialValues={{
-                resourceExt: [] as string[],
-                otherResExt: "",
-                dateStartExt: "",
-                durationExt: "",
-                timeExt: [] as string[],
-                otherTimeExt: "",
-                competenciesExt: "",
-                experiencesExt: "",
-                languageExt: [] as string[],
-                otherLangExt: "",
-                chooseDeg: "noExt",
-                yesInpExt: "",
-                modalityExt: "",
-                facturationModExt: "",
-                maintenanceExt: "noExt",
-                budgetExt: "< 500 €"
-                }}
-            validationSchema={schema}
-            onSubmit={async(values, {resetForm, setSubmitting}) => {
-                try{
-                    console.log(values)
-                    console.log(values.resourceExt)
-                    resetForm()
-                }catch(error){
-                    console.log("Erreur d'envoie :", error)
-                }finally{
-                    setSubmitting(false)
-                    route.push("pages/Contact")
-                }
-            }}
+            initialValues={storeValues} 
+      enableReinitialize
+      validationSchema={schema}
+      onSubmit={async (values, { resetForm, setSubmitting }) => {
+        try {
+          console.log("Envoi :", values);
+          setValues(values); 
+          resetForm();
+        } catch (error) {
+          console.log("Erreur d'envoi :", error);
+        } finally {
+          setSubmitting(false);
+          route.push("/Contact");
+        }
+      }}
             >
             {({values, isSubmitting}) => ( 
             <Form className="flex justify-center w-full">

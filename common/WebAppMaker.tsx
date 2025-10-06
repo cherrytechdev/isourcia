@@ -13,54 +13,46 @@ import {
     WebOptionsInf,
     WebTechnologyInf
 } from "@/constant";
+import { useFormStore } from "@/store/formStore"
 
 
 const schema = Yup.object().shape({
-    webObj: Yup.array().min(1, "Vous devez en choisir un"),
-    otherWebObj: Yup.string().when("webObj", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+  webObj: Yup.array().min(1, "Vous devez en choisir un"),
+  otherWebObj: Yup.string().when("webObj", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
+    otherwise: (schema) => schema.notRequired(),
+  }),
+  webDesign: Yup.array().min(1, "Vous devez en choisir un"),
+  webContent: Yup.array().min(1, "La compétence est requise"),
+  webBudget: Yup.string().required("Veulliez inserer le budget approximatif"),
+});
 
-    webDesign: Yup.array().min(1, "Vous devez en choisir un"),
-    webContent: Yup.array().min(1, "La compétence est requise"),
-    webBudget: Yup.string().required("Veulliez inserer le budget approximatif"),
-})
 
 export default function WebAppMaker() {
 
-    const route = useRouter()
+     const route = useRouter();
+  const { values: initialValues, setValues } = useFormStore();
+
 
     return (
         <Formik
-            initialValues={{
-                webObj: [] as string[],
-                otherWebObj: "",
-                chooseChart: "non",
-                webDesign: "",
-                inspirationWeb: "",
-                webContent: "",
-                webContentReady: "Déjà prêt (fourni par client)",
-                webFunctionality: "",
-                webMaintenance: "Non, livraison uniquement",
-                webBudget: "",
-                webDelay: "Flexible",
-                webTechnology: [] as string[],
-                otherWebTechnology: ""
-            }}
-            validationSchema={schema}
-            onSubmit={async (values, { resetForm, setSubmitting }) => {
-                try {
-                    console.log(values)
-                    resetForm()
-                } catch (error) {
-                    console.log("Erreur d'envoie :", error)
-                } finally {
-                    setSubmitting(false)
-                    //route.push("pages/Contact")
-                }
-            }}
+            initialValues={initialValues}
+      enableReinitialize
+      validationSchema={schema}
+      onSubmit={async (values, { resetForm, setSubmitting }) => {
+        try {
+          console.log("Valeurs soumises:", values);
+          // sauvegarde dans le store si nécessaire
+          setValues(values);
+          resetForm();
+        } catch (error) {
+          console.error("Erreur d'envoi", error);
+        } finally {
+          setSubmitting(false);
+          route.push("/Contact");
+        }
+      }}
         >
             {({ values, isSubmitting }) => (
                 <Form className="flex justify-center w-full">
