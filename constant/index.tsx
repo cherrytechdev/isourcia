@@ -401,3 +401,4 @@ export const WebTechnologyInf = [
     "Django / Python",
     "Autre"
 ]
+

@@ -11,7 +11,7 @@ export default function Services(){
     const route = useRouter()
 
     return(
-        <section id="service">
+        <section id="service" className="pt-60">
             <Container>
                 <Formik
                     initialValues={{
