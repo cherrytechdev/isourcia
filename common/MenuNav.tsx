@@ -17,7 +17,7 @@ export default function MenuNav({
 
   return (
     <div
-      className={`w-full  absolute z-10 -top-20 left-0 bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-1000 ${open ? "top-0" : "top-[-100vh]"} `}
+      className={`w-full  absolute z-10 left-0 bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-1000 ${open ? "top-0" : "top-[-120vh]"} `}
     >
       <Container className="flex flex-col gap-8 lg:gap-6 h-screen justify-center ">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">

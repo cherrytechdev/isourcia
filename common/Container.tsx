@@ -12,7 +12,7 @@ export default function Container(props: ContainerProps) {
   return (
     <Tag
       ref={ref}
-      className={`mx-auto w-full h-fit relative max-w-[1540px] px-5 md:px-7 lg:px-12   ${className}`}
+      className={`mx-auto w-full h-fit relative max-w-[1440px] px-5 md:px-7 lg:px-12   ${className}`}
     >
       {children}
     </Tag>
