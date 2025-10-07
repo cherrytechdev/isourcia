@@ -1,20 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: linear-gradient(to right, #040A18, #0A1027);
   --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: linear-gradient(to right, #040A18, #0A1027);
     --foreground: #ededed;
   }
 }
@@ -22,5 +20,64 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", sans-serif ;
+}
+
+h4 {
+  color: #0e0e0e;
+  font-size: larger;
+  font-weight: 600;
+}
+
+p {
+  font-weight: 600;
+}
+
+input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #60A5FA;
+}
+
+input[type=text]:focus {
+  outline: 2px solid #3B82F6;
+}
+
+input[type=date]:focus {
+  outline: 2px solid #3B82F6;
+}
+
+input[type=number]:focus {
+  outline: 2px solid #3B82F6;
+}
+
+input[type=checkbox] {
+  width: 13px;
+}
+
+@media (min-width: 768px) {
+  input[type=checkbox] {
+    width: 16px;
+  }
+}
+
+input[type=radio] {
+  width: 16px;
+}
+
+textarea {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #60A5FA;
+  width: 100%;
+  resize: none;
+}
+
+textarea:focus {
+  outline: 2px solid #3B82F6;
+}
+
+.error-message {
+  color: rgb(255, 55, 55);
+  font-size: smaller;
 }
