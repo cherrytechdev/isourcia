@@ -11,7 +11,7 @@ import Infinite from "./icons/Infinite";
 export default function Services() {
   const { setValues } = useFormStore();
   const route = useRouter();
-  const reset = useFormStore((state) => state.reset);
+  // const reset = useFormStore((state) => state.reset);
   return (
     <section id="service">
       <Container>
