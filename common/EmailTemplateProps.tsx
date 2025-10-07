@@ -415,7 +415,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <div style={{marginTop: '20px'}}>
                 <strong>Compétences :</strong>
                 <ul style={listStyle}>
-                  {competencies}
+                  {competencies.join(', ')}
                 </ul>
               </div>
 
@@ -424,7 +424,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <div style={{marginTop: '20px'}}>
                 <strong>Langues :</strong>
                 <ul style={listStyle}>
-                  {language}
+                  {language.join(', ')}
                 </ul>
               </div>
 
@@ -446,7 +446,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               </div>
 
               <div style={{marginTop: '20px'}}>
-                <strong>Travail de jour :</strong>
+                <strong>Temps de travail le jour  :</strong>
                 <ul style={listStyle}>
                   {Object.entries(day).map(([key, value]) => (
                     value && (
@@ -459,7 +459,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               </div>
 
               <div style={{marginTop: '20px'}}>
-                <strong>Travail de nuit :</strong>
+                <strong>Temps de travail la nuit :</strong>
                 <ul style={listStyle}>
                   {Object.entries(night).map(([key, value]) => (
                     value && (

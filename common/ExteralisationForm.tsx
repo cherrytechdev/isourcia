@@ -138,57 +138,136 @@ export default function ExternalisationForm() {
                                     component="div"
                                     className="error-message" />
                             </div>
-                            <div className="flex flex-col gap-2 pl-4">
-                                <p>Expérience souhaitée</p>
-                                {ExperiencesExt.map((items, i) => (
-                                    <div key={i} className="flex gap-4">
-                                        <Field
-                                            type="checkbox"
-                                            name="experiencesExt"
-                                            value={items} />
-                                        <label>{items}</label>
-                                    </div>
-                                ))}
-                                <ErrorMessage
-                                    name="experiencesExt"
-                                    component="div"
-                                    className="text-red-500 text-sm" />
+
+                            <div className="flex flex-col gap-4">
+                                <h4>2.Détails de la mission</h4>
+                                <div className="flex flex-col gap-2 pl-4">
+                                    <p>Date de début</p>
+                                    <Field
+                                        type="date"
+                                        name="dateStartExt"
+                                    />
+                                    <ErrorMessage
+                                        name="dateStartExt"
+                                        component="div"
+                                        className="error-message" />
+                                </div>
                             </div>
+
                             <div className="flex flex-col gap-2 pl-4">
-                                <p>Langues nécéssaires</p>
-                                {LanguageExtInf.map((items, i) => {
-                                    const isOtherChecked = values.languageExt?.includes("autre");
-                                    return (
-                                        <div key={i} className="flex flex-col gap-2">
-                                            <div className="flex gap-4">
-                                                <Field
-                                                    type="checkbox"
-                                                    name="languageExt"
-                                                    value={i === 2 ? "autre" : items} />
-                                                <label>{items}</label>
-                                            </div>
-                                            {i == 2 && (
-                                                <Field
-                                                    type="text"
-                                                    name="otherLangExt"
-                                                    placeholder="Précisez les autres langues"
-                                                    className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
-                                                    disabled={!isOtherChecked}
-                                                />)}
+                                <p>Durée de l'externalisation</p>
+                                <div className="flex flex-col gap-2">
+                                    {DurationExtInf.map((items, i) => (
+                                        <div key={i} className="flex gap-2">
+                                            <Field
+                                                type="checkbox"
+                                                name="durationExt"
+                                                value={items} />
+                                            <label>{items}</label>
                                         </div>
-                                    )
-                                })}
-                                <ErrorMessage
-                                    name="languageExt"
-                                    component="div"
-                                    className="text-red-500 text-sm" />
-                                <ErrorMessage
-                                    name="otherLangExt"
-                                    component="div"
-                                    className="text-red-500 text-sm" />
-                            </div>
-                            <div className="flex flex-col gap-2 pl-4">
-                                <p>Diplômes ou certifications requis</p>
+                                    ))}
+                                    <ErrorMessage
+                                        name="durationExt"
+                                        component="div"
+                                        className="error-message" />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <p>Temps de travail attendu</p>
+                                    {TimeTravelExtInf.map((items, i) => {
+                                        const isOtherChecked = values.timeExt?.includes("autre");
+                                        return (
+                                            <div key={i} className="flex flex-col gap-2">
+                                                <div className="flex gap-4">
+                                                    <Field
+                                                        type="checkbox"
+                                                        name="timeExt"
+                                                        value={i === 2 ? "autre" : items} />
+                                                    <label>{items}</label>
+                                                </div>
+                                                {i == 2 && (
+                                                    <Field
+                                                        type="text"
+                                                        name="otherTimeExt"
+                                                        placeholder="Précisez le nombre d'heure"
+                                                        className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
+                                                        disabled={!isOtherChecked}
+                                                    />)}
+                                            </div>
+                                        )
+                                    })}
+                                    <ErrorMessage
+                                        name="timeExt"
+                                        component="div"
+                                        className="error-message" />
+                                    <ErrorMessage
+                                        name="otherTimeExt"
+                                        component="div"
+                                        className="error-message" />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <p>Compétences rechechées</p>
+                                    <Field
+                                        as="textarea"
+                                        name="competenciesExt"
+                                        rows={5}
+                                        placeholder="Listes des compétences requises"
+                                    />
+                                    <ErrorMessage
+                                        name="competenciesExt"
+                                        component="div"
+                                        className="error-message" />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <p>Expérience souhaitée</p>
+                                    {ExperiencesExt.map((items, i) => (
+                                        <div key={i} className="flex gap-4">
+                                            <Field
+                                                type="checkbox"
+                                                name="experiencesExt"
+                                                value={items} />
+                                            <label>{items}</label>
+                                        </div>
+                                    ))}
+                                    <ErrorMessage
+                                        name="experiencesExt"
+                                        component="div"
+                                        className="text-red-500 text-sm" />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <p>Langues nécéssaires</p>
+                                    {LanguageExtInf.map((items, i) => {
+                                        const isOtherChecked = values.languageExt?.includes("autre");
+                                        return (
+                                            <div key={i} className="flex flex-col gap-2">
+                                                <div className="flex gap-4">
+                                                    <Field
+                                                        type="checkbox"
+                                                        name="languageExt"
+                                                        value={i === 2 ? "autre" : items} />
+                                                    <label>{items}</label>
+                                                </div>
+                                                {i == 2 && (
+                                                    <Field
+                                                        type="text"
+                                                        name="otherLangExt"
+                                                        placeholder="Précisez les autres langues"
+                                                        className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
+                                                        disabled={!isOtherChecked}
+                                                    />)}
+                                            </div>
+                                        )
+                                    })}
+                                    <ErrorMessage
+                                        name="languageExt"
+                                        component="div"
+                                        className="text-red-500 text-sm" />
+                                    <ErrorMessage
+                                        name="otherLangExt"
+                                        component="div"
+                                        className="text-red-500 text-sm" />
+                                </div>
+                                <div className="flex flex-col gap-2">
+                                    <p>Diplômes ou certifications requis</p>
                                 <div className="flex flex-col gap-2">
                                     <div className="flex gap-6">
                                         <div className="flex gap-4">
@@ -220,22 +299,16 @@ export default function ExternalisationForm() {
                                         component="div"
                                         className="text-red-500 text-sm" />
                                 </div>
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <h4>2.Détails de la mission</h4>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Date de début</p>
-                                    <Field
-                                        type="date"
-                                        name="dateStartExt"
-                                    />
-                                    <ErrorMessage
-                                        name="dateStartExt"
-                                        component="div"
-                                        className="error-message" />
+                                    <div>
+                                        <Field
+                                            rows={5}
+                                            as="textarea"
+                                            name="commentTxt"
+                                            className="resize-none"
+                                            placeholder="Ajoutez votre commentaire" />
+                                    </div>
                                 </div>
-                            </div>
+                            </div>                     
                         </div>
 
                         <div className="flex flex-col gap-4">
@@ -298,245 +371,7 @@ export default function ExternalisationForm() {
 
                         <div className="flex flex-col gap-4">
                             <h4>5.Budget & délais</h4>
-                            <div className="flex flex-col gap-2 pl-4">
-                                <p>Budget approximatif</p>
-                                <div className="flex flex-col gap-2">
-                                    {BudgetExtInf.map((items, i) => (
-                                        <div key={i} className="flex gap-2">
-                                            <Field
-                                                type="checkbox"
-                                                name="durationExt"
-                                                value={items} />
-                                            <label>{items}</label>
-                                        </div>
-                                    ))}
-                                    <ErrorMessage
-                                        name="durationExt"
-                                        component="div"
-                                        className="error-message" />
-                                </div>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Temps de travail attendu</p>
-                                    {TimeTravelExtInf.map((items, i) => {
-                                        const isOtherChecked = values.timeExt?.includes("autre");
-                                        return (
-                                            <div key={i} className="flex flex-col gap-2">
-                                                <div className="flex gap-4">
-                                                    <Field
-                                                        type="checkbox"
-                                                        name="timeExt"
-                                                        value={i === 2 ? "autre" : items} />
-                                                    <label>{items}</label>
-                                                </div>
-                                                {i == 2 && (
-                                                    <Field
-                                                        type="text"
-                                                        name="otherTimeExt"
-                                                        placeholder="Précisez le nombre d'heure"
-                                                        className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
-                                                        disabled={!isOtherChecked}
-                                                    />)}
-                                            </div>
-                                        )
-                                    })}
-                                    <ErrorMessage
-                                        name="timeExt"
-                                        component="div"
-                                        className="error-message" />
-                                    <ErrorMessage
-                                        name="otherTimeExt"
-                                        component="div"
-                                        className="error-message" />
-                                </div>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Compétences rechechées</p>
-                                    <Field
-                                        as="textarea"
-                                        name="competenciesExt"
-                                        rows={5}
-                                        placeholder="Listes des compétences requises"
-                                    />
-                                    <ErrorMessage
-                                        name="competenciesExt"
-                                        component="div"
-                                        className="error-message" />
-                                </div>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Expérience souhaitée</p>
-                                    {ExperiencesExt.map((items, i) => (
-                                        <div key={i} className="flex gap-4">
-                                            <Field
-                                                type="checkbox"
-                                                name="experiencesExt"
-                                                value={items} />
-                                            <label>{items}</label>
-                                        </div>
-                                    ))}
-                                    <ErrorMessage
-                                        name="experiencesExt"
-                                        component="div"
-                                        className="text-red-500 text-sm" />
-                                </div>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Langues nécéssaires</p>
-                                    {LanguageExtInf.map((items, i) => {
-                                        const isOtherChecked = values.languageExt?.includes("autre");
-                                        return (
-                                            <div key={i} className="flex flex-col gap-2">
-                                                <div className="flex gap-4">
-                                                    <Field
-                                                        type="checkbox"
-                                                        name="languageExt"
-                                                        value={i === 2 ? "autre" : items} />
-                                                    <label>{items}</label>
-                                                </div>
-                                                {i == 2 && (
-                                                    <Field
-                                                        type="text"
-                                                        name="otherLangExt"
-                                                        placeholder="Précisez les autres langues"
-                                                        className={`${!isOtherChecked ? '!border !border-gray-500' : ''}`}
-                                                        disabled={!isOtherChecked}
-                                                    />)}
-                                            </div>
-                                        )
-                                    })}
-                                    <ErrorMessage
-                                        name="languageExt"
-                                        component="div"
-                                        className="text-red-500 text-sm" />
-                                    <ErrorMessage
-                                        name="otherLangExt"
-                                        component="div"
-                                        className="text-red-500 text-sm" />
-                                </div>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Diplômes ou certifications requis</p>
-                                    <div className="flex flex-col gap-2">
-                                        <div className="flex gap-6">
-                                            <div className="flex gap-4">
-                                                <Field
-                                                    type="radio"
-                                                    name="chooseDeg"
-                                                    value="yesExt"
-                                                />
-                                                <label>Oui</label>
-                                            </div>
-                                            <div className="flex gap-4">
-                                                <Field
-                                                    type="radio"
-                                                    name="chooseDeg"
-                                                    value="noExt"
-                                                />
-                                                <label>Non</label>
-                                            </div>
-                                        </div>
-                                        <Field
-                                            type="text"
-                                            name="yesInpExt"
-                                            placeholder="Précisez les diplômes requis"
-                                            disabled={values.chooseDeg == "noExt"}
-                                            className={`${values.chooseDeg == "noExt" ? '!border !border-gray-400' : ''}`}
-                                        />
-                                        <ErrorMessage
-                                            name="yesInpExt"
-                                            component="div"
-                                            className="text-red-500 text-sm" />
-                                    </div>
-                                    <div>
-                                        <Field
-                                            rows={5}
-                                            as="textarea"
-                                            name="commentTxt"
-                                            className="resize-none"
-                                            placeholder="Ajoutez votre commentaire" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <h4>3.Modalités de suivi et de facturation</h4>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Suivi souhaité</p>
-                                    {ModalityExtInf.map((items, i) => (
-                                        <div key={i} className="flex gap-4">
-                                            <Field
-                                                type="checkbox"
-                                                name="modalityExt"
-                                                value={items} />
-                                            <label>{items}</label>
-                                        </div>
-                                    ))}
-                                    <ErrorMessage
-                                        name="modalityExt"
-                                        component="div"
-                                        className="text-red-500 text-sm" />
-                                </div>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Mode de facturation</p>
-                                    {FacturationModExtInf.map((items, i) => (
-                                        <div key={i} className="flex gap-4">
-                                            <Field
-                                                type="checkbox"
-                                                name="facturationModExt"
-                                                value={items} />
-                                            <label>{items}</label>
-                                        </div>
-                                    ))}
-                                    <ErrorMessage
-                                        name="facturationModExt"
-                                        component="div"
-                                        className="text-red-500 text-sm" />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <h4>4.Maintenance & évolution (si applicable)</h4>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <div className="flex gap-4">
-                                        <Field
-                                            type="radio"
-                                            name="maintenanceExt"
-                                            value="yesExt"
-                                        />
-                                        <label>Oui, je souhaite un suivi continu</label>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <Field
-                                            type="radio"
-                                            name="maintenanceExt"
-                                            value="noExt"
-                                        />
-                                        <label>Non, uniquement la mission définie</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                <h4>5.Budget & délais</h4>
-                                <div className="flex flex-col gap-2 pl-4">
-                                    <p>Budget approximatif</p>
-                                    <div className="flex flex-col gap-2">
-                                        {BudgetExtInf.map((items, i) => (
-                                            <div key={i} className="flex gap-2">
-                                                <Field
-                                                    type="radio"
-                                                    name="budgetExt"
-                                                    value={items} />
-                                                <label>{items}</label>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
-                            >
-                                Suivant
-                            </button>
+                            
                         </div>
                     </div>
                 </Form>

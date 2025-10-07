@@ -4,7 +4,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
-
+import toast from "react-hot-toast"
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -146,16 +146,15 @@ export default function ContactForm() {
 
                     if (response.ok) {
                         const data = await response.json();
-                        console.log("Réponse serveur:", data);
-                        resetForm();
-                        alert("Votre message a été envoyé !");
+                        // resetForm();
+                        toast.success("Votre message a été envoyé !")
                     } else {
                         console.error("Erreur serveur:", response.statusText);
                         alert("Erreur lors de l'envoi du message.");
                     }
                 } catch (error) {
                     console.error("Erreur d'envoi:", error);
-                    alert("Erreur lors de l'envoi du message.");
+                    toast.error("Erreur lors de l'envoi du message.");
                 } finally {
                     setSubmitting(false);
                 }
@@ -206,7 +205,7 @@ export default function ContactForm() {
                         <div className="flex flex-col gap-2">
                             <label>Adresse mail</label>
                             <Field
-                                type="mail"
+                                type="email"
                                 name="mail"
                             />
                             <ErrorMessage
@@ -272,7 +271,8 @@ export default function ContactForm() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
+                            className={`bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md ${
+                                isSubmitting ? "opacity-50" : ""}`}
                         >
                             {isSubmitting ? "Envoie..." : "Envoyer"}
                         </button>
