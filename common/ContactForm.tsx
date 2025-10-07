@@ -30,11 +30,6 @@ const schema = Yup.object().shape({
     
   physicalAddress: Yup.string()
     .required("L’adresse physique est requise"),
-
-  eightSens: Yup.array()
-    .of(Yup.string())
-    .min(1, "Vous devez sélectionner au moins un élément dans les huit sens")
-    .required("La sélection d’au moins un élément est requise"),
     
   contact: Yup.array()
     .min(1, "Vous devez sélectionner au moins un contact"),
