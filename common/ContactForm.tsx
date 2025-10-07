@@ -142,7 +142,7 @@ export default function ContactForm() {
             }}
         >
             {({ isSubmitting }) => (
-                <Form className="flex justify-center shadow-2xl w-full mt-8">
+                <Form className="flex justify-center shadow-2xl w-full pt-8">
                     {values.webDesign}
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
                         <div className="flex flex-col gap-2">
@@ -185,7 +185,7 @@ export default function ContactForm() {
                                 name="mail"
                             />
                             <ErrorMessage
-                                name="mail"
+                                name="email"
                                 component="div"
                                 className="error-message" />
                         </div>
@@ -218,7 +218,7 @@ export default function ContactForm() {
                                     <Field
                                         type="checkbox"
                                         name="contact"
-                                        value="mailCheck"
+                                        value="Mail"
                                     />
                                     <label>Mail</label>
                                 </div>
@@ -226,7 +226,7 @@ export default function ContactForm() {
                                     <Field
                                         type="checkbox"
                                         name="contact"
-                                        value="watsappCheck"
+                                        value="Whatsapp"
                                     />
                                     <label>Whatsapp</label>
                                 </div>
@@ -234,7 +234,7 @@ export default function ContactForm() {
                                     <Field
                                         type="checkbox"
                                         name="contact"
-                                        value="googleCheck"
+                                        value="Google Meet"
                                     />
                                     <label>Google meet</label>
                                 </div>
