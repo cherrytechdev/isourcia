@@ -23,7 +23,7 @@ export default function Header() {
             />
 
             <div
-              className="flex flex-col items-center gap-2 font-bold cursor-pointer group"
+              className="flex flex-col items-center gap-2 font-bold cursor-pointer  group"
               onClick={() => setOpen(!isOpen)}
             >
               <svg

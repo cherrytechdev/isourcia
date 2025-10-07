@@ -2,7 +2,7 @@
 
 :root {
   --background: linear-gradient(to right, #040a18, #0a1027);
-  --foreground: #171717;
+  --foreground: #ededed;
 }
 
 @theme inline {
