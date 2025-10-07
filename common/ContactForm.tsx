@@ -3,6 +3,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
+import Link from "next/link";
 
 
 const schema = Yup.object().shape({
@@ -143,8 +144,13 @@ export default function ContactForm() {
         >
             {({ isSubmitting }) => (
                 <Form className="flex justify-center shadow-2xl w-full pt-8">
-                    {values.webDesign}
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
+                        <div className="flex items-center justify-between">
+                            <Link href="/">
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                            </Link>
+                            <p className="text-md md:text-2xl lg:text-4xl">Contact</p>
+                        </div>
                         <div className="flex flex-col gap-2">
                             <label>Nom</label>
                             <Field

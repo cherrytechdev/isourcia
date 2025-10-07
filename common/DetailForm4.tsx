@@ -6,6 +6,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore"
+import Link from "next/link"
 
 interface FormValues {
   date: string;
@@ -95,7 +96,7 @@ const defaultValues: FormValues = {
 };
 
 export default function DetailForm() {
-     const { values: storedValues, setValues } = useFormStore();
+  const { values: storedValues, setValues } = useFormStore();
   const [openCt, setOpenCt] = useState(false);
   const [openTm, setOpenTm] = useState(false);
   const [activeForm, setActiveForm] = useState<"day" | "night">("day");
@@ -136,6 +137,12 @@ export default function DetailForm() {
         <Form className="flex justify-center w-full shadow-2xl pt-8">
 
           <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
+            <div className="flex items-center justify-between">
+              <Link href="/">
+                  <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+              </Link>
+              <p className="text-md md:text-2xl lg:text-4xl">Designer graphique</p>
+            </div>
             {/* Date de début */}
             <div className="flex flex-col gap-2">
               <label htmlFor="date">Date de début</label>

@@ -6,6 +6,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore"
+import Link from "next/link"
 
 interface FormValues {
   date: string;
@@ -133,8 +134,13 @@ export default function DetailForm() {
     >
       {({ isSubmitting, values, setFieldValue }) => (
         <Form className="flex justify-center w-full shadow-2xl pt-8">
-
           <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
+            <div className="flex items-center justify-between">
+              <Link href="/">
+                  <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+              </Link>
+              <p className="text-md md:text-2xl lg:text-4xl">Adjoint administratif</p>
+            </div>
             {/* Date de début */}
             <div className="flex flex-col gap-2">
               <label htmlFor="date">Date de début</label>

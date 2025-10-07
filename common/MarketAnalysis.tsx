@@ -16,6 +16,7 @@ import {
     MarketTechToolsInf
 } from "@/constant";
 import { useFormStore } from "@/store/formStore";
+import Link from "next/link";
 
 const schema = Yup.object().shape({
     marketMainObj: Yup.array().min(1, "Veuillez en choisir un"),
@@ -72,8 +73,14 @@ export default function MarketAnalysis() {
             }}
         >
             {({ values, isSubmitting }) =>
-                <Form className="flex justify-center  w-full">
+                <Form className="flex justify-center w-full pt-8">
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
+                        <div className="flex items-center justify-between">
+                            <Link href="/">
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                            </Link>
+                            <p className="text-md md:text-2xl lg:text-4xl">Marketing digital</p>
+                        </div>
                         <div className="flex flex-col gap-4">
                             <h4>1. Objectif principal</h4>
                             <div className="flex flex-col gap-2 pl-4">

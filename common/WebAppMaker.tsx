@@ -14,6 +14,7 @@ import {
     WebTechnologyInf
 } from "@/constant";
 import { useFormStore } from "@/store/formStore"
+import Link from "next/link";
 
 
 const schema = Yup.object().shape({
@@ -38,9 +39,9 @@ export default function WebAppMaker() {
     return (
         <Formik
             initialValues={initialValues}
-      enableReinitialize
-      validationSchema={schema}
-      onSubmit={async (values, { resetForm, setSubmitting }) => {
+            enableReinitialize
+            validationSchema={schema}
+            onSubmit={async (values, { resetForm, setSubmitting }) => {
         try {
           console.log("Valeurs soumises:", values);
           // sauvegarde dans le store si nécessaire
@@ -55,8 +56,14 @@ export default function WebAppMaker() {
       }}
         >
             {({ values, isSubmitting }) => (
-                <Form className="flex justify-center w-full">
+                <Form className="flex justify-center w-full pt-8">
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
+                        <div className="flex items-center justify-between">
+                            <Link href="/">
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                            </Link>
+                            <p className="text-md md:text-2xl lg:text-4xl">Site web professionnel</p>
+                        </div>
                         <div className="flex flex-col gap-4">
                             <h4>1. Objectif du site</h4>
                             <div className="flex flex-col gap-2 pl-4">
