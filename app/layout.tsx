@@ -6,12 +6,73 @@ const interSans = Inter({
   variable: "--font-inter-sans",
   weight: ["100", "200", "300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  display: "swap"
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Isourcia",
-  description: "Nous sommes une entreprise spécialisée dans les solutions digitales complètes pour accompagner les TPE, PME et startups dans leur transformation numérique. Notre mission : simplifier le digital et accélérer votre croissance grâce à des services flexibles, modernes et parfaitement adaptés à vos besoins.",
+  title: "Isourcia | Créativité, Stratégie & Innovation",
+  description:
+    "Avec nous, la différence, c’est l’impact. Nos talents vont bien au-delà d’une prestation : ils traduisent vos valeurs et donnent de la force à vos projets. Créativité, stratégie, innovation : nous transformons vos besoins en solutions concrètes, adaptées à vos ambitions.",
+  keywords: [
+    "Isourcia",
+    "agence créative",
+    "stratégie digitale",
+    "innovation",
+    "branding",
+    "communication",
+    "design",
+    "marketing digital",
+    "solutions sur mesure",
+    "outsourcing",
+  ],
+  authors: [{ name: "Isourcia" }],
+  creator: "Isourcia",
+  publisher: "Isourcia",
+  openGraph: {
+    title: "Isourcia — Créativité, Stratégie & Innovation",
+    description:
+      "Avec nous, la différence, c’est l’impact. Nos talents vont bien au-delà d’une prestation : ils traduisent vos valeurs et donnent de la force à vos projets.",
+    url: "https://isourcia.ca",
+    siteName: "Isourcia",
+    locale: "fr_CA",
+    type: "website",
+    images: [
+      {
+        url: "https://isourcia.ca/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Isourcia — Agence créative",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Isourcia — Créativité, Stratégie & Innovation",
+    description:
+      "Nos talents traduisent vos valeurs et donnent de la force à vos projets. Découvrez notre approche créative et stratégique.",
+    site: "@isourcia",
+    creator: "@isourcia",
+    images: ["https://isourcia.ca/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  category: "Agence créative et stratégie digitale",
+  metadataBase: new URL("https://isourcia.ca"),
+  alternates: {
+    canonical: "https://isourcia.ca",
+  },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -21,11 +82,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${interSans.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${interSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }

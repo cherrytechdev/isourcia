@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 interface FormValues {
-    eightSens: any;
+  eightSens: string[];
   ressourceRecrut: string
   service: string
 
@@ -76,7 +76,7 @@ interface FormValues {
   maintenanceExt: string;
   budgetExt: string;
 
-    webObj: string[];
+  webObj: string[];
   otherWebObj: string;
   chooseChart: string;
   webDesign: string[];
@@ -169,7 +169,6 @@ const initialValues: FormValues = {
   facturationModExt: [],
   maintenanceExt: "Non, uniquement la mission définie",
   budgetExt: "< 500 €",
-
 
   webObj: [],
   otherWebObj: "",

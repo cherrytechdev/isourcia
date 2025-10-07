@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: linear-gradient(to right, #040A18, #0A1027);
+  --background: linear-gradient(to right, #040a18, #0a1027);
   --foreground: #171717;
 }
 
@@ -12,15 +12,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: linear-gradient(to right, #040A18, #0A1027);
+    --background: linear-gradient(to right, #040a18, #0a1027);
     --foreground: #ededed;
   }
 }
 
-body {
+body,
+html {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", sans-serif ;
+  font-family: "Inter", sans-serif;
+  @apply text-sm md:text-base lg:text-lg overflow-x-hidden min-h-screen scroll-smooth;
 }
 
 h4 {
@@ -36,19 +38,19 @@ p {
 input {
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #60A5FA;
+  border: 1px solid #60a5fa;
 }
 
-input[type=text]:focus {
-  outline: 2px solid #3B82F6;
+input[type="text"]:focus {
+  outline: 2px solid #3b82f6;
 }
 
-input[type=date]:focus {
-  outline: 2px solid #3B82F6;
+input[type="date"]:focus {
+  outline: 2px solid #3b82f6;
 }
 
-input[type=number]:focus {
-  outline: 2px solid #3B82F6;
+input[type="number"]:focus {
+  outline: 2px solid #3b82f6;
 }
 
 input[type=tel]:focus {
@@ -64,28 +66,37 @@ input[type=checkbox] {
 }
 
 @media (min-width: 768px) {
-  input[type=checkbox] {
+  input[type="checkbox"] {
     width: 16px;
   }
 }
 
-input[type=radio] {
+input[type="radio"] {
   width: 16px;
 }
 
 textarea {
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #60A5FA;
+  border: 1px solid #60a5fa;
   width: 100%;
   resize: none;
 }
 
 textarea:focus {
-  outline: 2px solid #3B82F6;
+  outline: 2px solid #3b82f6;
 }
 
 .error-message {
   color: rgb(255, 55, 55);
   font-size: smaller;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
