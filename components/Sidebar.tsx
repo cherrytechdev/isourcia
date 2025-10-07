@@ -22,7 +22,7 @@ export default function Sidebar({ items, activeItem, onSelect }: SidebarProps) {
         {isOpen ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
+            className="w-6 h-6 transition hover:text-red-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -69,6 +69,32 @@ export default function Sidebar({ items, activeItem, onSelect }: SidebarProps) {
             </li>
           ))}
         </ul>
+        
+        <div className="flex justify-center p-4 ">
+          <Link
+            href="/"
+            onClick={() => {
+              if (window.innerWidth < 768) {
+                setIsOpen(false);
+              }
+            }}
+            className="flex justify-center  border border-white text-lg rounded-full text-white w-fit transition hover:bg-white hover:text-gray-700 p-2"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className="lucide lucide-house-icon lucide-house">
+                <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            
+          </Link>
+        </div>
 
         <div className="p-4 border-t border-gray-700">
           <Link

@@ -2,6 +2,7 @@
 
 import Container from "./Container";
 import { MenuNavInf, NavigationLink } from "@/constant";
+import Image from "next/image";
 import { Dispatch, SetStateAction, useState } from "react";
 
 export default function MenuNav({
@@ -16,12 +17,18 @@ export default function MenuNav({
 
   return (
     <div
-      className={`w-full  absolute top-0 left-0 bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-1000 ${open ? "top-0" : "top-[-100vh]"} `}
+      className={`w-full  absolute z-10 -top-20 left-0 bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-1000 ${open ? "top-0" : "top-[-100vh]"} `}
     >
       <Container className="flex flex-col gap-8 lg:gap-6 h-screen justify-center ">
-        {/* <div className="flex justify-center text-4xl">LOGO</div> */}
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
           <div className="lg:flex flex-col gap-4 hidden ">
+            <Image 
+              src="/favicon.png"
+              alt="logo image"
+              width={900}
+              height={300}
+              className="w-[200px]"
+              />
             {MenuNavInf.map((items, i) => (
               <div key={i} className="text-2xl font-light">
                 {items}
@@ -47,7 +54,7 @@ export default function MenuNav({
           </div>
         </div>
         <p className="text-center hidden lg:block ">
-          © Copyright - INFINIT 2025
+          © Copyright - ISOURCIA 2025
         </p>
         <div className="flex justify-center">
           <svg

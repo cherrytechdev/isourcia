@@ -14,49 +14,65 @@ import {
     WebTechnologyInf
 } from "@/constant";
 import { useFormStore } from "@/store/formStore"
+import Link from "next/link";
 
 
 const schema = Yup.object().shape({
-  webObj: Yup.array().min(1, "Vous devez en choisir un"),
-  otherWebObj: Yup.string().when("webObj", {
-    is: (val: string[]) => val?.includes("autre"),
-    then: (schema) => schema.required("Vous devez préciser l'autre ressource"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-  webDesign: Yup.array().min(1, "Vous devez en choisir un"),
-  webContent: Yup.array().min(1, "La compétence est requise"),
-  webBudget: Yup.string().required("Veulliez inserer le budget approximatif"),
+    webObj: Yup.array()
+        .min(1, "Veuillez sélectionner au moins un objectif pour le site web"),
+
+    otherWebObj: Yup.string().when("webObj", {
+        is: (val: string[]) => val?.includes("autre"),
+        then: (schema) => schema.required("Veuillez préciser l'autre objectif"),
+        otherwise: (schema) => schema.notRequired(),
+    }),
+
+    webDesign: Yup.array()
+        .min(1, "Veuillez sélectionner au moins un style de design web"),
+
+    webContent: Yup.array()
+        .min(1, "Veuillez indiquer les compétences requises pour le contenu web"),
+
+    webBudget: Yup.string()
+        .required("Veuillez indiquer le budget approximatif"),
+
 });
 
 
 export default function WebAppMaker() {
 
-     const route = useRouter();
-  const { values: initialValues, setValues } = useFormStore();
+    const route = useRouter();
+    const { values: initialValues, setValues } = useFormStore();
 
 
     return (
         <Formik
             initialValues={initialValues}
-      enableReinitialize
-      validationSchema={schema}
-      onSubmit={async (values, { resetForm, setSubmitting }) => {
-        try {
-          console.log("Valeurs soumises:", values);
-          // sauvegarde dans le store si nécessaire
-          setValues(values);
-          resetForm();
-        } catch (error) {
-          console.error("Erreur d'envoi", error);
-        } finally {
-          setSubmitting(false);
-          route.push("/Contact");
-        }
-      }}
+            enableReinitialize
+            validationSchema={schema}
+            onSubmit={async (values, { resetForm, setSubmitting }) => {
+                try {
+                    console.log("Valeurs soumises:", values);
+                    // sauvegarde dans le store si nécessaire
+                    setValues(values);
+                    resetForm();
+                } catch (error) {
+                    console.error("Erreur d'envoi", error);
+                } finally {
+                    setSubmitting(false);
+                    route.push("/pages/Contact");
+                }
+            }}
         >
             {({ values, isSubmitting }) => (
-                <Form className="flex justify-center w-full">
+                <Form className="flex justify-center w-full pt-8">
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
+                        <div className="flex items-center justify-between">
+                            <Link href="/">
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]" />
+                            </Link>
+                            <p className="text-md md:text-2xl lg:text-4xl">Site web professionnel</p>
+                        </div>
                         <div className="flex flex-col gap-4">
                             <h4>1. Objectif du site</h4>
                             <div className="flex flex-col gap-2 pl-4">
@@ -137,12 +153,12 @@ export default function WebAppMaker() {
                                         component="div"
                                         className="error-message" />
                                     <p>Sites d'inspiration (liens)</p>
-                                        <Field
-                                            as="textarea"
-                                            name="inspirationWeb"
-                                            rows={5}
-                                            placeholder="Votre inspiration"
-                                            />
+                                    <Field
+                                        as="textarea"
+                                        name="inspirationWeb"
+                                        rows={5}
+                                        placeholder="Votre inspiration"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -158,14 +174,14 @@ export default function WebAppMaker() {
                                                 type="checkbox"
                                                 name="webContent"
                                                 value={items}
-                                                />
+                                            />
                                             <label>{items}</label>
-                                        </div> 
+                                        </div>
                                     ))}
-                                    <ErrorMessage 
-                                        name="webContent" 
-                                        component="div" 
-                                        className="error-message"/>
+                                    <ErrorMessage
+                                        name="webContent"
+                                        component="div"
+                                        className="error-message" />
                                 </div>
 
                                 <div className="flex flex-col gap-2">
@@ -175,7 +191,7 @@ export default function WebAppMaker() {
                                             type="radio"
                                             name="webContentReady"
                                             value="Déjà prêt (fourni par client)"
-                                            />
+                                        />
                                         <label>Déjà prêt (fourni par client)</label>
                                     </div>
                                     <div className="flex gap-4">
@@ -183,7 +199,7 @@ export default function WebAppMaker() {
                                             type="radio"
                                             name="webContentReady"
                                             value="À créer (besoin rédaction/visuels)"
-                                            />
+                                        />
                                         <label>À créer (besoin rédaction/visuels)</label>
                                     </div>
                                 </div>
@@ -199,13 +215,13 @@ export default function WebAppMaker() {
                                             type="checkbox"
                                             name="webFunctionality"
                                             value={items}
-                                            />
+                                        />
                                         <label>{items}</label>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        
+
                         <div className="flex flex-col gap-4">
                             <h4>5. Maintenance & évolution</h4>
                             <div className="flex flex-col gap-2 pl-4">
@@ -215,7 +231,7 @@ export default function WebAppMaker() {
                                             type="radio"
                                             name="webMaintenance"
                                             value={items}
-                                            />
+                                        />
                                         <label>{items}</label>
                                     </div>
                                 ))}
@@ -230,12 +246,12 @@ export default function WebAppMaker() {
                                     type="text"
                                     name="webBudget"
                                     placeholder="en Dollar"
-                                    />
-                                <ErrorMessage 
-                                    name="webBudget" 
-                                    component="div" 
-                                    className="error-message"/>
-                                
+                                />
+                                <ErrorMessage
+                                    name="webBudget"
+                                    component="div"
+                                    className="error-message" />
+
                                 <p>Délais souhaités</p>
                                 {WebDelayInf.map((items, i) => (
                                     <div key={i} className="flex gap-4">
@@ -243,7 +259,7 @@ export default function WebAppMaker() {
                                             type="radio"
                                             name="webDelay"
                                             value={items}
-                                            />
+                                        />
                                         <label>{items}</label>
                                     </div>
                                 ))}
@@ -259,7 +275,7 @@ export default function WebAppMaker() {
                                             type="checkbox"
                                             name="webOptions"
                                             value={items}
-                                            />
+                                        />
                                         <label>{items}</label>
                                     </div>
                                 ))}

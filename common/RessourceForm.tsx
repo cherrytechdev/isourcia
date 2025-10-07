@@ -3,6 +3,7 @@
 import { RessourceInf } from "@/constant"
 import { useFormStore } from "@/store/formStore";
 import { Form, Formik } from "formik"
+import Image from "next/image";
 import { useRouter } from "next/navigation"
 
 
@@ -33,7 +34,7 @@ export default function RessourceForm() {
                                         route.push(items.link);
                                 }}
                                 >   
-                                    <img src={items.image} alt={items.name} className="w-40" />
+                                    <Image src={items.image} alt={items.name} width={2000} height={2000} className="w-40" />
                                     {items.name}
                                 </button>
                             ))}

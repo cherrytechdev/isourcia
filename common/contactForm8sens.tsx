@@ -2,15 +2,38 @@ import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
 import { EightSensInf } from "@/constant";
+import Link from "next/link";
 
 const schema = Yup.object().shape({
-    name: Yup.string().min(3).required(),
-    firstname: Yup.string().min(3).required(),
-    nPhone: Yup.string().min(5).required(),
-    mail: Yup.string().email().required(),
-    company: Yup.string().required(),
-    physicalAddress: Yup.string().required(),
-    contact: Yup.array().min(1, "Vous devez en choisir un")
+  name: Yup.string()
+    .min(3, "Le nom doit contenir au moins 3 caractères")
+    .required("Le nom est requis"),
+    
+  firstname: Yup.string()
+    .min(3, "Le prénom doit contenir au moins 3 caractères")
+    .required("Le prénom est requis"),
+    
+  nPhone: Yup.string()
+    .min(5, "Le numéro de téléphone doit contenir au moins 5 chiffres")
+    .required("Le numéro de téléphone est requis"),
+    
+  mail: Yup.string()
+    .email("L'adresse e-mail n'est pas valide")
+    .required("L'adresse e-mail est requise"),
+    
+  company: Yup.string()
+    .required("Le nom de l’entreprise est requis"),
+    
+  physicalAddress: Yup.string()
+    .required("L’adresse physique est requise"),
+
+  eightSens: Yup.array()
+    .of(Yup.string())
+    .min(1, "Vous devez sélectionner au moins un élément dans les huit sens")
+    .required("La sélection d’au moins un élément est requise"),
+    
+  contact: Yup.array()
+    .min(1, "Vous devez sélectionner au moins un contact"),
 });
 
 export default function ContactForm() {
@@ -57,8 +80,13 @@ export default function ContactForm() {
         >
             {({ isSubmitting }) => (
                 <Form className="flex justify-center shadow-2xl w-full pt-8">
-                    {values.ressource}
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
+                        <div className="flex items-center justify-between">
+                            <Link href="/">
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                            </Link>
+                            <p className="text-md md:text-2xl lg:text-4xl">8sens Logiciels</p>
+                        </div>
                         <div className="flex flex-col gap-2">
                             <label>Nom</label>
                             <Field
@@ -149,6 +177,10 @@ export default function ContactForm() {
                                     </div>
                                 )}
                             />
+                            <ErrorMessage
+                                name="eightSens"
+                                component="div"
+                                className="error-message" />
                         </div>
                         <div className="flex flex-col gap-2">
                             <p>Je souhaite être contactez par</p>
