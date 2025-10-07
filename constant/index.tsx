@@ -22,36 +22,42 @@ export const ServicesInf = [
     image: "/img/recrutement.png",
     value: "Ressource",
     title: "je veux recruter des ressources en ligne",
+    text: "Accédez à un vivier de talents qualifiés pour renforcer vos équipes à distance. Que ce soit pour des missions ponctuelles ou des postes durables, nous vous aidons à trouver rapidement les bonnes compétences pour faire avancer vos projets",
   },
   {
     link: "/pages/8sens",
     image: "/img/erp.png",
     value: "Solution ERP",
     title: "j'ai besoin d'une solution ERP, je choisis 8 sens",
+    text: "8Sens est une solution complète et modulable qui permet de gérer tous les aspects de votre entreprise depuis un seul logiciel. Simple à utiliser, il est spécialement conçu pour les TPE et PME qui souhaitent gagner en productivité et mieux organiser leurs activités. Ses points forts résident dans sa capacité à centraliser l’ensemble de la gestion de l’entreprise tout en restant intuitive et facile à prendre en main, même pour les utilisateurs non spécialisés. Grâce à 8Sens, vous pouvez optimiser votre organisation, suivre clairement toutes vos activités et prendre des décisions plus efficaces pour faire évoluer votre structure.",
   },
   {
     link: "/pages/WebAppService",
     image: "/img/sensible.png",
     value: "Site web",
     title: "je veux un site web professionnel",
+    text: "Offrez à vous un site internet moderne, clair et entièrement adapté à vos besoins. Nous pouvons utiliser les technologies modernes telles que HTML5, CSS3, JavaScript, PHP, MySQL, Bootstrap, React, Angular, Node.js, Laravel, ainsi que des CMS populaires comme WordPress, Joomla ou Drupal. Nous pouvons intégrer des modules interactifs, des formulaires de contact, des galeries d’images, des solutions e-commerce comme WooCommerce ou Shopify, et mettre en place des outils de référencement SEO, API REST et analytics pour améliorer la visibilité et le suivi de votre site.",
   },
   {
     link: "/pages/Externalisation",
     image: "/img/externalisation.png",
     value: "Externalisation",
     title: "j'externalise mes services, je les confies à un pro",
+    text: "Confiez vos missions digitales à des experts : design UX/UI, création de contenus visuels et vidéos (3D), digitalisation de documents, et formations spécialisées pour vos équipes. Nous vous aidons à gagner du temps, optimiser vos processus et développer vos compétences en informatique et digital.",
   },
   {
     link: "/pages/MobileApp",
     image: "/img/application.png",
     value: "Création d'une application",
     title: "je veux créer une application personnalisée",
+    text: "Nous concevons des applications de gestion personnalisées adaptées à vos besoins, pour vos clients ou vos équipes. Nos solutions utilisent des technologies modernes comme JavaScript, React, Angular, Node.js, PHP, Laravel, MySQL, et peuvent être déployées sur le web, desktop ou mobile. Nous intégrons également des API, modules interactifs, tableaux de bord et outils de reporting, afin de centraliser vos données et simplifier vos processus métier. Chaque application est développée pour être pratique, sécurisée et facile à utiliser, afin d’optimiser votre gestion quotidienne et vos services numériques.",
   },
   {
     link: "/pages/Marketing",
     image: "/img/digital-marketing.png",
     value: "Marketing digital",
     title: "je fais expert à un expert pour gérer mon marketing digital",
+    text: "Nous vous aidons à développer votre présence en ligne et attirer plus de clients grâce à des stratégies sur mesure. Nos services incluent la gestion des réseaux sociaux, campagnes publicitaires en ligne, référencement SEO/SEA, création de contenus digitaux et analyse des performances. Nous utilisons des outils modernes comme Google Ads, Facebook Ads, LinkedIn Ads, Google Analytics, Mailchimp, pour optimiser votre visibilité, renforcer votre notoriété et générer des résultats mesurables.",
   },
 ];
 

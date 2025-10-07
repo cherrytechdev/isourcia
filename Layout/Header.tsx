@@ -2,6 +2,7 @@
 
 import Container from "@/common/Container";
 import MenuNav from "@/common/MenuNav";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Header() {
@@ -13,7 +14,14 @@ export default function Header() {
         <MenuNav open={isOpen} setOpen={setOpen} />
         <Container className="relative py-4">
           <div className="flex justify-between">
-            <p className="text-4xl font-white font-bold">LOGO</p>
+            <Image
+              src={"/logo-white.png"}
+              alt="logo image"
+              width={100}
+              height={50}
+              className=" w-[200px] h-auto  "
+            />
+
             <div
               className="flex flex-col items-center gap-2 font-bold cursor-pointer group"
               onClick={() => setOpen(!isOpen)}
