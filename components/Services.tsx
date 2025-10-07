@@ -59,8 +59,8 @@ export default function Services() {
                               <Image
                                 src={items.image}
                                 alt={items.value}
-                                width={100}
-                                height={100}
+                                width={800}
+                                height={800}
                                 className="w-[100px] md:w-[138px] mx-auto"
                               />
                               <h3 className="font-bold text-2xl text-[#040A18] mt-4">

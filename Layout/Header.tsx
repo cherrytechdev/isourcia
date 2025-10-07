@@ -17,8 +17,8 @@ export default function Header() {
             <Image
               src={"/logo-white.png"}
               alt="logo image"
-              width={100}
-              height={50}
+              width={900}
+              height={300}
               className=" w-[200px] h-auto  "
             />
 

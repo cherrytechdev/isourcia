@@ -69,14 +69,7 @@ export default function Sidebar({ items, activeItem, onSelect }: SidebarProps) {
             </li>
           ))}
         </ul>
-
-        <div>
-          <Link
-            href="/"
-            >
-                      </Link>
-        </div>
-
+        
         <div className="flex justify-center p-4 ">
           <Link
             href="/"

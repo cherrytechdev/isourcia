@@ -31,8 +31,8 @@ function Partners() {
             <Image
               src={"/img/partner/partner-image.png"}
               alt="partenariat image"
-              width={200}
-              height={200}
+              width={600}
+              height={600}
               className="w-full h-auto  "
             />
           </div>
@@ -43,8 +43,8 @@ function Partners() {
                 key={id}
                 src={image}
                 alt="partner logo image"
-                width={100}
-                height={100}
+                width={400}
+                height={400}
                 className="w-full h-auto"
               />
             ))}

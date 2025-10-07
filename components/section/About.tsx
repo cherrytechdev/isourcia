@@ -48,8 +48,8 @@ function About() {
                     src={image}
                     alt="brand image"
                     className="w-full h-auto"
-                    width={100}
-                    height={200}
+                    width={1200}
+                    height={800}
                   />
                 ))}
               </div>

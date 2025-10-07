@@ -22,7 +22,7 @@ html {
   background: var(--background);
   color: var(--foreground);
   font-family: "Inter", sans-serif;
-  @apply text-sm md:text-base lg:text-lg overflow-x-hidden min-h-screen scroll-smooth;
+  @apply text-sm md:text-base overflow-x-hidden min-h-screen scroll-smooth;
 }
 
 h4 {
