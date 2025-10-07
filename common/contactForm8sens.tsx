@@ -1,26 +1,21 @@
-'use client'
-
 import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
 import { EightSensInf } from "@/constant";
 
-interface FormValues {
-    eightSens: string[]
-}
-
 const schema = Yup.object().shape({
-    name: Yup.string().min(3, "Le nom doit contenir au moins 3 caractères").required("Le nom est requis"),
-    firstname: Yup.string().min(3, "Le prénom doit contenir au moins 3 caractères").required("Le prénom est requis"),
-    nPhone: Yup.string().min(5, "Le numéro doit contenir au moins 5 caractères").required("Le numéro est requis"),
-    mail: Yup.string().email("Le mail est invalide").required("Le numéro est requis"),
-    company: Yup.string().required("Le nom de la société est requis"),
-    physicalAddress: Yup.string().required("L'addresse physique est requise"),
+    name: Yup.string().min(3).required(),
+    firstname: Yup.string().min(3).required(),
+    nPhone: Yup.string().min(5).required(),
+    mail: Yup.string().email().required(),
+    company: Yup.string().required(),
+    physicalAddress: Yup.string().required(),
     contact: Yup.array().min(1, "Vous devez en choisir un")
-})
+});
 
 export default function ContactForm() {
     const { values } = useFormStore()
+
     return (
         <Formik
             initialValues={{
@@ -32,7 +27,7 @@ export default function ContactForm() {
                 company: "",
                 physicalAddress: "",
                 contact: [],
-
+                tagResource: values.ressource
             }}
             validationSchema={schema}
             onSubmit={async (values, { resetForm, setSubmitting }) => {
@@ -62,7 +57,7 @@ export default function ContactForm() {
         >
             {({ isSubmitting }) => (
                 <Form className="flex justify-center shadow-2xl w-full pt-8">
-                    {values.webDesign}
+                    {values.ressource}
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-2xl rounded-lg">
                         <div className="flex flex-col gap-2">
                             <label>Nom</label>
@@ -139,16 +134,16 @@ export default function ContactForm() {
                                         {EightSensInf.map((item, i) => {
                                             const active = arrayHelpers.form.values.eightSens.includes(item)
                                             return (
-                                            <button
-                                                type="button"
-                                                key={i}
-                                                onClick={() =>
-                                                active ? arrayHelpers.remove(values.eightSens.indexOf(item)) : arrayHelpers.push(item)
-                                                }
-                                                className={`cursor-pointer rounded-xl px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
-                                            >
-                                                {item}
-                                            </button>
+                                                <button
+                                                    type="button"
+                                                    key={i}
+                                                    onClick={() =>
+                                                        active ? arrayHelpers.remove(values.eightSens.indexOf(item)) : arrayHelpers.push(item)
+                                                    }
+                                                    className={`cursor-pointer rounded-xl px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
+                                                >
+                                                    {item}
+                                                </button>
                                             );
                                         })}
                                     </div>
