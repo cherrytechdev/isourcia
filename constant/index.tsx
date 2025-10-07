@@ -206,6 +206,12 @@ export const FacturationModExtInf = [
 
 export const BudgetExtInf = ["< 500 €", "500–2000 €", "+2000 €"];
 
+export const DetailExtInf = [
+  "Urgent (moins de 2 semaines)",
+  "Standard (1 mois)",
+  "Flexible"
+]
+
 export const ObjectiveMobileInf = [
   "Application vitrine (présentation d'une entreprise/produits)",
   "E-commerce (vente en ligne)",

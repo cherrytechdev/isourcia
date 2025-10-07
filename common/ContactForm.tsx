@@ -16,9 +16,9 @@ const schema = Yup.object().shape({
     .required("Le prénom est requis"),
     
   nPhone: Yup.string()
+    .matches(/^[0-9]+$/, "Le numéro ne doit contenir que des chiffres")
     .min(5, "Le numéro de téléphone doit contenir au moins 5 chiffres")
     .required("Le numéro de téléphone est requis")
-    .matches(/^[0-9]+$/, "Le numéro ne doit contenir que des chiffres")
     .max(15, "Le numéro ne doit pas dépasser 15 chiffres"),
     
   mail: Yup.string()
@@ -194,7 +194,7 @@ export default function ContactForm() {
                         <div className="flex flex-col gap-2">
                             <label htmlFor="nPhone">Numero telephone</label>
                             <Field
-                                type="number"
+                                type="tel"
                                 name="nPhone"
                             />
                             <ErrorMessage

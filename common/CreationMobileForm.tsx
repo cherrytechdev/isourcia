@@ -20,55 +20,50 @@ import Link from "next/link"
 
 
 const schema = Yup.object().shape({
-objectiveMobile: Yup.array()
-  .min(1, "Veuillez sélectionner au moins un objectif"),
+    objectiveMobile: Yup.array()
+    .min(1, "Veuillez sélectionner au moins un objectif"),
 
-otherObjectiveMobile: Yup.string().when("objectiveMobile", {
-  is: (val: string[]) => val?.includes("autre"),
-  then: (schema) => schema.required("Veuillez préciser l'autre objectif"),
-  otherwise: (schema) => schema.notRequired(),
-}),
+    otherObjectiveMobile: Yup.string().when("objectiveMobile", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Veuillez préciser l'autre objectif"),
+    otherwise: (schema) => schema.notRequired(),
+    }),
 
-plateformMobile: Yup.array()
-  .min(1, "Veuillez sélectionner au moins une plateforme"),
+    plateformMobile: Yup.array()
+    .min(1, "Veuillez sélectionner au moins une plateforme"),
 
-otherPlateformMobile: Yup.string().when("plateformMobile", {
-  is: (val: string[]) => val?.includes("autres"),
-  then: (schema) => schema.required("Veuillez préciser l'autre plateforme"),
-  otherwise: (schema) => schema.notRequired(),
-}),
+    otherPlateformMobile: Yup.string().when("plateformMobile", {
+    is: (val: string[]) => val?.includes("autres"),
+    then: (schema) => schema.required("Veuillez préciser l'autre plateforme"),
+    otherwise: (schema) => schema.notRequired(),
+    }),
 
-designStyleMobile: Yup.array().when("designMobile", {
-  is: "noMob",
-  then: (schema) => schema.min(1, "Veuillez sélectionner au moins un style de design"),
-  otherwise: (schema) => schema.notRequired(),
-}),
+    designStyleMobile: Yup.array().when("designMobile", {
+    is: "noMob",
+    then: (schema) => schema.min(1, "Veuillez sélectionner au moins un style de design"),
+    otherwise: (schema) => schema.notRequired(),
+    }),
 
-inspirationAppMobile: Yup.string().when("designMobile", {
-  is: "noMob",
-  then: (schema) => schema.required("Veuillez remplir le champ d'inspiration de l'application"),
-  otherwise: (schema) => schema.notRequired(),
-}),
+    inspirationAppMobile: Yup.string().when("designMobile", {
+    is: "noMob",
+    then: (schema) => schema.required("Veuillez remplir le champ d'inspiration de l'application"),
+    otherwise: (schema) => schema.notRequired(),
+    }),
 
-functionalityMobile: Yup.array()
-  .min(1, "Veuillez sélectionner au moins une fonctionnalité"),
+    functionalityMobile: Yup.array()
+    .min(1, "Veuillez sélectionner au moins une fonctionnalité"),
 
-otherFunctionalityMobile: Yup.string().when("functionalityMobile", {
-  is: (val: string[]) => val?.includes("autre"),
-  then: (schema) => schema.required("Veuillez préciser l'autre fonctionnalité"),
-  otherwise: (schema) => schema.notRequired(),
-}),
+    otherFunctionalityMobile: Yup.string().when("functionalityMobile", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Veuillez préciser l'autre fonctionnalité"),
+    otherwise: (schema) => schema.notRequired(),
+    }),
 
-otherDataManageMobile: Yup.string().when("dataManageMobile", {
-  is: (val: string[]) => val?.includes("autre"),
-  then: (schema) => schema.required("Veuillez préciser l'autre gestion de données"),
-  otherwise: (schema) => schema.notRequired(),
-}),
-
-delayMvpMobile: Yup.array()
-  .min(1, "Veuillez sélectionner au moins une option pour le délai MVP"),
-
-
+    otherDataManageMobile: Yup.string().when("dataManageMobile", {
+    is: (val: string[]) => val?.includes("autre"),
+    then: (schema) => schema.required("Veuillez préciser l'autre gestion de données"),
+    otherwise: (schema) => schema.notRequired(),
+    }),
 })
 
 export default function CreationMobileForm() {
@@ -95,7 +90,7 @@ export default function CreationMobileForm() {
             }}
         >
             {({ values, isSubmitting }) => (
-                <Form className="flex justify-center w-full ">
+                <Form className="flex justify-center w-full pt-8">
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
                         <div className="flex items-center justify-between">
                             <Link href="/">
@@ -366,7 +361,7 @@ export default function CreationMobileForm() {
                                 {DelayMVPMobileInf.map((items, i) => (
                                     <div key={i} className="flex gap-4">
                                         <Field
-                                            type="checkbox"
+                                            type="radio"
                                             name="delayMvpMobile"
                                             value={items}
                                         />

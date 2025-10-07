@@ -11,7 +11,8 @@ import {
     TimeTravelExtInf,
     ModalityExtInf,
     FacturationModExtInf,
-    BudgetExtInf
+    BudgetExtInf,
+    DetailExtInf
 } from "@/constant";
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
@@ -89,7 +90,7 @@ export default function ExternalisationForm() {
             }}
         >
             {({ values, isSubmitting }) => (
-                <Form className="flex justify-center w-full">
+                <Form className="flex justify-center w-full pt-8">
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
                         <div className="flex items-center justify-between">
                             <Link href="/">
@@ -268,37 +269,37 @@ export default function ExternalisationForm() {
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <p>Diplômes ou certifications requis</p>
-                                <div className="flex flex-col gap-2">
-                                    <div className="flex gap-6">
-                                        <div className="flex gap-4">
-                                            <Field
-                                                type="radio"
-                                                name="chooseDeg"
-                                                value="Oui"
-                                            />
-                                            <label>Oui</label>
+                                    <div className="flex flex-col gap-2">
+                                        <div className="flex gap-6">
+                                            <div className="flex gap-4">
+                                                <Field
+                                                    type="radio"
+                                                    name="chooseDeg"
+                                                    value="Oui"
+                                                />
+                                                <label>Oui</label>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <Field
+                                                    type="radio"
+                                                    name="chooseDeg"
+                                                    value="Non"
+                                                />
+                                                <label>Non</label>
+                                            </div>
                                         </div>
-                                        <div className="flex gap-4">
-                                            <Field
-                                                type="radio"
-                                                name="chooseDeg"
-                                                value="Non"
-                                            />
-                                            <label>Non</label>
-                                        </div>
+                                        <Field
+                                            type="text"
+                                            name="yesInpExt"
+                                            placeholder="Précisez les diplômes requis"
+                                            disabled={values.chooseDeg == "Non"}
+                                            className={`${values.chooseDeg == "Non" ? '!border !border-gray-400' : ''}`}
+                                        />
+                                        <ErrorMessage
+                                            name="yesInpExt"
+                                            component="div"
+                                            className="text-red-500 text-sm" />
                                     </div>
-                                    <Field
-                                        type="text"
-                                        name="yesInpExt"
-                                        placeholder="Précisez les diplômes requis"
-                                        disabled={values.chooseDeg == "Non"}
-                                        className={`${values.chooseDeg == "Non" ? '!border !border-gray-400' : ''}`}
-                                    />
-                                    <ErrorMessage
-                                        name="yesInpExt"
-                                        component="div"
-                                        className="text-red-500 text-sm" />
-                                </div>
                                     <div>
                                         <Field
                                             rows={5}
@@ -308,7 +309,7 @@ export default function ExternalisationForm() {
                                             placeholder="Ajoutez votre commentaire" />
                                     </div>
                                 </div>
-                            </div>                     
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-4">
@@ -371,8 +372,45 @@ export default function ExternalisationForm() {
 
                         <div className="flex flex-col gap-4">
                             <h4>5.Budget & délais</h4>
-                            
+                            <div className="flex flex-col gap-2 pl-4">
+                                <p>Budget approximatif</p>
+                                {BudgetExtInf.map((items, i) => (
+                                    <div key={i} className="flex gap-4">
+                                        <Field
+                                            type="radio"
+                                            name="budgetExt"
+                                            value={items} />
+                                        <label>{items}</label>
+                                    </div>
+                                ))}
+                                <ErrorMessage
+                                    name="budgetExt"
+                                    component="div"
+                                    className="text-red-500 text-sm" />
+
+                                <p>Détails souhaités pour mise en place</p>
+                                {DetailExtInf.map((items, i) => (
+                                    <div key={i} className="flex gap-4">
+                                        <Field
+                                            type="radio"
+                                            name="detailExt"
+                                            value={items} />
+                                        <label>{items}</label>
+                                    </div>
+                                ))}
+                                <ErrorMessage
+                                    name="detailExt"
+                                    component="div"
+                                    className="text-red-500 text-sm" />
+                            </div>
                         </div>
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
+                            >
+                            {isSubmitting ? "Envoi..." : "Suivant"}
+                        </button>
                     </div>
                 </Form>
             )}

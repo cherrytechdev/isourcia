@@ -53,7 +53,7 @@ interface FormValues {
   otherDataManageMobile: string
   maintainMobile: string
   budgetMobile: string
-  delayMvpMobile: string[]
+  delayMvpMobile: string
   techMobile: string[]
   otherTechMobile: string
 
@@ -75,6 +75,7 @@ interface FormValues {
   facturationModExt: string[];
   maintenanceExt: string;
   budgetExt: string;
+  detailExt: string
 
   webObj: string[];
   otherWebObj: string;
@@ -148,7 +149,7 @@ const initialValues: FormValues = {
   otherDataManageMobile: "",
   maintainMobile: "Oui, mises à jour simples",
   budgetMobile: "< 3 000 €",
-  delayMvpMobile: [],
+  delayMvpMobile: "Urgent (1 mois)",
   techMobile: [],
   otherTechMobile: "",
 
@@ -169,6 +170,7 @@ const initialValues: FormValues = {
   facturationModExt: [],
   maintenanceExt: "Non, uniquement la mission définie",
   budgetExt: "< 500 €",
+  detailExt: "Urgent (moins de 2 semaines)",
 
   webObj: [],
   otherWebObj: "",
