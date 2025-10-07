@@ -13,7 +13,7 @@ function Partners() {
     "/img/partner/partner-five.png",
   ];
   return (
-    <div>
+    <div id="partner">
       <Container className="flex flex-col gap-10 md:gap-14 py-10 ">
         <div className="flex flex-col gap-5 ">
           <h2 className="uppercase font-light text-4xl md:text-5xl lg:text-6xl text-center ">

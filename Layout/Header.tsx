@@ -9,12 +9,7 @@ export default function Header() {
 
   return (
     <section className="fixed z-20 bg-gradient-to-r from-[#040A18] to-[#0A1027] w-full shadow-lg">
-      <div className="relative">
-        {/* {isOpen && (
-          <div className="fixed inset-0 z-40 pt-5 bg-gradient-to-r from-[#040A18] to-[#0A1027]">
-            <MenuNav />
-          </div>
-        )} */}
+      <div className="relative z-10 ">
         <MenuNav open={isOpen} setOpen={setOpen} />
         <Container className="relative py-4">
           <div className="flex justify-between">

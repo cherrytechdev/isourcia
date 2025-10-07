@@ -3,7 +3,7 @@ import Separator from "../display/Separator";
 
 function Hero() {
   return (
-    <div className="pt-[100px] ">
+    <div id="home" className="pt-[100px] ">
       <video
         src="/video/hero-video.mp4"
         className="w-full h-auto "

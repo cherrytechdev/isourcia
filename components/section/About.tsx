@@ -35,7 +35,7 @@ function About() {
     ],
   ];
   return (
-    <div>
+    <div id="about">
       <Separator direction="up" />
       <div className="bg-[#D9D9D9] ">
         <Container className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 text-black py-10 ">

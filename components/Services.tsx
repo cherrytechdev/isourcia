@@ -13,7 +13,7 @@ export default function Services() {
   const route = useRouter();
   const reset = useFormStore((state) => state.reset);
   return (
-    <section>
+    <section id="service">
       <Container>
         <Formik
           initialValues={{
