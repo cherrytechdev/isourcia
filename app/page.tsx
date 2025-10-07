@@ -1,6 +1,7 @@
 import Header from "@/Layout/Header";
 import Services from "@/components/Services";
 import About from "@/components/section/About";
+import Cta from "@/components/section/Cta";
 import Hero from "@/components/section/Hero";
 import Partners from "@/components/section/Partners";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <Services />
       <About />
       <Partners />
+      <Cta />
     </>
   );
 }
