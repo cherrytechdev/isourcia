@@ -21,10 +21,12 @@ export async function POST(request: Request) {
     const emailHtml = await render(EmailTemplate(data) as ReactElement);
     
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      // from: process.env.GMAIL_USER,
+      from: data.mail,
       to: process.env.GMAIL_USER, 
       subject: 'Confirmation de votre demande de contact',
       html: emailHtml,
+      replyTo: data.mail,
     });
 
     return NextResponse.json({ message: 'Email envoyé avec succès' }, { status: 200 });

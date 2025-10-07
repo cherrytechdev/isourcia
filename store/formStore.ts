@@ -2,6 +2,7 @@
 import { create } from "zustand";
 
 interface FormValues {
+  eightSens: string[];
   ressourceRecrut: string
   service: string
 
@@ -75,7 +76,7 @@ interface FormValues {
   maintenanceExt: string;
   budgetExt: string;
 
-    webObj: string[];
+  webObj: string[];
   otherWebObj: string;
   chooseChart: string;
   webDesign: string[];
@@ -169,8 +170,7 @@ const initialValues: FormValues = {
   maintenanceExt: "noExt",
   budgetExt: "< 500 €",
 
-
-   webObj: [],
+  webObj: [],
   otherWebObj: "",
   chooseChart: "non",
   webDesign: [],
@@ -184,8 +184,7 @@ const initialValues: FormValues = {
   webOptions: [],
   webTechnology: [],
   otherWebTechnology: "",
-
-
+  eightSens: []
 };
 
 export const useFormStore = create<FormStore>((set) => ({
