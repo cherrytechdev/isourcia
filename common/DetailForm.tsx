@@ -25,16 +25,16 @@ interface FormValues {
 }
 
 const schema = Yup.object().shape({
-  date: Yup.string().required("La date de début est requise"),
-  contratDuration: Yup.string().required("Le contrat est requis"),
-  travelDuration: Yup.string().required("La durée du travail est requise"),
-  level: Yup.string().required("Le niveau d'étude est requis"),
+  date: Yup.string().required("Veuillez indiquer la date de début"),
+  contratDuration: Yup.string().required("Veuillez préciser la durée du contrat"),
+  travelDuration: Yup.string().required("Veuillez renseigner la durée du travail"),
+  level: Yup.string().required("Veuillez indiquer le niveau d’études"),
 
   competencies: Yup.array()
     .of(Yup.string())
     .test(
       "at-least-one-competence",
-      "Veuillez choisir au moins une compétence ou remplir le champ 'Autres'",
+      "Veuillez sélectionner au moins une compétence ou remplir le champ « Autre »",
       function (competencies) {
         const { otherComp, date, contratDuration } = this.parent as any;
 
@@ -55,7 +55,7 @@ const schema = Yup.object().shape({
     .of(Yup.string())
     .test(
       "at-least-one-language",
-      "Veuillez choisir au moins une langue ou remplir le champ 'Autres'",
+      "Veuillez sélectionner au moins une langue ou remplir le champ « Autre »",
       function (language) {
         const { otherLang, date, contratDuration } = this.parent as any;
 
@@ -70,6 +70,7 @@ const schema = Yup.object().shape({
       }
     ),
   otherLang: Yup.string().nullable(),
+
 });
 
 const defaultValues: FormValues = {
@@ -137,7 +138,7 @@ export default function DetailForm() {
           <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 max-w-4xl w-full rounded-lg">
             <div className="flex items-center justify-between">
               <Link href="/">
-                  <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]" />
               </Link>
               <p className="text-xl md:text-2xl lg:text-4xl">Comptable</p>
             </div>
@@ -384,14 +385,14 @@ export default function DetailForm() {
               <ErrorMessage name="language" component="div" className="error-message" />
             </div>
 
-            
+
             <div className="flex flex-col gap-2">
               <label htmlFor="level">Niveau d'étude</label>
               <Field type="text" name="level" id="level" placeholder="Veuillez préciser le niveau d'étude" className="border p-2 rounded-md focus:outline-blue-500" />
               <ErrorMessage name="level" component="div" className="error-message" />
             </div>
 
-            
+
             <div className="flex flex-col gap-2">
               <label htmlFor="message">Commentaire supplémentaire</label>
               <Field as="textarea" name="message" id="message" rows={5} className="border p-2 rounded-md resize-none focus:outline-blue-500" placeholder="Ajoutez tout commentaire supplémentaire..." />

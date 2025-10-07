@@ -20,46 +20,55 @@ import Link from "next/link"
 
 
 const schema = Yup.object().shape({
-    objectiveMobile: Yup.array().min(1, "Vous devez en choisir un"),
-    otherObjectiveMobile: Yup.string().when("objectiveMobile", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre objectif"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+objectiveMobile: Yup.array()
+  .min(1, "Veuillez sélectionner au moins un objectif"),
 
-    plateformMobile: Yup.array().min(1, "Vous devez en choisir un"),
-    otherPlateformMobile: Yup.string().when("plateformMobile", {
-        is: (val: string[]) => val?.includes("autres"),
-        then: (schema) => schema.required("Vous devez préciser l'autre plateforme"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+otherObjectiveMobile: Yup.string().when("objectiveMobile", {
+  is: (val: string[]) => val?.includes("autre"),
+  then: (schema) => schema.required("Veuillez préciser l'autre objectif"),
+  otherwise: (schema) => schema.notRequired(),
+}),
 
-    designStyleMobile: Yup.array().when("designMobile", {
-        is: "noMob",
-        then: (schema) => schema.min(1, "Vous devez en choisir un"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+plateformMobile: Yup.array()
+  .min(1, "Veuillez sélectionner au moins une plateforme"),
 
-    inspirationAppMobile: Yup.string().when("designMobile", {
-        is: "noMob",
-        then: (schema) => schema.required("Vous devez remplir le champs"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+otherPlateformMobile: Yup.string().when("plateformMobile", {
+  is: (val: string[]) => val?.includes("autres"),
+  then: (schema) => schema.required("Veuillez préciser l'autre plateforme"),
+  otherwise: (schema) => schema.notRequired(),
+}),
 
-    functionalityMobile: Yup.array().min(1, "Vous devez en choisir un"),
-    otherFunctionalityMobile: Yup.string().when("functionalityMobile", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez présiser l'autre fonctionnalité"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+designStyleMobile: Yup.array().when("designMobile", {
+  is: "noMob",
+  then: (schema) => schema.min(1, "Veuillez sélectionner au moins un style de design"),
+  otherwise: (schema) => schema.notRequired(),
+}),
 
-    otherDataManageMobile: Yup.string().when("dataManageMobile", {
-        is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Vous devez préciser l'autre gestion de donnée"),
-        otherwise: (schema) => schema.notRequired()
-    }),
+inspirationAppMobile: Yup.string().when("designMobile", {
+  is: "noMob",
+  then: (schema) => schema.required("Veuillez remplir le champ d'inspiration de l'application"),
+  otherwise: (schema) => schema.notRequired(),
+}),
 
-    delayMvpMobile: Yup.array().min(1, "Vous devez en choisir un"),
+functionalityMobile: Yup.array()
+  .min(1, "Veuillez sélectionner au moins une fonctionnalité"),
+
+otherFunctionalityMobile: Yup.string().when("functionalityMobile", {
+  is: (val: string[]) => val?.includes("autre"),
+  then: (schema) => schema.required("Veuillez préciser l'autre fonctionnalité"),
+  otherwise: (schema) => schema.notRequired(),
+}),
+
+otherDataManageMobile: Yup.string().when("dataManageMobile", {
+  is: (val: string[]) => val?.includes("autre"),
+  then: (schema) => schema.required("Veuillez préciser l'autre gestion de données"),
+  otherwise: (schema) => schema.notRequired(),
+}),
+
+delayMvpMobile: Yup.array()
+  .min(1, "Veuillez sélectionner au moins une option pour le délai MVP"),
+
+
 })
 
 export default function CreationMobileForm() {
@@ -90,7 +99,7 @@ export default function CreationMobileForm() {
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
                         <div className="flex items-center justify-between">
                             <Link href="/">
-                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]" />
                             </Link>
                             <p className="text-md md:text-2xl lg:text-4xl">Application personnalisée</p>
                         </div>

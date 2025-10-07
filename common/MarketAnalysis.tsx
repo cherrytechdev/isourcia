@@ -19,33 +19,42 @@ import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
 
 const schema = Yup.object().shape({
-    marketMainObj: Yup.array().min(1, "Veuillez en choisir un"),
+    marketMainObj: Yup.array()
+        .min(1, "Veuillez sélectionner au moins un objectif principal"),
+
     otherMarketMainObj: Yup.string().when("marketMainObj", {
         is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Précisez les autres objectifs"),
-        otherwise: (schema) => schema.notRequired()
+        then: (schema) => schema.required("Veuillez préciser les autres objectifs principaux"),
+        otherwise: (schema) => schema.notRequired(),
     }),
 
-    marketExpSearch: Yup.array().min(1, "Veuillez en choisir un"),
+    marketExpSearch: Yup.array()
+        .min(1, "Veuillez sélectionner au moins un objectif d'étude de marché"),
+
     otherMarketExpSearch: Yup.string().when("marketExpSearch", {
         is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Précisez les autres objectifs"),
-        otherwise: (schema) => schema.notRequired()
+        then: (schema) => schema.required("Veuillez préciser les autres objectifs d'étude de marché"),
+        otherwise: (schema) => schema.notRequired(),
     }),
 
-    marketOptionComp: Yup.array().min(1, "Veuillez en choisir un"),
+    marketOptionComp: Yup.array()
+        .min(1, "Veuillez sélectionner au moins une option concurrentielle"),
+
     otherMarketOptionComp: Yup.string().when("marketOptionComp", {
         is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Précisez les autres objectifs"),
-        otherwise: (schema) => schema.notRequired()
+        then: (schema) => schema.required("Veuillez préciser les autres options concurrentielles"),
+        otherwise: (schema) => schema.notRequired(),
     }),
 
-    marketTechTools: Yup.array().min(1, "Veuillez en choisir un"),
+    marketTechTools: Yup.array()
+        .min(1, "Veuillez sélectionner au moins un outil technologique"),
+
     otherMarketTechTools: Yup.string().when("marketTechTools", {
         is: (val: string[]) => val?.includes("autre"),
-        then: (schema) => schema.required("Précisez les autres objectifs"),
-        otherwise: (schema) => schema.notRequired()
+        then: (schema) => schema.required("Veuillez préciser les autres outils technologiques"),
+        otherwise: (schema) => schema.notRequired(),
     }),
+
 })
 
 export default function MarketAnalysis() {
@@ -54,14 +63,14 @@ export default function MarketAnalysis() {
 
     return (
         <Formik
-            initialValues={storeValues}  
-            enableReinitialize            
+            initialValues={storeValues}
+            enableReinitialize
             validationSchema={schema}
             onSubmit={async (values, { resetForm, setSubmitting }) => {
                 try {
                     console.log("Valeurs envoyées :", values);
 
-                    setValues(values);  
+                    setValues(values);
 
                     resetForm();
                     route.push("/pages/Contact");
@@ -77,7 +86,7 @@ export default function MarketAnalysis() {
                     <div className="flex flex-col gap-8 bg-white text-gray-700 p-6 md:p-10 w-4xl rounded-lg shadow-2xl">
                         <div className="flex items-center justify-between">
                             <Link href="/">
-                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]" />
                             </Link>
                             <p className="text-md md:text-2xl lg:text-4xl">Marketing digital</p>
                         </div>

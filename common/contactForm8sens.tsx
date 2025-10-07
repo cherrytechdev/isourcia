@@ -5,13 +5,35 @@ import { EightSensInf } from "@/constant";
 import Link from "next/link";
 
 const schema = Yup.object().shape({
-    name: Yup.string().min(3).required(),
-    firstname: Yup.string().min(3).required(),
-    nPhone: Yup.string().min(5).required(),
-    mail: Yup.string().email().required(),
-    company: Yup.string().required(),
-    physicalAddress: Yup.string().required(),
-    contact: Yup.array().min(1, "Vous devez en choisir un")
+  name: Yup.string()
+    .min(3, "Le nom doit contenir au moins 3 caractères")
+    .required("Le nom est requis"),
+    
+  firstname: Yup.string()
+    .min(3, "Le prénom doit contenir au moins 3 caractères")
+    .required("Le prénom est requis"),
+    
+  nPhone: Yup.string()
+    .min(5, "Le numéro de téléphone doit contenir au moins 5 chiffres")
+    .required("Le numéro de téléphone est requis"),
+    
+  mail: Yup.string()
+    .email("L'adresse e-mail n'est pas valide")
+    .required("L'adresse e-mail est requise"),
+    
+  company: Yup.string()
+    .required("Le nom de l’entreprise est requis"),
+    
+  physicalAddress: Yup.string()
+    .required("L’adresse physique est requise"),
+
+  eightSens: Yup.array()
+    .of(Yup.string())
+    .min(1, "Vous devez sélectionner au moins un élément dans les huit sens")
+    .required("La sélection d’au moins un élément est requise"),
+    
+  contact: Yup.array()
+    .min(1, "Vous devez sélectionner au moins un contact"),
 });
 
 export default function ContactForm() {
@@ -155,6 +177,10 @@ export default function ContactForm() {
                                     </div>
                                 )}
                             />
+                            <ErrorMessage
+                                name="eightSens"
+                                component="div"
+                                className="error-message" />
                         </div>
                         <div className="flex flex-col gap-2">
                             <p>Je souhaite être contactez par</p>

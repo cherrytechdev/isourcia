@@ -7,13 +7,37 @@ import Link from "next/link";
 
 
 const schema = Yup.object().shape({
-    name: Yup.string().min(3, "Le nom doit contenir au moins 3 caractères").required("Le nom est requis"),
-    firstname: Yup.string().min(3, "Le prénom doit contenir au moins 3 caractères").required("Le prénom est requis"),
-    nPhone:  Yup.string().min(5, "Le numéro doit contenir au moins 5 caractères").matches(/^[0-9]+$/, "Le numéro ne doit contenir que des chiffres").max(15, "Le numéro ne doit pas dépasser 15 chiffres").required("Le numéro est requis"),
-    mail: Yup.string().email("Le mail est invalide").required("Le numéro est requis"),
-    company: Yup.string().required("Le nom de la société est requis"),
-    physicalAddress: Yup.string().required("L'addresse physique est requise"),
-    contact: Yup.array().min(1, "Vous devez en choisir un")
+  name: Yup.string()
+    .min(3, "Le nom doit contenir au moins 3 caractères")
+    .required("Le nom est requis"),
+    
+  firstname: Yup.string()
+    .min(3, "Le prénom doit contenir au moins 3 caractères")
+    .required("Le prénom est requis"),
+    
+  nPhone: Yup.string()
+    .min(5, "Le numéro de téléphone doit contenir au moins 5 chiffres")
+    .required("Le numéro de téléphone est requis")
+    .matches(/^[0-9]+$/, "Le numéro ne doit contenir que des chiffres")
+    .max(15, "Le numéro ne doit pas dépasser 15 chiffres"),
+    
+  mail: Yup.string()
+    .email("L'adresse e-mail n'est pas valide")
+    .required("L'adresse e-mail est requise"),
+    
+  company: Yup.string()
+    .required("Le nom de l’entreprise est requis"),
+    
+  physicalAddress: Yup.string()
+    .required("L’adresse physique est requise"),
+
+  eightSens: Yup.array()
+    .of(Yup.string())
+    .min(1, "Vous devez sélectionner au moins un élément dans les huit sens")
+    .required("La sélection d’au moins un élément est requise"),
+    
+  contact: Yup.array()
+    .min(1, "Vous devez sélectionner au moins un contact"),
 })
 
 export default function ContactForm() {

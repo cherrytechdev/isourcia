@@ -25,16 +25,16 @@ interface FormValues {
 }
 
 const schema = Yup.object().shape({
-  date: Yup.string().required("La date de début est requise"),
-  contratDuration: Yup.string().required("Le contrat est requis"),
-  travelDuration: Yup.string().required("La durée du travail est requise"),
-  level: Yup.string().required("Le niveau d'étude est requis"),
+  date: Yup.string().required("Veuillez indiquer la date de début"),
+  contratDuration: Yup.string().required("Veuillez préciser la durée du contrat"),
+  travelDuration: Yup.string().required("Veuillez renseigner la durée du travail"),
+  level: Yup.string().required("Veuillez indiquer le niveau d’études"),
 
   competencies: Yup.array()
     .of(Yup.string())
     .test(
       "at-least-one-competence",
-      "Veuillez choisir au moins une compétence ou remplir le champ 'Autres'",
+      "Veuillez sélectionner au moins une compétence ou remplir le champ « Autre »",
       function (competencies) {
         const { otherComp, date, contratDuration } = this.parent as any;
 
@@ -55,7 +55,7 @@ const schema = Yup.object().shape({
     .of(Yup.string())
     .test(
       "at-least-one-language",
-      "Veuillez choisir au moins une langue ou remplir le champ 'Autres'",
+      "Veuillez sélectionner au moins une langue ou remplir le champ « Autre »",
       function (language) {
         const { otherLang, date, contratDuration } = this.parent as any;
 
@@ -115,7 +115,7 @@ export default function DetailForm() {
 
   return (
     <Formik<FormValues>
-       initialValues={initialValues}
+      initialValues={initialValues}
       enableReinitialize
       validationSchema={schema}
       onSubmit={async (values, { resetForm, setSubmitting }) => {
@@ -137,22 +137,22 @@ export default function DetailForm() {
           <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 w-4xl rounded-lg">
             <div className="flex items-center justify-between">
               <Link href="/">
-                  <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]"/>
+                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]" />
               </Link>
               <p className="text-md md:text-2xl lg:text-4xl">Web/application</p>
             </div>
             {/* Date de début */}
             <div className="flex flex-col gap-2">
               <label htmlFor="date">Date de début</label>
-              <Field 
-                type="date" 
-                name="date" 
+              <Field
+                type="date"
+                name="date"
                 id="date"
               />
-              <ErrorMessage 
-                name="date" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="date"
+                component="div"
+                className="error-message" />
             </div>
 
             {/* Durée du contrat */}
@@ -167,15 +167,15 @@ export default function DetailForm() {
                 readOnly
                 onClick={() => setOpenCt(true)}
               />
-              <ErrorMessage 
-                name="contratDuration" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="contratDuration"
+                component="div"
+                className="error-message" />
               {openCt && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
                   {/* Backdrop */}
-                  <div 
-                    className="absolute inset-0 bg-black/30 backdrop-blur-sm" 
+                  <div
+                    className="absolute inset-0 bg-black/30 backdrop-blur-sm"
                     onClick={() => setOpenCt(false)} // optionnel si tu veux fermer en cliquant dehors
                   ></div>
 
@@ -183,7 +183,7 @@ export default function DetailForm() {
                   <div className="relative z-10 flex flex-col gap-2 bg-white text-gray-700 p-4 rounded-md shadow-lg w-[40%] ">
                     <div className="flex justify-between mb-2">
                       <p className="font-semibold">Durée du contrat</p>
-                      <button 
+                      <button
                         type="button"
                         className="cursor-pointer font-bold"
                         onClick={() => setOpenCt(false)}
@@ -240,10 +240,10 @@ export default function DetailForm() {
                 readOnly
                 onClick={() => setOpenTm(true)}
               />
-              <ErrorMessage 
-                name="travelDuration" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="travelDuration"
+                component="div"
+                className="error-message" />
               {openTm && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
                   {/* Backdrop */}
@@ -346,16 +346,16 @@ export default function DetailForm() {
             {/* Année d'expérience */}
             <div className="flex flex-col gap-2">
               <label htmlFor="yearExperiences">Année d'expérience</label>
-              <Field 
-                type="text" 
-                name="yearExperiences" 
+              <Field
+                type="text"
+                name="yearExperiences"
                 id="yearExperiences"
                 placeholder="Veulliez préciser les années d'expériences"
               />
-              <ErrorMessage 
-                name="yearExperiences" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="yearExperiences"
+                component="div"
+                className="error-message" />
             </div>
 
             {/* Compétences */}
@@ -375,33 +375,32 @@ export default function DetailForm() {
                               ? arrayHelpers.remove(values.competencies.indexOf(item))
                               : arrayHelpers.push(item)
                           }
-                          className={`cursor-pointer rounded-xl px-4 py-2 border ${
-                            active 
-                              ? "bg-[#0A1027] text-white" 
+                          className={`cursor-pointer rounded-xl px-4 py-2 border ${active
+                              ? "bg-[#0A1027] text-white"
                               : "bg-blue-500 text-white"
-                          }`}
+                            }`}
                         >
                           {item}
                         </button>
                       )
                     })}
                   </div>
-                )}/>
+                )} />
                 <div className="flex flex-col gap-2">
                   <label htmlFor="otherComp">Autres compétences</label>
-                  <Field 
-                    as="textarea" 
-                    name="otherComp" 
+                  <Field
+                    as="textarea"
+                    name="otherComp"
                     id="otherComp"
-                    placeholder="Autres compétences non listées" 
+                    placeholder="Autres compétences non listées"
                     rows={3}
                   />
                 </div>
               </div>
-              <ErrorMessage 
-                name="competencies" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="competencies"
+                component="div"
+                className="error-message" />
             </div>
 
             {/* Langues */}
@@ -421,67 +420,66 @@ export default function DetailForm() {
                               ? arrayHelpers.remove(values.language.indexOf(item))
                               : arrayHelpers.push(item)
                           }
-                          className={`cursor-pointer rounded-xl h-fit px-4 py-2 border ${
-                            active 
-                              ? "bg-[#0A1027] text-white" 
+                          className={`cursor-pointer rounded-xl h-fit px-4 py-2 border ${active
+                              ? "bg-[#0A1027] text-white"
                               : "bg-blue-500 text-white"
-                          }`}
+                            }`}
                         >
                           {item}
                         </button>
                       )
                     })}
                   </div>
-                )}/>
+                )} />
                 <div className="flex flex-col gap-2">
                   <label htmlFor="otherLang">Autres langues</label>
-                  <Field 
-                    as="textarea" 
-                    name="otherLang" 
+                  <Field
+                    as="textarea"
+                    name="otherLang"
                     id="otherLang"
-                    placeholder="Autres langues non listées" 
+                    placeholder="Autres langues non listées"
                     rows={3}
                   />
                 </div>
               </div>
-              <ErrorMessage 
-                name="language" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="language"
+                component="div"
+                className="error-message" />
             </div>
 
             {/* Niveau d'étude */}
             <div className="flex flex-col gap-2">
               <label htmlFor="level">Niveau d'étude</label>
-              <Field 
-                type="text" 
-                name="level" 
+              <Field
+                type="text"
+                name="level"
                 id="level"
                 placeholder="Veulliez préciser le niveau d'étude"
                 className="border p-2 rounded-md focus:outline-blue-500"
               />
-              <ErrorMessage 
-                name="level" 
-                component="div" 
-                className="error-message"/>
+              <ErrorMessage
+                name="level"
+                component="div"
+                className="error-message" />
             </div>
 
             {/* Commentaire */}
             <div className="flex flex-col gap-2">
               <label htmlFor="message">Commentaire supplémentaire</label>
-              <Field 
-                as="textarea" 
-                name="message" 
+              <Field
+                as="textarea"
+                name="message"
                 id="message"
-                rows={5} 
+                rows={5}
                 className="border p-2 rounded-md resize-none focus:outline-blue-500"
                 placeholder="Ajoutez tout commentaire supplémentaire..."
               />
             </div>
 
             <button
-              type="submit" 
-              disabled={isSubmitting} 
+              type="submit"
+              disabled={isSubmitting}
               className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
             >
               {isSubmitting ? "Envoi..." : "Suivant"}
