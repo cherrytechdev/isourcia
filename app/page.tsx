@@ -1,3 +1,4 @@
+import Footer from "@/Layout/Footer";
 import Header from "@/Layout/Header";
 import Services from "@/components/Services";
 import About from "@/components/section/About";
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <Partners />
       <Cta />
+      <Footer />
     </>
   );
 }
