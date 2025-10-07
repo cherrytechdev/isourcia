@@ -50,7 +50,7 @@ export default function Services() {
                       }}
                       className="cursor-pointer"
                     >
-                      <div className="group w-[320px] md:w-[400px] h-80">
+                      <div className="group w-[320px] md:w-[400px] h-80  ">
                         {/* Ajouter la perspective sur le conteneur 3D */}
                         <div className="relative w-full h-full transition-transform duration-1000 [transform-style:preserve-3d] [perspective:1000px] group-hover:[transform:rotateY(180deg)]">
                           {/* Face avant */}

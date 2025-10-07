@@ -57,9 +57,9 @@ export default function MenuNav({
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className=" text-white cursor-pointer transition hover:rotate-90"
             onClick={() => setOpen(false)}
           >
