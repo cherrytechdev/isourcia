@@ -5,6 +5,7 @@ import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
 import toast from "react-hot-toast"
+import  {useRouter} from "next/navigation"
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -47,7 +48,8 @@ export default function ContactForm() {
                 company: "",
                 physicalAddress: "",
                 contact: [],
-
+                promotionCode: "",
+                detailExt:values.detailExt,
                 date: values.date,
                 contratDuration: values.contratDuration,
                 travelDuration: values.travelDuration,
@@ -148,6 +150,7 @@ export default function ContactForm() {
                         const data = await response.json();
                         // resetForm();
                         toast.success("Votre message a été envoyé !")
+                        const router = useRouter()
                     } else {
                         console.error("Erreur serveur:", response.statusText);
                         alert("Erreur lors de l'envoi du message.");

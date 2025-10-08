@@ -3,6 +3,8 @@ import * as Yup from "yup"
 import { useFormStore } from "@/store/formStore";
 import { EightSensInf } from "@/constant";
 import Link from "next/link";
+import toast from "react-hot-toast"
+import  {useRouter} from "next/navigation"
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -40,7 +42,7 @@ const schema = Yup.object().shape({
 
 export default function ContactForm() {
     const { values } = useFormStore()
-
+    const router = useRouter()
     return (
         <Formik
             initialValues={{
@@ -68,14 +70,17 @@ export default function ContactForm() {
                         const data = await response.json();
                         console.log("Réponse serveur:", data);
                         resetForm();
-                        alert("Votre message a été envoyé !");
+                        toast.success("Votre message a été envoyé !")
+                        router.push('/')
                     } else {
                         console.error("Erreur serveur:", response.statusText);
-                        alert("Erreur lors de l'envoi du message.");
+                        toast.error("Erreur lors de l'envoi du message.");
+
                     }
                 } catch (error) {
                     console.error("Erreur d'envoi:", error);
-                    alert("Erreur lors de l'envoi du message.");
+                        toast.error("Erreur lors de l'envoi du message.");
+
                 } finally {
                     setSubmitting(false);
                 }
@@ -230,7 +235,8 @@ export default function ContactForm() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md"
+                             className={`bg-gradient-to-r from-[#040A18] to-[#0A1027] transition-all duration-500 hover:bg-gradient-to-l hover:from-[#040A18] hover:to-[#0A1027] text-white p-2 rounded-md ${
+                                isSubmitting ? "opacity-50" : ""}`}
                         >
                             {isSubmitting ? "Envoie..." : "Envoyer"}
                         </button>

@@ -19,7 +19,7 @@ interface FormValues {
   contractUnits: Record<string, string>
   day: Record<string, string>
   night: Record<string, string>
-
+promotionCode: string;
 
   ressource: string;
   marketMainObj: string[];
@@ -37,7 +37,6 @@ interface FormValues {
   otherMarketOptionComp: string;
   marketTechTools: string[];
   otherMarketTechTools: string;
-
 
   objectiveMobile: string[]
   otherObjectiveMobile: string
@@ -152,6 +151,7 @@ const initialValues: FormValues = {
   delayMvpMobile: "Urgent (1 mois)",
   techMobile: [],
   otherTechMobile: "",
+  promotionCode:"",
 
   resourceExt: [],
   otherResExt: "",

@@ -9,7 +9,7 @@ interface EmailTemplateProps {
   physicalAddress: string;
   contact: string[];
   eightSens: string[];
-
+  detailExt: string;
   date: string
   contratDuration: string
   travelDuration: string
@@ -60,7 +60,7 @@ interface EmailTemplateProps {
   delayMvpMobile: string[]
   techMobile: string[]
   otherTechMobile: string
-
+  promotionCode: string
   resourceExt: string[];
   otherResExt: string;
   dateStartExt: string;
@@ -105,7 +105,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   physicalAddress,
   contact,
   eightSens,
-
+detailExt,
   date,
   contratDuration,
   travelDuration,
@@ -156,7 +156,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   delayMvpMobile,
   techMobile,
   otherTechMobile,
-
+promotionCode,
   resourceExt,
   otherResExt,
   dateStartExt,
@@ -359,14 +359,14 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
 
         {/* Content */}
         <div style={contentStyle}>
-          
+
           {/* Section Informations Contact */}
           <div style={sectionStyle}>
             <h2 style={sectionTitleStyle}>
               <span style={barAccentStyle}></span>
               Informations de contact
             </h2>
-            
+
             <div style={infoRowStyle}>
               <span style={labelStyle}>Nom</span>
               <span style={valueStyle}>{name}</span>
@@ -394,13 +394,18 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
             {tagResource === "Solution ERP" && (
               <div style={infoRowStyle}>
                 <span style={labelStyle}>Services</span>
-                <span style={valueStyle}>{eightSens.join(', ')}</span>
+                <ul style={valueStyle}>{eightSens.join(', ')}</ul>
               </div>
             )}
-            <div style={{...infoRowStyle, borderBottom: 'none'}}>
+            <div style={{ ...infoRowStyle, borderBottom: 'none' }}>
               <span style={labelStyle}>Contact préféré</span>
               <span style={valueStyle}>{contact && contact.length > 0 ? contact.join(", ") : "Non précisé"}</span>
             </div>
+            <div style={infoRowStyle}>
+              <span style={labelStyle}>Code Promo</span>
+              <span style={valueStyle}>{promotionCode || "—"}</span>
+            </div>
+            
           </div>
 
           {/* Section Ressource */}
@@ -412,7 +417,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <p style={textStyle}><strong>Date :</strong> {date}</p>
               <p style={textStyle}><strong>Années d'expérience :</strong> {yearExperiences || "—"}</p>
 
-              <div style={{marginTop: '20px'}}>
+              <div style={{ marginTop: '20px' }}>
                 <strong>Compétences :</strong>
                 <ul style={listStyle}>
                   {competencies.join(', ')}
@@ -421,7 +426,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
 
               <p style={textStyle}><strong>Autre compétence :</strong> {otherComp || "—"}</p>
 
-              <div style={{marginTop: '20px'}}>
+              <div style={{ marginTop: '20px' }}>
                 <strong>Langues :</strong>
                 <ul style={listStyle}>
                   {language.join(', ')}
@@ -432,7 +437,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <p style={textStyle}><strong>Niveau :</strong> {level || "—"}</p>
               <p style={textStyle}><strong>Message :</strong> {message || "—"}</p>
 
-              <div style={{marginTop: '20px'}}>
+              <div style={{ marginTop: '20px' }}>
                 <strong>Contrat (unités) :</strong>
                 <ul style={listStyle}>
                   {Object.entries(contractUnits).map(([unit, value]) => (
@@ -445,7 +450,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                 </ul>
               </div>
 
-              <div style={{marginTop: '20px'}}>
+              <div style={{ marginTop: '20px' }}>
                 <strong>Temps de travail le jour  :</strong>
                 <ul style={listStyle}>
                   {Object.entries(day).map(([key, value]) => (
@@ -458,7 +463,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                 </ul>
               </div>
 
-              <div style={{marginTop: '20px'}}>
+              <div style={{ marginTop: '20px' }}>
                 <strong>Temps de travail la nuit :</strong>
                 <ul style={listStyle}>
                   {Object.entries(night).map(([key, value]) => (
@@ -498,10 +503,10 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                 <p style={textStyle}><strong>Autre :</strong> {otherMarketExpSearch}</p>
               )}
 
-              <p style={{...textStyle, marginTop: '20px'}}><strong>3. Contenu disponible :</strong> {marketContent}</p>
+              <p style={{ ...textStyle, marginTop: '20px' }}><strong>3. Contenu disponible :</strong> {marketContent}</p>
 
               <h2 style={subSectionTitleStyle}>4. Détails de la campagne</h2>
-              <div style={{backgroundColor: '#f8fafc', borderRadius: '12px', padding: '16px'}}>
+              <div style={{ backgroundColor: '#f8fafc', borderRadius: '12px', padding: '16px' }}>
                 <p style={textStyle}><strong>Date de lancement :</strong> {marketDateWish || "—"}</p>
                 <p style={textStyle}><strong>Durée de la mission :</strong> {marketMissionDelay}</p>
                 <p style={textStyle}><strong>Fréquence emailing :</strong> {marketMailFreq}</p>
@@ -510,8 +515,8 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
 
               <h2 style={subSectionTitleStyle}>5. Budget & délais</h2>
               <div style={highlightBoxStyle}>
-                <p style={{margin: '8px 0', color: '#92400e'}}><strong>Budget :</strong> {marketBudget}</p>
-                <p style={{margin: '8px 0', color: '#92400e'}}><strong>Délais souhaités :</strong> {marketTimeline}</p>
+                <p style={{ margin: '8px 0', color: '#92400e' }}><strong>Budget :</strong> {marketBudget}</p>
+                <p style={{ margin: '8px 0', color: '#92400e' }}><strong>Délais souhaités :</strong> {marketTimeline}</p>
               </div>
 
               <h2 style={subSectionTitleStyle}>6. Options complémentaires</h2>
@@ -598,8 +603,8 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
 
               <h2 style={subSectionTitleStyle}>8. Budget & délais</h2>
               <div style={highlightBoxStyle}>
-                <p style={{margin: '8px 0', color: '#92400e'}}><strong>Budget :</strong> {budgetMobile || "—"}</p>
-                <p style={{margin: '8px 0', color: '#92400e'}}><strong>Délai MVP :</strong> {delayMvpMobile || "—"}</p>
+                <p style={{ margin: '8px 0', color: '#92400e' }}><strong>Budget :</strong> {budgetMobile || "—"}</p>
+                <p style={{ margin: '8px 0', color: '#92400e' }}><strong>Délai MVP :</strong> {delayMvpMobile || "—"}</p>
               </div>
 
               <h2 style={subSectionTitleStyle}>9. Technologies</h2>
@@ -692,8 +697,9 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
 
               <h2 style={subSectionTitleStyle}>11. Budget</h2>
               <div style={highlightBoxStyle}>
-                <p style={{color: '#92400e', margin: '0'}}>{budgetExt || "Non spécifié"}</p>
+                <p style={{ color: '#92400e', margin: '0' }}>{budgetExt || "Non spécifié"}</p>
               </div>
+              <p>Détail souhaités pour la mise en place : {detailExt || "—"}</p>
             </div>
           )}
 
@@ -712,7 +718,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               </ul>
               <p style={textStyle}><strong>Autre objectif :</strong> {otherWebObj || "—"}</p>
 
-              <p style={{...textStyle, marginTop: '20px'}}><strong>Charte graphique :</strong> {chooseChart || "—"}</p>
+              <p style={{ ...textStyle, marginTop: '20px' }}><strong>Charte graphique :</strong> {chooseChart || "—"}</p>
 
               <h2 style={subSectionTitleStyle}>Design attendu</h2>
               <ul style={listStyle}>
@@ -746,10 +752,10 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               </ul>
 
               <p style={textStyle}><strong>Maintenance :</strong> {webMaintenance || "—"}</p>
-              
+
               <div style={highlightBoxStyle}>
-                <p style={{margin: '8px 0', color: '#92400e'}}><strong>Budget :</strong> {webBudget || "—"}</p>
-                <p style={{margin: '8px 0', color: '#92400e'}}><strong>Délai :</strong> {webDelay || "—"}</p>
+                <p style={{ margin: '8px 0', color: '#92400e' }}><strong>Budget :</strong> {webBudget || "—"}</p>
+                <p style={{ margin: '8px 0', color: '#92400e' }}><strong>Délai :</strong> {webDelay || "—"}</p>
               </div>
 
               <h2 style={subSectionTitleStyle}>Options supplémentaires</h2>
@@ -777,7 +783,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
 
         {/* Footer */}
         <div style={footerStyle}>
-          <p style={{color: '#64748b', fontSize: '14px', margin: '0'}}>
+          <p style={{ color: '#64748b', fontSize: '14px', margin: '0' }}>
             Merci de votre confiance ! 🚀
           </p>
         </div>
