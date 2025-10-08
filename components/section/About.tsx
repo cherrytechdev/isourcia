@@ -1,8 +1,19 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Separator from "../display/Separator";
 import Container from "@/common/Container";
 import Image from "next/image";
 import Infinite from "../icons/Infinite";
+import Close from "../icons/Close";
+import { Poppins } from "next/font/google";
+
+const popinsSans = Poppins({
+  variable: "--font-inter-sans",
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 function About() {
   const images = [
@@ -12,11 +23,10 @@ function About() {
       "/img/about/3.webp",
       "/img/about/4.webp",
       "/img/about/5.webp",
-      "/img/about/6.webp",
+      // "/img/about/6.webp",
     ],
     [
       "/img/about/7.webp",
-
       "/img/about/9.webp",
       "/img/about/10.webp",
       "/img/about/11.webp",
@@ -25,21 +35,20 @@ function About() {
       "/img/about/13.webp",
       "/img/about/14.webp",
       "/img/about/15.webp",
-      "/img/about/16.webp",
-    ],
-    [
-      "/img/about/18.webp",
-      "/img/about/12.webp",
-      "/img/about/17.webp",
+      // "/img/about/16.webp",
       "/img/about/8.webp",
     ],
+    ["/img/about/18.webp", "/img/about/12.webp", "/img/about/17.webp"],
   ];
+  const [displayedImage, setDisplayedImage] = useState("/img/about/1.webp");
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
     <div id="about">
-      <Separator direction="up" />
       <div className="bg-[#D9D9D9] ">
-        <Container className="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 text-black py-10 ">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 ">
+        <Separator direction="down" background="#0A1027" />
+        <Container className=" grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 text-black py-10 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 lg:w-[80%]  ">
             {images.map((col, id) => (
               <div key={id} className="flex flex-col gap-2">
                 {col.map((image, index) => (
@@ -47,9 +56,13 @@ function About() {
                     key={index}
                     src={image}
                     alt="brand image"
-                    className="w-full h-auto"
+                    className="w-full h-auto cursor-pointer "
                     width={1200}
                     height={800}
+                    onClick={() => {
+                      setDisplayedImage(image);
+                      setShowPreview(true);
+                    }}
                   />
                 ))}
               </div>
@@ -57,7 +70,7 @@ function About() {
           </div>
           <div className="flex flex-col gap-8">
             <div>
-              <h2 className="font-medium text-4xl md:text-5xl lg:text-6xl text-black text-balance ">
+              <h2 className="font-medium text-4xl md:text-5xl lg:text-6xl text-black text-balance text-center ">
                 LE TALENT QUI <span className="text-red-500">DONNE</span> VIE À
                 VOS IDÉES
               </h2>
@@ -68,7 +81,7 @@ function About() {
                 <div className="h-0.5 bg-white/60 w-2/5"></div>{" "}
               </div>
             </div>
-            <p>
+            <p className={`${popinsSans.variable} !font-light`}>
               {" "}
               Avec nous, la différence, c’est l’impact. Nos talents vont bien
               au-delà d’une prestation : ils traduisent{" "}
@@ -78,13 +91,13 @@ function About() {
               . Créativité, stratégie, innovation : nous transformons vos
               besoins en solutions concrètes, adaptées à vos ambitions.
             </p>
-            <div className="flex flex-col gap-5">
-              <p>
+            <div className={` ${popinsSans.variable}  flex flex-col gap-5`}>
+              <p className="!font-light">
                 Chaque projet est unique. L’innovation s’allie à la rigueur,
                 l’esthétique se marie à la performance, et chaque idée devient
                 une histoire qui résonne avec votre public
               </p>
-              <p>
+              <p className="!font-light">
                 {" "}
                 De la création visuelle à l’accompagnement stratégique, en
                 passant par des solutions digitales innovantes et des services
@@ -96,6 +109,20 @@ function About() {
         </Container>
       </div>
       <Separator direction="down" />
+      <div
+        className={`fixed h-screen w-screen bg-black/90 z-50 top-0 left-0 py-8 md:py-10  transition-all duration-500 flex justify-center items-center ${showPreview ? "opacity-100 scale-100" : "opacity-0 scale-0"} `}
+      >
+        <div onClick={() => setShowPreview(false)}>
+          <Close className="w-[25px] lg:w-[30px] h-auto absolute top-[20px] right-[20px] lg:right-[100px]  " />
+        </div>
+        <Image
+          src={displayedImage}
+          alt="brand image"
+          width={1200}
+          height={800}
+          className="h-auto w-full lg:h-full lg:w-auto"
+        />
+      </div>
     </div>
   );
 }
