@@ -14,7 +14,12 @@ export default function SoftwarePage({
   return (
     <div className="bg-white pb-6 2xl:max-w-6xl mx-auto">
       <Container className="min-h-screen">
-        <Image src={bGround as string} alt={bGround as string} />
+        <Image
+          src={bGround as string}
+          alt={bGround as string}
+          width={1200}
+          height={800}
+        />
         <h1 className="text-5xl font-bold my-10 text-gray-700">{title}</h1>
         <div className="space-y-4 text-gray-700 mb-12">
           {description.map((p, i) => (

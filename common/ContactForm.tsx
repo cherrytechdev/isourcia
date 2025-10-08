@@ -143,16 +143,14 @@ export default function ContactForm() {
           });
 
           if (response.ok) {
-            // const data = await response.json();
             resetForm();
             toast.success("Votre message a été envoyé !");
           } else {
             console.error("Erreur serveur:", response.statusText);
-            alert("Erreur lors de l'envoi du message.");
+            toast.error("Erreur lors de l'envoi du message.");
           }
         } catch (error) {
           console.error("Erreur d'envoi:", error);
-          toast.error("Erreur lors de l'envoi du message.");
         } finally {
           setSubmitting(false);
           router.push("/");
