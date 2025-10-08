@@ -412,7 +412,7 @@ export default function CreationMobileForm() {
                         <Field
                           type="checkbox"
                           name="techMobile"
-                          value={i === 2 ? "autre" : items}
+                          value={i === 4 ? "autre" : items}
                         />
                         <label>{items}</label>
                       </div>
