@@ -92,7 +92,7 @@ export default function WebAppMaker() {
                   const isOtherChecked = values.webObj.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="webObj"
@@ -131,11 +131,11 @@ export default function WebAppMaker() {
                 <div className="flex flex-col gap-2">
                   <p>Charte graphique existante</p>
                   <div className="flex gap-6">
-                    <div className="flex gap-4">
+                    <div className="flex items-center gap-4">
                       <Field type="radio" name="chooseChart" value="oui" />
                       <label>Oui</label>
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex items-center gap-4">
                       <Field type="radio" name="chooseChart" value="non" />
                       <label>Non</label>
                     </div>
@@ -144,7 +144,7 @@ export default function WebAppMaker() {
                 <div className="flex flex-col gap-2">
                   <p>Style préféré</p>
                   {WebDesignInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field type="checkbox" name="webDesign" value={items} />
                       <label>{items}</label>
                     </div>
@@ -171,7 +171,7 @@ export default function WebAppMaker() {
                 <div className="flex flex-col gap-2">
                   <p>Page à inclure</p>
                   {WebContentInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field type="checkbox" name="webContent" value={items} />
                       <label>{items}</label>
                     </div>
@@ -185,7 +185,7 @@ export default function WebAppMaker() {
 
                 <div className="flex flex-col gap-2">
                   <p>Contenu</p>
-                  <div className="flex gap-4">
+                  <div className="flex items-center gap-4">
                     <Field
                       type="radio"
                       name="webContentReady"
@@ -193,7 +193,7 @@ export default function WebAppMaker() {
                     />
                     <label>Déjà prêt (fourni par client)</label>
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex items-center gap-4">
                     <Field
                       type="radio"
                       name="webContentReady"
@@ -209,7 +209,7 @@ export default function WebAppMaker() {
               <h4>4. Fonctionnalités spécifiques</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {WebFunctionalityInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field
                       type="checkbox"
                       name="webFunctionality"
@@ -225,7 +225,7 @@ export default function WebAppMaker() {
               <h4>5. Maintenance & évolution</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {WebMaintenanceInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="webMaintenance" value={items} />
                     <label>{items}</label>
                   </div>
@@ -251,7 +251,7 @@ export default function WebAppMaker() {
 
                 <p>Délais souhaités</p>
                 {WebDelayInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="webDelay" value={items} />
                     <label>{items}</label>
                   </div>
@@ -263,7 +263,7 @@ export default function WebAppMaker() {
               <h4>7. Options complémentaires</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {WebOptionsInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="checkbox" name="webOptions" value={items} />
                     <label>{items}</label>
                   </div>
@@ -278,7 +278,7 @@ export default function WebAppMaker() {
                   const isOtherChecked = values.webTechnology.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="webTechnology"

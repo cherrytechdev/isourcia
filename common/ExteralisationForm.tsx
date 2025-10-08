@@ -115,7 +115,7 @@ export default function ExternalisationForm() {
                   const isOtherChecked = values.resourceExt.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="resourceExt"
@@ -169,7 +169,7 @@ export default function ExternalisationForm() {
                 <p>Durée de l&apos;externalisation</p>
                 <div className="flex flex-col gap-2">
                   {DurationExtInf.map((items, i) => (
-                    <div key={i} className="flex gap-2">
+                    <div key={i} className="flex items-center gap-4">
                       <Field type="checkbox" name="durationExt" value={items} />
                       <label>{items}</label>
                     </div>
@@ -186,7 +186,7 @@ export default function ExternalisationForm() {
                     const isOtherChecked = values.timeExt?.includes("autre");
                     return (
                       <div key={i} className="flex flex-col gap-2">
-                        <div className="flex gap-4">
+                        <div className="flex items-center gap-4">
                           <Field
                             type="checkbox"
                             name="timeExt"
@@ -234,7 +234,7 @@ export default function ExternalisationForm() {
                 <div className="flex flex-col gap-2">
                   <p>Expérience souhaitée</p>
                   {ExperiencesExt.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field
                         type="checkbox"
                         name="experiencesExt"
@@ -256,7 +256,7 @@ export default function ExternalisationForm() {
                       values.languageExt?.includes("autre");
                     return (
                       <div key={i} className="flex flex-col gap-2">
-                        <div className="flex gap-4">
+                        <div className="flex items-center gap-4">
                           <Field
                             type="checkbox"
                             name="languageExt"
@@ -289,37 +289,13 @@ export default function ExternalisationForm() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <p>Diplômes ou certifications requis</p>
-                  <div className="flex flex-col gap-2">
-                    <div className="flex gap-6">
-                      <div className="flex gap-4">
-                        <Field type="radio" name="chooseDeg" value="Oui" />
-                        <label>Oui</label>
-                      </div>
-                      <div className="flex gap-4">
-                        <Field type="radio" name="chooseDeg" value="Non" />
-                        <label>Non</label>
-                      </div>
-                    </div>
-                    <Field
-                      type="text"
-                      name="yesInpExt"
-                      placeholder="Précisez les diplômes requis"
-                      disabled={values.chooseDeg == "Non"}
-                      className={`${values.chooseDeg == "Non" ? "!border !border-gray-400" : ""}`}
-                    />
-                    <ErrorMessage
-                      name="yesInpExt"
-                      component="div"
-                      className="text-red-500 text-sm"
-                    />
-                  </div>
                   <div>
                     <Field
                       rows={5}
                       as="textarea"
                       name="commentTxt"
                       className="resize-none"
-                      placeholder="Ajoutez votre commentaire"
+                      placeholder="Entrez le diplôme requis"
                     />
                   </div>
                 </div>
@@ -331,7 +307,7 @@ export default function ExternalisationForm() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Suivi souhaité</p>
                 {ModalityExtInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="checkbox" name="modalityExt" value={items} />
                     <label>{items}</label>
                   </div>
@@ -345,7 +321,7 @@ export default function ExternalisationForm() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Mode de facturation</p>
                 {FacturationModExtInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field
                       type="checkbox"
                       name="facturationModExt"
@@ -365,7 +341,7 @@ export default function ExternalisationForm() {
             <div className="flex flex-col gap-4">
               <h4>4.Maintenance & évolution (si applicable)</h4>
               <div className="flex flex-col gap-2 pl-4">
-                <div className="flex gap-4">
+                <div className="flex items-center gap-4">
                   <Field
                     type="radio"
                     name="maintenanceExt"
@@ -373,7 +349,7 @@ export default function ExternalisationForm() {
                   />
                   <label>Oui, je souhaite un suivi continu</label>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex items-center gap-4">
                   <Field
                     type="radio"
                     name="maintenanceExt"
@@ -389,7 +365,7 @@ export default function ExternalisationForm() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Budget approximatif</p>
                 {BudgetExtInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="budgetExt" value={items} />
                     <label>{items}</label>
                   </div>
@@ -402,7 +378,7 @@ export default function ExternalisationForm() {
 
                 <p>Détails souhaités pour mise en place</p>
                 {DetailExtInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="detailExt" value={items} />
                     <label>{items}</label>
                   </div>

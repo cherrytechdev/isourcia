@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Red_Hat_Display } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
-const interSans = Inter({
-  variable: "--font-inter-sans",
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
+const redHatDisplay = Red_Hat_Display({
+  variable: "--font-red-hat",
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -83,7 +83,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${interSans.variable} antialiased`}>
+      <body className={`${redHatDisplay.variable} antialiased`}>
         {children}
        <Toaster
   position="top-center"

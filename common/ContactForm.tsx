@@ -229,15 +229,15 @@ export default function ContactForm() {
             <div className="flex flex-col gap-2">
               <p>Je souhaite être contactez par</p>
               <div className="flex flex-col gap-2 pl-4">
-                <div className="flex gap-4">
+                <div className="flex items-center gap-4">
                   <Field type="checkbox" name="contact" value="Mail" />
                   <label>Mail</label>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex items-center gap-4">
                   <Field type="checkbox" name="contact" value="Whatsapp" />
                   <label>Whatsapp</label>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex items-center gap-4">
                   <Field type="checkbox" name="contact" value="Google Meet" />
                   <label>Google meet</label>
                 </div>

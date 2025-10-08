@@ -12,7 +12,6 @@ export const NavigationLink = [
   { label: "Accueil", link: "#home" },
   { label: "À propos", link: "#about" },
   { label: "Services", link: "#service" },
-  { label: "Partenaire", link: "#partner" },
   { label: "Contact", link: "#contact" },
 ];
 

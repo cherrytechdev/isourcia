@@ -119,7 +119,7 @@ export default function MarketAnalysis() {
                   const isOtherChecked = values.marketMainObj.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="marketMainObj"
@@ -160,7 +160,7 @@ export default function MarketAnalysis() {
                     values.marketExpSearch.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="marketExpSearch"
@@ -197,7 +197,7 @@ export default function MarketAnalysis() {
               <h4>3. Contenu disponible</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {MarketContentInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="marketContent" value={items} />
                     <label>{items}</label>
                   </div>
@@ -221,7 +221,7 @@ export default function MarketAnalysis() {
                 <div className="flex flex-col gap-2">
                   <p>Durée de la mission</p>
                   {MarketMissionDelayInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field
                         type="radio"
                         name="marketMissionDelay"
@@ -235,7 +235,7 @@ export default function MarketAnalysis() {
                 <div className="flex flex-col gap-2">
                   <p>Fréquence des envois emailing</p>
                   {MarketMailFreqInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field type="radio" name="marketMailFreq" value={items} />
                       <label>{items}</label>
                     </div>
@@ -245,7 +245,7 @@ export default function MarketAnalysis() {
                 <div className="flex flex-col gap-2">
                   <p>Taille de votre base de contacts</p>
                   {MarketContactBaseInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field
                         type="radio"
                         name="marketContactBase"
@@ -263,7 +263,7 @@ export default function MarketAnalysis() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Budget approximatif</p>
                 {MarketBudgetInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="marketBudget" value={items} />
                     <label>{items}</label>
                   </div>
@@ -273,7 +273,7 @@ export default function MarketAnalysis() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Délais souhaités pour mise en place</p>
                 {MarketTimelineInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="marketTimeline" value={items} />
                     <label>{items}</label>
                   </div>
@@ -289,7 +289,7 @@ export default function MarketAnalysis() {
                     values.marketOptionComp.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="marketOptionComp"
@@ -330,7 +330,7 @@ export default function MarketAnalysis() {
                     values.marketTechTools.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="marketTechTools"
