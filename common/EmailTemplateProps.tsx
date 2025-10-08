@@ -361,7 +361,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
           <div style={sectionStyle}>
             <h2 style={sectionTitleStyle}>
               <span style={barAccentStyle}></span>
-              Informations de contact
+              Informations de contact pour 8sens
             </h2>
 
             <div style={infoRowStyle}>

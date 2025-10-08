@@ -70,6 +70,7 @@ const schema = Yup.object().shape({
     otherwise: (schema) => schema.notRequired(),
   }),
 
+  dataManageMobile: Yup.array().min(1, "Vous devez en choisir un").required("Veuiller préciser le gestion des données"),
   otherDataManageMobile: Yup.string().when("dataManageMobile", {
     is: (val: string[]) => val?.includes("autre"),
     then: (schema) =>
@@ -324,16 +325,14 @@ export default function CreationMobileForm() {
                 <div className="flex flex-col gap-2">
                   <p>Gestion des données :</p>
                   {DataManageMobileInf.map((items, i) => {
-                    const isOtherChecked =
-                      values.dataManageMobile.includes("autre");
+                    const isOtherChecked = values.dataManageMobile.includes(items);
                     return (
                       <div key={i} className="flex flex-col gap-2">
                         <div className="flex gap-4">
                           <Field
-                            type="radio"
+                            type="checkbox"
                             name="dataManageMobile"
                             value={items}
-                            checked={values.dataManageMobile[0] === items}
                           />
                           <label>{items}</label>
                         </div>
