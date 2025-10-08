@@ -1,12 +1,18 @@
 "use client";
 
-import { CompetenciesInf, LanguageInf, DateContrat, TimeTravelInf } from "@/constant";
+import {
+  CompetenciesInf,
+  LanguageInf,
+  DateContrat,
+  TimeTravelInf,
+} from "@/constant";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import * as Yup from "yup";
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
+import Image from "next/image";
 
 interface FormValues {
   date: string;
@@ -26,8 +32,12 @@ interface FormValues {
 
 const schema = Yup.object().shape({
   date: Yup.string().required("Veuillez indiquer la date de début"),
-  contratDuration: Yup.string().required("Veuillez préciser la durée du contrat"),
-  travelDuration: Yup.string().required("Veuillez renseigner la durée du travail"),
+  contratDuration: Yup.string().required(
+    "Veuillez préciser la durée du contrat"
+  ),
+  travelDuration: Yup.string().required(
+    "Veuillez renseigner la durée du travail"
+  ),
   level: Yup.string().required("Veuillez indiquer le niveau d’études"),
 
   competencies: Yup.array()
@@ -36,14 +46,15 @@ const schema = Yup.object().shape({
       "at-least-one-competence",
       "Veuillez sélectionner au moins une compétence ou remplir le champ « Autre »",
       function (competencies) {
-        const { otherComp, date, contratDuration } = this.parent as any;
+        const { otherComp, date, contratDuration } = this.parent;
 
         // Ne pas valider si le formulaire vient d'être initialisé (logique conservée)
         if ((date ?? "") === "" && (contratDuration ?? "") === "") {
           return true;
         }
 
-        const hasCompetencies = Array.isArray(competencies) && competencies.length > 0;
+        const hasCompetencies =
+          Array.isArray(competencies) && competencies.length > 0;
         const hasOtherComp = otherComp && String(otherComp).trim() !== "";
 
         return hasCompetencies || hasOtherComp;
@@ -57,7 +68,7 @@ const schema = Yup.object().shape({
       "at-least-one-language",
       "Veuillez sélectionner au moins une langue ou remplir le champ « Autre »",
       function (language) {
-        const { otherLang, date, contratDuration } = this.parent as any;
+        const { otherLang, date, contratDuration } = this.parent;
 
         if ((date ?? "") === "" && (contratDuration ?? "") === "") {
           return true;
@@ -70,7 +81,6 @@ const schema = Yup.object().shape({
       }
     ),
   otherLang: Yup.string().nullable(),
-
 });
 
 const defaultValues: FormValues = {
@@ -85,15 +95,24 @@ const defaultValues: FormValues = {
   level: "",
   message: "",
   // initialise les objets avec les clés attendues pour éviter undefined
-  contractUnits: DateContrat.reduce((acc, k) => ({ ...acc, [k]: "" }), {} as Record<string, string>),
-  day: TimeTravelInf.reduce((acc, k) => {
-    const normalizedKey = k.toLowerCase().replace(/\s+/g, "_");
-    return { ...acc, [normalizedKey]: "" };
-  }, {} as Record<string, string>),
-  night: TimeTravelInf.reduce((acc, k) => {
-    const normalizedKey = k.toLowerCase().replace(/\s+/g, "_");
-    return { ...acc, [normalizedKey]: "" };
-  }, {} as Record<string, string>),
+  contractUnits: DateContrat.reduce(
+    (acc, k) => ({ ...acc, [k]: "" }),
+    {} as Record<string, string>
+  ),
+  day: TimeTravelInf.reduce(
+    (acc, k) => {
+      const normalizedKey = k.toLowerCase().replace(/\s+/g, "_");
+      return { ...acc, [normalizedKey]: "" };
+    },
+    {} as Record<string, string>
+  ),
+  night: TimeTravelInf.reduce(
+    (acc, k) => {
+      const normalizedKey = k.toLowerCase().replace(/\s+/g, "_");
+      return { ...acc, [normalizedKey]: "" };
+    },
+    {} as Record<string, string>
+  ),
 };
 
 export default function DetailForm() {
@@ -107,11 +126,18 @@ export default function DetailForm() {
   const initialValues: FormValues = {
     ...defaultValues,
     ...storedValues,
-    contractUnits: { ...(defaultValues.contractUnits), ...(storedValues?.contractUnits ?? {}) },
-    day: { ...(defaultValues.day), ...(storedValues?.day ?? {}) },
-    night: { ...(defaultValues.night), ...(storedValues?.night ?? {}) },
-    competencies: Array.isArray(storedValues?.competencies) ? storedValues.competencies : defaultValues.competencies,
-    language: Array.isArray(storedValues?.language) ? storedValues.language : defaultValues.language,
+    contractUnits: {
+      ...defaultValues.contractUnits,
+      ...(storedValues?.contractUnits ?? {}),
+    },
+    day: { ...defaultValues.day, ...(storedValues?.day ?? {}) },
+    night: { ...defaultValues.night, ...(storedValues?.night ?? {}) },
+    competencies: Array.isArray(storedValues?.competencies)
+      ? storedValues.competencies
+      : defaultValues.competencies,
+    language: Array.isArray(storedValues?.language)
+      ? storedValues.language
+      : defaultValues.language,
   };
 
   return (
@@ -138,7 +164,13 @@ export default function DetailForm() {
           <div className="flex flex-col gap-8 bg-white text-gray-700 p-10 max-w-4xl w-full rounded-lg">
             <div className="flex items-center justify-between">
               <Link href="/">
-                <img src="/icon/isourcia_original.png" alt="Accounting img" className="w-[100px] md:w-[150px] lg:w-[200px]" />
+                <Image
+                  src="/icon/isourcia_original.png"
+                  alt="Accounting img"
+                  width={1200}
+                  height={800}
+                  className="w-[100px] md:w-[150px] lg:w-[200px]"
+                />
               </Link>
               <p className="text-xl md:text-2xl lg:text-4xl">Comptable</p>
             </div>
@@ -146,7 +178,11 @@ export default function DetailForm() {
             <div className="flex flex-col gap-2">
               <label htmlFor="date">Date de début</label>
               <Field type="date" name="date" id="date" />
-              <ErrorMessage name="date" component="div" className="error-message" />
+              <ErrorMessage
+                name="date"
+                component="div"
+                className="error-message"
+              />
             </div>
 
             {/* Durée du contrat */}
@@ -162,15 +198,26 @@ export default function DetailForm() {
                 onClick={() => setOpenCt(true)}
                 value={values.contratDuration}
               />
-              <ErrorMessage name="contratDuration" component="div" className="error-message" />
+              <ErrorMessage
+                name="contratDuration"
+                component="div"
+                className="error-message"
+              />
               {openCt && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setOpenCt(false)}></div>
+                  <div
+                    className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+                    onClick={() => setOpenCt(false)}
+                  ></div>
 
                   <div className="relative z-10 flex flex-col gap-2 bg-white text-gray-700 p-4 rounded-md shadow-lg w-[40%] ">
                     <div className="flex justify-between mb-2">
                       <p className="font-semibold">Durée du contrat</p>
-                      <button type="button" className="cursor-pointer font-bold" onClick={() => setOpenCt(false)}>
+                      <button
+                        type="button"
+                        className="cursor-pointer font-bold"
+                        onClick={() => setOpenCt(false)}
+                      >
                         ×
                       </button>
                     </div>
@@ -178,7 +225,10 @@ export default function DetailForm() {
                     <div className="xl:flex gap-4">
                       {DateContrat.map((unit, i) => (
                         <div key={i} className="flex flex-col">
-                          <label htmlFor={`contractUnit-${unit}`} className="text-center text-sm">
+                          <label
+                            htmlFor={`contractUnit-${unit}`}
+                            className="text-center text-sm"
+                          >
                             {unit}
                           </label>
                           <input
@@ -186,8 +236,17 @@ export default function DetailForm() {
                             id={`contractUnit-${unit}`}
                             min={1}
                             className="border p-1 rounded-md w-full"
-                            value={(values.contractUnits && values.contractUnits[unit]) ?? ""}
-                            onChange={(e) => setFieldValue(`contractUnits.${unit}`, e.target.value)}
+                            value={
+                              (values.contractUnits &&
+                                values.contractUnits[unit]) ??
+                              ""
+                            }
+                            onChange={(e) =>
+                              setFieldValue(
+                                `contractUnits.${unit}`,
+                                e.target.value
+                              )
+                            }
                           />
                         </div>
                       ))}
@@ -201,7 +260,10 @@ export default function DetailForm() {
                           const val = values.contractUnits?.[unit];
                           return val ? `${val} ${unit}` : null;
                         }).filter(Boolean);
-                        setFieldValue("contratDuration", (selected as string[]).join(" "));
+                        setFieldValue(
+                          "contratDuration",
+                          (selected as string[]).join(" ")
+                        );
                         setOpenCt(false);
                       }}
                     >
@@ -225,10 +287,17 @@ export default function DetailForm() {
                 onClick={() => setOpenTm(true)}
                 value={values.travelDuration}
               />
-              <ErrorMessage name="travelDuration" component="div" className="error-message" />
+              <ErrorMessage
+                name="travelDuration"
+                component="div"
+                className="error-message"
+              />
               {openTm && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setOpenTm(false)}></div>
+                  <div
+                    className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+                    onClick={() => setOpenTm(false)}
+                  ></div>
 
                   <div
                     className={`relative z-10 flex flex-col gap-2 text-gray-700 p-4 rounded-md shadow-lg w-[50%] transform transition-all
@@ -236,12 +305,18 @@ export default function DetailForm() {
                   >
                     <div className="flex justify-between mb-2">
                       <p className="font-semibold">Temps de travail</p>
-                      <button type="button" className="cursor-pointer font-bold" onClick={() => setOpenTm(false)}>
+                      <button
+                        type="button"
+                        className="cursor-pointer font-bold"
+                        onClick={() => setOpenTm(false)}
+                      >
                         ×
                       </button>
                     </div>
 
-                    <div className={`rounded-md bg-blue-500 w-fit flex gap-2 mb-2 ${activeForm === "night" ? "border border-white" : ""}`}>
+                    <div
+                      className={`rounded-md bg-blue-500 w-fit flex gap-2 mb-2 ${activeForm === "night" ? "border border-white" : ""}`}
+                    >
                       <button
                         type="button"
                         className={`cursor-pointer transition-all ${activeForm === "day" ? "shadow-lg rounded-l-md rounded-r-0 bg-[#040A18] p-2 font-bold text-white" : "text-white px-2"}`}
@@ -260,17 +335,36 @@ export default function DetailForm() {
 
                     <div className="xl:flex gap-4">
                       {TimeTravelInf.map((item, i) => {
-                        const normalizedKey = item.toLowerCase().replace(/\s+/g, "_");
+                        const normalizedKey = item
+                          .toLowerCase()
+                          .replace(/\s+/g, "_");
                         return (
-                          <div key={i} className="flex flex-col items-center gap-2">
-                            <label htmlFor={`${activeForm}-${normalizedKey}`} className="text-sm">{item}</label>
+                          <div
+                            key={i}
+                            className="flex flex-col items-center gap-2"
+                          >
+                            <label
+                              htmlFor={`${activeForm}-${normalizedKey}`}
+                              className="text-sm"
+                            >
+                              {item}
+                            </label>
                             <input
                               type="text"
                               id={`${activeForm}-${normalizedKey}`}
                               placeholder="ex: 1h 30"
                               className="border p-1 rounded-md w-full"
-                              value={(values[activeForm] && values[activeForm][normalizedKey]) ?? ""}
-                              onChange={(e) => setFieldValue(`${activeForm}.${normalizedKey}`, e.target.value)}
+                              value={
+                                (values[activeForm] &&
+                                  values[activeForm][normalizedKey]) ??
+                                ""
+                              }
+                              onChange={(e) =>
+                                setFieldValue(
+                                  `${activeForm}.${normalizedKey}`,
+                                  e.target.value
+                                )
+                              }
                             />
                           </div>
                         );
@@ -282,7 +376,9 @@ export default function DetailForm() {
                       className="mt-2 w-fit bg-[#60A5FA] text-white px-3 py-1 rounded-md"
                       onClick={() => {
                         const dayTimes = TimeTravelInf.map((unit) => {
-                          const normalizedKey = unit.toLowerCase().replace(/\s+/g, "_");
+                          const normalizedKey = unit
+                            .toLowerCase()
+                            .replace(/\s+/g, "_");
                           const val = values.day?.[normalizedKey];
                           return val ? `${val} ${unit}` : null;
                         })
@@ -290,7 +386,9 @@ export default function DetailForm() {
                           .join(", ");
 
                         const nightTimes = TimeTravelInf.map((unit) => {
-                          const normalizedKey = unit.toLowerCase().replace(/\s+/g, "_");
+                          const normalizedKey = unit
+                            .toLowerCase()
+                            .replace(/\s+/g, "_");
                           const val = values.night?.[normalizedKey];
                           return val ? `${val} ${unit}` : null;
                         })
@@ -312,9 +410,18 @@ export default function DetailForm() {
 
             {/* Année d'expérience */}
             <div className="flex flex-col gap-2">
-              <label htmlFor="yearExperiences">Année d'expérience</label>
-              <Field type="text" name="yearExperiences" id="yearExperiences" placeholder="Veuillez préciser les années d'expériences" />
-              <ErrorMessage name="yearExperiences" component="div" className="error-message" />
+              <label htmlFor="yearExperiences">Année d&apos;expérience</label>
+              <Field
+                type="text"
+                name="yearExperiences"
+                id="yearExperiences"
+                placeholder="Veuillez préciser les années d'expériences"
+              />
+              <ErrorMessage
+                name="yearExperiences"
+                component="div"
+                className="error-message"
+              />
             </div>
 
             {/* Compétences */}
@@ -326,13 +433,20 @@ export default function DetailForm() {
                   render={(arrayHelpers) => (
                     <div className="flex flex-wrap gap-2">
                       {CompetenciesInf.map((item, i) => {
-                        const active = !!(values.competencies && values.competencies.includes(item));
+                        const active = !!(
+                          values.competencies &&
+                          values.competencies.includes(item)
+                        );
                         return (
                           <button
                             type="button"
                             key={i}
                             onClick={() =>
-                              active ? arrayHelpers.remove(values.competencies.indexOf(item)) : arrayHelpers.push(item)
+                              active
+                                ? arrayHelpers.remove(
+                                    values.competencies.indexOf(item)
+                                  )
+                                : arrayHelpers.push(item)
                             }
                             className={`cursor-pointer rounded-xl px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
                           >
@@ -345,10 +459,20 @@ export default function DetailForm() {
                 />
                 <div className="flex flex-col gap-2">
                   <label htmlFor="otherComp">Autres compétences</label>
-                  <Field as="textarea" name="otherComp" id="otherComp" placeholder="Autres compétences non listées" rows={3} />
+                  <Field
+                    as="textarea"
+                    name="otherComp"
+                    id="otherComp"
+                    placeholder="Autres compétences non listées"
+                    rows={3}
+                  />
                 </div>
               </div>
-              <ErrorMessage name="competencies" component="div" className="error-message" />
+              <ErrorMessage
+                name="competencies"
+                component="div"
+                className="error-message"
+              />
             </div>
 
             {/* Langues */}
@@ -360,13 +484,19 @@ export default function DetailForm() {
                   render={(arrayHelpers) => (
                     <div className="flex flex-wrap gap-2">
                       {LanguageInf.map((item, i) => {
-                        const active = !!(values.language && values.language.includes(item));
+                        const active = !!(
+                          values.language && values.language.includes(item)
+                        );
                         return (
                           <button
                             type="button"
                             key={i}
                             onClick={() =>
-                              active ? arrayHelpers.remove(values.language.indexOf(item)) : arrayHelpers.push(item)
+                              active
+                                ? arrayHelpers.remove(
+                                    values.language.indexOf(item)
+                                  )
+                                : arrayHelpers.push(item)
                             }
                             className={`cursor-pointer rounded-xl h-fit px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
                           >
@@ -379,23 +509,48 @@ export default function DetailForm() {
                 />
                 <div className="flex flex-col gap-2">
                   <label htmlFor="otherLang">Autres langues</label>
-                  <Field as="textarea" name="otherLang" id="otherLang" placeholder="Autres langues non listées" rows={3} />
+                  <Field
+                    as="textarea"
+                    name="otherLang"
+                    id="otherLang"
+                    placeholder="Autres langues non listées"
+                    rows={3}
+                  />
                 </div>
               </div>
-              <ErrorMessage name="language" component="div" className="error-message" />
+              <ErrorMessage
+                name="language"
+                component="div"
+                className="error-message"
+              />
             </div>
-
 
             <div className="flex flex-col gap-2">
-              <label htmlFor="level">Niveau d'étude</label>
-              <Field type="text" name="level" id="level" placeholder="Veuillez préciser le niveau d'étude" className="border p-2 rounded-md focus:outline-blue-500" />
-              <ErrorMessage name="level" component="div" className="error-message" />
+              <label htmlFor="level">Niveau d&apos;étude</label>
+              <Field
+                type="text"
+                name="level"
+                id="level"
+                placeholder="Veuillez préciser le niveau d'étude"
+                className="border p-2 rounded-md focus:outline-blue-500"
+              />
+              <ErrorMessage
+                name="level"
+                component="div"
+                className="error-message"
+              />
             </div>
-
 
             <div className="flex flex-col gap-2">
               <label htmlFor="message">Commentaire supplémentaire</label>
-              <Field as="textarea" name="message" id="message" rows={5} className="border p-2 rounded-md resize-none focus:outline-blue-500" placeholder="Ajoutez tout commentaire supplémentaire..." />
+              <Field
+                as="textarea"
+                name="message"
+                id="message"
+                rows={5}
+                className="border p-2 rounded-md resize-none focus:outline-blue-500"
+                placeholder="Ajoutez tout commentaire supplémentaire..."
+              />
             </div>
 
             <button
