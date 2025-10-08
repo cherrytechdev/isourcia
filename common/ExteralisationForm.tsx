@@ -169,7 +169,7 @@ export default function ExternalisationForm() {
                 <p>Durée de l&apos;externalisation</p>
                 <div className="flex flex-col gap-2">
                   {DurationExtInf.map((items, i) => (
-                    <div key={i} className="flex items-center gap-2">
+                    <div key={i} className="flex items-center gap-4">
                       <Field type="checkbox" name="durationExt" value={items} />
                       <label>{items}</label>
                     </div>
@@ -289,37 +289,13 @@ export default function ExternalisationForm() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <p>Diplômes ou certifications requis</p>
-                  <div className="flex flex-col gap-2">
-                    <div className="flex gap-6">
-                      <div className="flex items-center gap-4">
-                        <Field type="radio" name="chooseDeg" value="Oui" />
-                        <label>Oui</label>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <Field type="radio" name="chooseDeg" value="Non" />
-                        <label>Non</label>
-                      </div>
-                    </div>
-                    <Field
-                      type="text"
-                      name="yesInpExt"
-                      placeholder="Précisez les diplômes requis"
-                      disabled={values.chooseDeg == "Non"}
-                      className={`${values.chooseDeg == "Non" ? "!border !border-gray-400" : ""}`}
-                    />
-                    <ErrorMessage
-                      name="yesInpExt"
-                      component="div"
-                      className="text-red-500 text-sm"
-                    />
-                  </div>
                   <div>
                     <Field
                       rows={5}
                       as="textarea"
                       name="commentTxt"
                       className="resize-none"
-                      placeholder="Ajoutez votre commentaire"
+                      placeholder="Entrez le diplôme requis"
                     />
                   </div>
                 </div>

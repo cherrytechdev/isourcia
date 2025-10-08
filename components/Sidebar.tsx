@@ -48,7 +48,7 @@ export default function Sidebar({ items, activeItem, onSelect }: SidebarProps) {
         ${isOpen ? "translate-x-0 w-64" : "-translate-x-64 w-64"}`}
       >
         <div className="pt-20 p-6 border-b border-gray-700">
-          <h2 className="text-2xl font-bold"><span className="text-red-400">8</span>Sens - Logiciels</h2>
+          <h2 className="text-3xl font-bold text-center"><span className="text-red-400">8</span>{" "}Sens</h2>
         </div>
 
         <ul className="flex-1 overflow-y-auto">

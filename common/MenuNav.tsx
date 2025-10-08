@@ -21,7 +21,7 @@ export default function MenuNav({
     >
       <Container className="flex flex-col gap-8 lg:gap-6 h-screen justify-center ">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-          <div className="lg:flex flex-col gap-4 hidden ">
+          <div className="lg:flex flex-col items-center gap-4 hidden ">
             <Image
               src="/favicon.png"
               alt="logo image"
@@ -29,11 +29,13 @@ export default function MenuNav({
               height={300}
               className="w-[200px]"
             />
-            {MenuNavInf.map((items, i) => (
-              <div key={i} className="text-2xl font-light">
-                {items}
-              </div>
-            ))}
+            <div className="flex flex-col gap-4">
+              {MenuNavInf.map((items, i) => (
+                <div key={i} className="text-xl font-thin">
+                  {items}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="">
             <div className="flex flex-col gap-4 lg:text-end">
