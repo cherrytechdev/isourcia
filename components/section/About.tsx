@@ -7,31 +7,31 @@ import Infinite from "../icons/Infinite";
 function About() {
   const images = [
     [
-      "/img/about/1.png",
-      "/img/about/2.png",
-      "/img/about/3.png",
-      "/img/about/4.png",
-      "/img/about/5.png",
-      "/img/about/6.png",
+      "/img/about/1.webp",
+      "/img/about/2.webp",
+      "/img/about/3.webp",
+      "/img/about/4.webp",
+      "/img/about/5.webp",
+      "/img/about/6.webp",
     ],
     [
-      "/img/about/7.png",
+      "/img/about/7.webp",
 
-      "/img/about/9.png",
-      "/img/about/10.png",
-      "/img/about/11.png",
+      "/img/about/9.webp",
+      "/img/about/10.webp",
+      "/img/about/11.webp",
     ],
     [
-      "/img/about/13.png",
-      "/img/about/14.png",
-      "/img/about/15.png",
-      "/img/about/16.png",
+      "/img/about/13.webp",
+      "/img/about/14.webp",
+      "/img/about/15.webp",
+      "/img/about/16.webp",
     ],
     [
-      "/img/about/18.png",
-      "/img/about/12.png",
-      "/img/about/17.png",
-      "/img/about/8.png",
+      "/img/about/18.webp",
+      "/img/about/12.webp",
+      "/img/about/17.webp",
+      "/img/about/8.webp",
     ],
   ];
   return (
