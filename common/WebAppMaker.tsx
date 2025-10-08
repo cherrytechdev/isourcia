@@ -33,9 +33,10 @@ const schema = Yup.object().shape({
     webContent: Yup.array()
         .min(1, "Veuillez indiquer les compétences requises pour le contenu web"),
 
-    webBudget: Yup.string()
-        .required("Veuillez indiquer le budget approximatif"),
-
+    webBudget: Yup.number()
+        .required("Veuillez indiquer le budget approximatif")
+        .positive("Le prix doit être positive")
+        .min(100, "Le prix doit être supérieur à 100$")
 });
 
 
@@ -243,10 +244,11 @@ export default function WebAppMaker() {
                             <div className="flex flex-col gap-2 pl-4">
                                 <p>Budget approximatif</p>
                                 <Field
-                                    type="text"
+                                    type="number"
                                     name="webBudget"
                                     placeholder="en Dollar"
-                                />
+                                    min="100"
+                                    />
                                 <ErrorMessage
                                     name="webBudget"
                                     component="div"

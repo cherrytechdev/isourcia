@@ -52,6 +52,7 @@ export default function ContactForm() {
                 company: "",
                 physicalAddress: "",
                 contact: [],
+                promotionCode: "",
                 tagResource: values.ressource
             }}
             validationSchema={schema}
@@ -215,6 +216,15 @@ export default function ContactForm() {
                                     name="contact"
                                     component="div"
                                     className="error-message" />
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                                <label>Code promo</label>
+                                <Field
+                                    type="text"
+                                    name="promotionCode"
+                                    placeholder="Veulliez entrer votre code promo"
+                                />
                             </div>
                         </div>
                         <button
