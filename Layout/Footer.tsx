@@ -1,5 +1,4 @@
 import Container from "@/common/Container";
-import Infinite from "@/components/icons/Infinite";
 import Mail from "@/components/icons/Mail";
 import Whatsapp from "@/components/icons/Whatsapp";
 import Image from "next/image";
