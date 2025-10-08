@@ -7,7 +7,7 @@ function Separator(props: Props) {
   const { background = "#D9D9D9", direction = "up" } = props;
   return (
     <div
-      className="w-full h-[50px] lg:h-[200px] "
+      className="w-full h-[50px] lg:h-[100px] "
       style={{
         clipPath:
           direction == "down"
