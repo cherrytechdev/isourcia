@@ -126,7 +126,7 @@ export default function CreationMobileForm() {
                     values.objectiveMobile.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="objectiveMobile"
@@ -167,7 +167,7 @@ export default function CreationMobileForm() {
                     values.plateformMobile.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="plateformMobile"
@@ -205,7 +205,7 @@ export default function CreationMobileForm() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Disposez-vous d&apos;une charte graphique ?</p>
                 <div className="flex flex-col gap-2">
-                  <div className="flex gap-2">
+                  <div className="flex items-center gap-2">
                     <Field
                       type="radio"
                       name="designMobile"
@@ -213,7 +213,7 @@ export default function CreationMobileForm() {
                     />
                     <label>Oui (je peux la fournir)</label>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex items-center gap-2">
                     <Field
                       type="radio"
                       name="designMobile"
@@ -225,7 +225,7 @@ export default function CreationMobileForm() {
                 <p>Style visuel préféré:</p>
                 <div className="flex flex-col gap-2">
                   {DesignMobileInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field
                         type="checkbox"
                         name="designStyleMobile"
@@ -272,7 +272,7 @@ export default function CreationMobileForm() {
                     values.functionalityMobile.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="functionalityMobile"
@@ -311,7 +311,7 @@ export default function CreationMobileForm() {
                 <div className="flex flex-col gap-2 pl-4">
                   <p>Contenu de l&apos;application :</p>
                   {ApkContentMobileInf.map((items, i) => (
-                    <div key={i} className="flex gap-4">
+                    <div key={i} className="flex items-center gap-4">
                       <Field
                         type="radio"
                         name="apkContentMobile"
@@ -328,7 +328,7 @@ export default function CreationMobileForm() {
                     const isOtherChecked = values.dataManageMobile.includes(items);
                     return (
                       <div key={i} className="flex flex-col gap-2">
-                        <div className="flex gap-4">
+                        <div className="flex items-center gap-4">
                           <Field
                             type="checkbox"
                             name="dataManageMobile"
@@ -367,7 +367,7 @@ export default function CreationMobileForm() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Souhaitez-vous un suivi après livraison ?</p>
                 {MaintainMobileInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="maintainMobile" value={items} />
                     <label>{items}</label>
                   </div>
@@ -380,7 +380,7 @@ export default function CreationMobileForm() {
               <div className="flex flex-col gap-2 pl-4">
                 <p>Budget approximatif</p>
                 {BudgetMobileInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="budgetMobile" value={items} />
                     <label>{items}</label>
                   </div>
@@ -388,7 +388,7 @@ export default function CreationMobileForm() {
 
                 <p>Délais souhaités pour la première version (MVP)</p>
                 {DelayMVPMobileInf.map((items, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex items-center gap-4">
                     <Field type="radio" name="delayMvpMobile" value={items} />
                     <label>{items}</label>
                   </div>
@@ -408,7 +408,7 @@ export default function CreationMobileForm() {
                   const isOtherChecked = values.techMobile.includes("autre");
                   return (
                     <div key={i} className="flex flex-col gap-2">
-                      <div className="flex gap-4">
+                      <div className="flex items-center gap-4">
                         <Field
                           type="checkbox"
                           name="techMobile"
