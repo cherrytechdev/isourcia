@@ -63,7 +63,7 @@ export default function Services() {
                                 height={800}
                                 className="w-[100px] md:w-[138px] mx-auto"
                               />
-                              <h3 className="font-bold text-2xl text-[#040A18] mt-4">
+                              <h3 className="font-bold  text-[#040A18] mt-4">
                                 {items.title}
                               </h3>
                             </div>

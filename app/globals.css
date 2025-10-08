@@ -21,7 +21,7 @@ body,
 html {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-red-hat);
   @apply text-sm md:text-base overflow-x-hidden min-h-screen scroll-smooth;
 }
 

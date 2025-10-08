@@ -8,65 +8,93 @@ type FeatureTableProps = {
 
 export default function FeatureTable({ title, features }: FeatureTableProps) {
   return (
-    <div className="mb-16">
-      <h2 className="text-xl md:text-3xl font-bold mb-8 text-gray-800">
+    <section className="mb-12 sm:mb-16">
+      {/* Titre responsive */}
+      <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 text-gray-800 tracking-tight">
         {title}
       </h2>
 
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-gradient-to-r from-purple-900 to-red-500 text-white font-semibold">
-          <div>Fonctionnalité</div>
-          <div className="text-center hidden md:block">Initiale</div>
-          <div className="text-center hidden md:block">Evolution</div>
-          <div className="text-center hidden md:block">Amplitude</div>
-        </div>
+      {/* Conteneur scrollable - FORCÉ pour mobile */}
+      <div 
+        className="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
+        style={{
+          WebkitOverflowScrolling: 'touch',
+          msOverflowStyle: '-ms-autohiding-scrollbar'
+        }}
+      >
+        {/* Table avec largeur minimale adaptative */}
+        <table className="min-w-[700px] lg:min-w-full bg-white shadow-lg rounded-xl border border-gray-200 table-auto">
+          {/* En-tête */}
+          <thead>
+            <tr className="bg-gradient-to-r from-purple-900 to-red-500 text-white">
+              <th className="py-3 px-3 sm:px-4 text-left font-semibold whitespace-nowrap min-w-[180px] sm:min-w-[200px]">
+                Fonctionnalité
+              </th>
+              <th className="py-3 px-3 sm:px-4 text-center font-bold whitespace-nowrap min-w-[100px] sm:min-w-[120px]">
+                Initiale
+              </th>
+              <th className="py-3 px-3 sm:px-4 text-center font-bold whitespace-nowrap min-w-[100px] sm:min-w-[120px]">
+                Évolution
+              </th>
+              <th className="py-3 px-3 sm:px-4 text-center font-bold whitespace-nowrap min-w-[100px] sm:min-w-[120px]">
+                Amplitude
+              </th>
+            </tr>
+          </thead>
 
-        {features.map((f, i) => (
-          <div
-            key={i}
-            className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 border-b border-gray-200 hover:bg-gray-50 group"
-          >
-            <div className="flex items-center space-x-3">
-              <span className="font-medium text-gray-800">{f.name}</span>
-            </div>
-
-            <div className="flex md:justify-center items-center">
-              <span className="md:hidden text-gray-500 mr-2">Initiale:</span>
-              <div
-                className={`px-3 py-1 rounded-full text-sm font-medium ${
-                  f.initial === "✓"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-blue-100 text-blue-800"
-                }`}
+          {/* Corps du tableau */}
+          <tbody>
+            {features.map((f, i) => (
+              <tr
+                key={i}
+                className={`transition-colors duration-200 ${
+                  i % 2 === 0 ? "bg-white" : "bg-gray-50"
+                } hover:bg-gray-100`}
               >
-                {f.initial || "-"}
-              </div>
-            </div>
+                {/* Nom de la fonctionnalité */}
+                <td className="py-3 px-3 sm:px-4 text-gray-800 font-medium whitespace-nowrap min-w-[180px] sm:min-w-[200px]">
+                  <span className="text-sm sm:text-base">{f.name}</span>
+                </td>
 
-            <div className="flex md:justify-center items-center">
-              <span className="md:hidden text-gray-500 mr-2">Evolution:</span>
-              <div
-                className={`px-3 py-1 rounded-full text-sm font-medium ${
-                  f.evolution === "Simple"
-                    ? "bg-yellow-100 text-yellow-800"
-                    : f.evolution === "Etendue"
-                      ? "bg-purple-100 text-purple-800"
-                      : "bg-gray-100 text-gray-800"
-                }`}
-              >
-                {f.evolution || "-"}
-              </div>
-            </div>
+                {/* Initiale */}
+                <td className="py-3 px-3 sm:px-4 text-center whitespace-nowrap min-w-[100px] sm:min-w-[120px]">
+                  <span
+                    className={`inline-block px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
+                      f.initial === "✓"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-blue-100 text-blue-800"
+                    }`}
+                  >
+                    {f.initial || "-"}
+                  </span>
+                </td>
 
-            <div className="flex md:justify-center items-center">
-              <span className="md:hidden text-gray-500 mr-2">Amplitude:</span>
-              <div className="px-3 py-1 bg-gradient-to-r from-purple-100 to-red-100 text-purple-800 rounded-full text-sm font-medium">
-                {f.amplitude || "-"}
-              </div>
-            </div>
-          </div>
-        ))}
+                {/* Évolution */}
+                <td className="py-3 px-3 sm:px-4 text-center whitespace-nowrap min-w-[100px] sm:min-w-[120px]">
+                  <span
+                    className={`inline-block px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
+                      f.evolution === "Simple"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : f.evolution === "Etendue"
+                        ? "bg-purple-100 text-purple-800"
+                        : "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {f.evolution || "-"}
+                  </span>
+                </td>
+
+                {/* Amplitude */}
+                <td className="py-3 px-3 sm:px-4 text-center whitespace-nowrap min-w-[100px] sm:min-w-[120px]">
+                  <span className="inline-block px-2 sm:px-3 py-1 bg-gradient-to-r from-purple-100 to-red-100 text-purple-800 rounded-full text-xs sm:text-sm font-medium">
+                    {f.amplitude || "-"}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
+    </section>
   );
 }

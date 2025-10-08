@@ -225,7 +225,7 @@ export default function DetailForm() {
                       </button>
                     </div>
 
-                    <div className="xl:flex gap-4">
+                    <div className="xl:flex items-center gap-4">
                       {DateContrat.map((unit, i) => (
                         <div key={i} className="flex flex-col">
                           <label
@@ -316,7 +316,7 @@ export default function DetailForm() {
 
                     {/* Toggle jour/nuit */}
                     <div
-                      className={`rounded-md bg-blue-500 w-fit flex gap-2 mb-2 
+                      className={`rounded-md bg-blue-500 w-fit flex items-center gap-2 mb-2 
                       ${activeForm === "night" ? "border border-white" : ""}`}
                     >
                       <button
@@ -338,7 +338,7 @@ export default function DetailForm() {
                     </div>
 
                     {/* Champs inputs */}
-                    <div className="xl:flex gap-4">
+                    <div className="xl:flex items-center gap-4">
                       {TimeTravelInf.map((item, i) => {
                         const normalizedKey = item
                           .toLowerCase()

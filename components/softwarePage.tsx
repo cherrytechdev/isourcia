@@ -12,32 +12,35 @@ export default function SoftwarePage({
   bGround,
 }: Software) {
   return (
-    <div className="bg-white pb-6 2xl:max-w-6xl mx-auto">
-      <Container className="min-h-screen">
+    <div className="bg-white pb-6">
+      {/* Container principal SANS overflow restriction */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Image
           src={bGround as string}
           alt={bGround as string}
           width={1200}
           height={800}
+          className="w-full h-auto"
         />
-        <h1 className="text-5xl font-bold my-10 text-gray-700">{title}</h1>
-        <div className="space-y-4 text-gray-700 mb-12">
+        
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold my-8 sm:my-10 text-gray-700">
+          {title}
+        </h1>
+        
+        {/* Description responsive */}
+        <div className="space-y-4 text-gray-700 mb-8 sm:mb-12">
           {description.map((p, i) => (
-            <p key={i} className="text-lg">
+            <p key={i} className="text-base leading-relaxed">
               {p}
             </p>
           ))}
         </div>
 
+        {/* Tables - UNIQUEMENT une fois */}
         {tables.map((table, i) => (
           <FeatureTable key={i} title={table.title} features={table.features} />
         ))}
-      </Container>
-      <Container className="overflow-x-auto">
-        {tables.map((table, i) => (
-          <FeatureTable key={i} title={table.title} features={table.features} />
-        ))}
-      </Container>
+      </div>
 
       {/* Bouton Contact flottant */}
       <Link
