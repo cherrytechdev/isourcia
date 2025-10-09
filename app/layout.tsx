@@ -11,7 +11,7 @@ const redHatDisplay = Red_Hat_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Isourcia | Créativité, Stratégie & Innovation",
+  title: "isourcia",
   description:
     "Avec nous, la différence, c’est l’impact. Nos talents vont bien au-delà d’une prestation : ils traduisent vos valeurs et donnent de la force à vos projets. Créativité, stratégie, innovation : nous transformons vos besoins en solutions concrètes, adaptées à vos ambitions.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   creator: "Isourcia",
   publisher: "Isourcia",
   openGraph: {
-    title: "Isourcia — Créativité, Stratégie & Innovation",
+    title: "isourcia",
     description:
       "Avec nous, la différence, c’est l’impact. Nos talents vont bien au-delà d’une prestation : ils traduisent vos valeurs et donnent de la force à vos projets.",
     url: "https://isourcia.ca",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Isourcia — Créativité, Stratégie & Innovation",
+    title: "isourcia",
     description:
       "Nos talents traduisent vos valeurs et donnent de la force à vos projets. Découvrez notre approche créative et stratégique.",
     site: "@isourcia",
@@ -85,11 +85,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${redHatDisplay.variable} antialiased`}>
         {children}
-       <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
-        </body>
+        <Toaster position="top-center" reverseOrder={false} />
+      </body>
     </html>
   );
 }

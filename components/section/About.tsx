@@ -56,7 +56,7 @@ function About() {
                     key={index}
                     src={image}
                     alt="brand image"
-                    className="w-full h-auto cursor-pointer "
+                    className="w-full h-auto cursor-pointer transition-all duration-500 hover:brightness-50 "
                     width={1200}
                     height={800}
                     onClick={() => {
