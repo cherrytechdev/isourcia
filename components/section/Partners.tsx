@@ -1,12 +1,18 @@
+"use client";
+
 import Container from "@/common/Container";
 import React from "react";
 import Infinite from "../icons/Infinite";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 function Partners() {
   const images = [
     "/img/partner/partner-one.png",
-
     "/img/partner/partner-three.png",
     "/img/partner/partner-four.png",
     "/img/partner/partner-two.png",
@@ -14,7 +20,7 @@ function Partners() {
   ];
   return (
     <div id="partner">
-      <Container className="flex flex-col gap-10 md:gap-14 py-10 ">
+      <Container className="flex flex-col gap-10 md:gap-14 py-20 ">
         <div className="flex flex-col gap-5 ">
           <h2 className="uppercase font-light text-4xl md:text-5xl lg:text-6xl text-center ">
             <span className="text-red-500">il nous font </span> confiance
@@ -26,7 +32,7 @@ function Partners() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="p-5 md:p-8 border border-white flex items-center  ">
             <Image
               src={"/img/partner/partner-image.png"}
@@ -49,6 +55,37 @@ function Partners() {
               />
             ))}
           </div>
+        </div> */}
+        <div className="w-full h-auto">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1.5}
+            breakpoints={{
+              768: {
+                slidesPerView: 3,
+              },
+              1024: { slidesPerView: 4 },
+            }}
+            // navigation
+            loop={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            className="w-full relative px-10 text-white flex !items-center "
+          >
+            {images.map((image, id) => (
+              <SwiperSlide key={id} className="!my-auto">
+                <div className="my-auto">
+                  <Image
+                    src={image}
+                    width={1200}
+                    height={800}
+                    alt="partners image logo"
+                    className=" w-[200px] h-auto"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Container>
     </div>
