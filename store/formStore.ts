@@ -2,7 +2,6 @@
 import { create } from "zustand";
 
 interface FormValues {
-  eightSens: string[];
   ressourceRecrut: string
   service: string
 
@@ -186,7 +185,6 @@ const initialValues: FormValues = {
   webOptions: [],
   webTechnology: [],
   otherWebTechnology: "",
-  eightSens: []
 };
 
 export const useFormStore = create<FormStore>((set) => ({

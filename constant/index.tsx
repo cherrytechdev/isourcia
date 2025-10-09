@@ -405,12 +405,3 @@ export const WebTechnologyInf = [
   "Autre",
 ];
 
-export const EightSensInf = [
-  "Gestion",
-  "Compta",
-  "XRM",
-  "TPV",
-  "eWMS",
-  "8print",
-  "Polices code barre",
-];

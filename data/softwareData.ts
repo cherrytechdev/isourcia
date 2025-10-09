@@ -4,6 +4,7 @@ export type Feature = {
   evolution?: string;
   amplitude?: string;
   included?: string;
+  catalogue?: string;
 };
 
 export type Software = {
@@ -1436,27 +1437,31 @@ export const softwareData: Record<string, Software> = {
     ],
     tables: [
       {
-        title: "Catalogue",
+        title: "",
         features: [
           {
+            name: "Description",
+            catalogue: "HT",
+          },
+          {
             name: "CODE 39 300 ppp – 30 pts – Légende et sans légende",
-            included: "80€",
+            catalogue: "80€",
           },
           {
             name: "2/5 Entrelacé 300 ppp – 30 pts – Légende et sans légende",
-            included: "180€",
+            catalogue: "180€",
           },
           {
             name: "EAN 8 et 13 300 ppp – 30 pts – Légende et sans légende (ISBN et ISSN)",
-            included: "180€",
+            catalogue: "180€",
           },
           {
             name: "Code 128 300 ppp – 30 pts – Légende et sans légende : Module A, B – Module C",
-            included: "200€",
+            catalogue: "200€",
           },
           {
             name: "EAN 128 300 ppp – 60 pts – Module A, B, C",
-            included: "250€",
+            catalogue: "250€",
           },
         ],
       },

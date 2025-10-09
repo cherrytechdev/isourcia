@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useFormStore } from "@/store/formStore";
-import { EightSensInf } from "@/constant";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -30,11 +29,6 @@ const schema = Yup.object().shape({
 
   physicalAddress: Yup.string().required("L’adresse physique est requise"),
 
-  eightSens: Yup.array()
-    .of(Yup.string())
-    .min(1, "Vous devez sélectionner au moins un élément dans les huit sens")
-    .required("La sélection d’au moins un élément est requise"),
-
   contact: Yup.array().min(1, "Vous devez sélectionner au moins un contact"),
 });
 
@@ -47,10 +41,10 @@ export default function ContactForm() {
         name: "",
         firstname: "",
         nPhone: "",
-        eightSens: [],
         mail: "",
         company: "",
         physicalAddress: "",
+        commentary8Sens: "",
         contact: [],
         promotionCode: "",
         tagResource: values.ressource,
@@ -94,7 +88,7 @@ export default function ContactForm() {
                   className="w-[100px] md:w-[150px] lg:w-[200px]"
                 />
               </Link>
-              <p className="text-md md:text-2xl lg:text-4xl">8sens Logiciels</p>
+              <p className="text-md md:text-2xl lg:text-4xl"><span className="text-red-400">8</span>{" "}sens </p>
             </div>
             <div className="flex flex-col gap-2">
               <label>Nom</label>
@@ -151,39 +145,14 @@ export default function ContactForm() {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <p>Je souhaite prendre:</p>
-              <FieldArray
-                name="eightSens"
-                render={(arrayHelpers) => (
-                  <div className="flex flex-wrap gap-2">
-                    {EightSensInf.map((item, i) => {
-                      const active =
-                        arrayHelpers.form.values.eightSens.includes(item);
-                      return (
-                        <button
-                          type="button"
-                          key={i}
-                          onClick={() =>
-                            active
-                              ? arrayHelpers.remove(
-                                  values.eightSens.indexOf(item)
-                                )
-                              : arrayHelpers.push(item)
-                          }
-                          className={`cursor-pointer rounded-xl px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
-                        >
-                          {item}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              />
-              <ErrorMessage
-                name="eightSens"
-                component="div"
-                className="error-message"
-              />
+              <label>Votre commentaire</label>
+              <Field
+                name="commentary8Sens"
+                as="textarea"
+                rows={3}
+                placeholder="Votre commentaire"
+                className="resize-none"
+                />
             </div>
             <div className="flex flex-col gap-2">
               <p>Je souhaite être contactez par</p>
