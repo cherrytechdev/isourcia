@@ -54,7 +54,7 @@ export default function Services() {
                         {/* Ajouter la perspective sur le conteneur 3D */}
                         <div className="relative w-full h-full transition-transform duration-1000 [transform-style:preserve-3d] [perspective:1000px] group-hover:[transform:rotateY(180deg)]">
                           {/* Face avant */}
-                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-700  p-4 [backface-visibility:hidden] [transform-style:preserve-3d]">
+                          <div className="absolute w-full h-full flex flex-col items-center justify-center bg-gray-700  p-4 [backface-visibility:hidden] [transform-style:preserve-3d]">
                             <Image
                               src={items.image}
                               alt={items.value}
@@ -62,6 +62,13 @@ export default function Services() {
                               height={800}
                               className="absolute w-full h-full object-cover object-center  "
                             />
+                            {i === 1 && (
+                              <div className="[transform:translateZ(50px)] absolute top-0 right-0  ">
+                                <div className="text-2xl font-black text-red-600 size-[100px] rounded-full  bg-blue-50 flex items-center justify-center shadow-md ">
+                                  8 Sens
+                                </div>
+                              </div>
+                            )}
                             <div className="[transform:translateZ(100px)] px-2 h-full flex items-end justify-center py-5 ">
                               <h3
                                 className="font-light [&>strong]:font-bold text-xl text-blue-950 mt-4 px-5 relative text-balance "
