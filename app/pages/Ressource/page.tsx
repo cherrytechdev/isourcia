@@ -11,7 +11,7 @@ export default function Ressource(){
             <Container className="flex flex-col items-center gap-2 justify-center lg:h-screen">
                 <Link 
                     href="/"
-                    className="hidden md:block border border-[#0A1027] p-2 rounded-full transition-all hover:border hover:border-[#0A1027] hover:bg-[#0A1027]/30 hover:backdrop-blur-2xl">
+                    className="block md:hidden border border-[#0A1027] p-2 rounded-full transition-all hover:border hover:border-[#0A1027] hover:bg-[#0A1027]/30 hover:backdrop-blur-2xl">
                     <svg 
                         xmlns="http://www.w3.org/2000/svg" 
                         width="40" 
