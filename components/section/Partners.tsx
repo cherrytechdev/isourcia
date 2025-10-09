@@ -23,7 +23,7 @@ function Partners() {
       <Container className="flex flex-col gap-10 md:gap-14 py-20 ">
         <div className="flex flex-col gap-5 ">
           <h2 className="uppercase font-light text-4xl md:text-5xl lg:text-6xl text-center ">
-            <span className="text-red-500">il nous font </span> confiance
+            <span className="text-red-500">ils nous ont </span> fait confiance
           </h2>
           <div className="flex items-center gap-3 justify-center ">
             {" "}
