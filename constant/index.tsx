@@ -63,33 +63,39 @@ export const ServicesInf = [
 export const RessourceInf = [
   {
     link: "/pages/Accounting",
+    background: "#0A1027",
     name: "Comptable",
-    image: "/img/accounting.png",
+    image: "/img/accounting.webp",
   },
   {
     link: "/pages/Assistant_Admin",
+    background: "#E4162E",
     name: "Adjoint administratif",
-    image: "/img/assistant_admin.png",
+    image: "/img/assistant_admin.webp",
   },
   {
     link: "/pages/WebApp",
+    background: "#0A1027",
     name: "Developpement web/application",
-    image: "/img/web_dev.png",
+    image: "/img/web_dev.webp",
   },
   {
     link: "/pages/Market_Digit",
+    background: "#0A1027",
     name: "Marketing digital",
-    image: "/img/market_analysis.png",
+    image: "/img/market_analysis.webp",
   },
   {
     link: "/pages/Designer",
+    background: "#E4162E",
     name: "Designer graphique/UI-UX",
-    image: "/img/designer.png",
+    image: "/img/designer.webp",
   },
   {
     link: "/pages/Client_Support",
+    background: "#0A1027",
     name: "Support client",
-    image: "/img/client_supp.png",
+    image: "/img/client_supp.webp",
   },
 ];
 
