@@ -426,39 +426,41 @@ export default function DetailForm() {
 
             {/* Compétences */}
             <div>
-              <p className="font-semibold mb-2">Compétences requises</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FieldArray
-                  name="competencies"
-                  render={(arrayHelpers) => (
-                    <div className="flex flex-wrap gap-2">
-                      {CompetenciesInf.map((item, i) => {
-                        const active = !!(
-                          values.competencies &&
-                          values.competencies.includes(item)
-                        );
-                        return (
-                          <button
-                            type="button"
-                            key={i}
-                            onClick={() =>
-                              active
-                                ? arrayHelpers.remove(
+                <div>
+                  <p className="font-semibold mb-2">Compétences requises</p>
+                  <FieldArray
+                    name="competencies"
+                    render={(arrayHelpers) => (
+                      <div className="flex flex-wrap gap-2">
+                        {CompetenciesInf.map((item, i) => {
+                          const active = !!(
+                            values.competencies &&
+                            values.competencies.includes(item)
+                          );
+                          return (
+                            <button
+                              type="button"
+                              key={i}
+                              onClick={() =>
+                                active
+                                  ? arrayHelpers.remove(
                                     values.competencies.indexOf(item)
                                   )
-                                : arrayHelpers.push(item)
-                            }
-                            className={`cursor-pointer rounded-xl px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
-                          >
-                            {item}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                />
+                                  : arrayHelpers.push(item)
+                              }
+                              className={`cursor-pointer rounded-xl px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
+                            >
+                              {item}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  />
+                </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="otherComp">Autres compétences</label>
+                  <p >Autres compétences</p>
                   <Field
                     as="textarea"
                     name="otherComp"
@@ -477,38 +479,40 @@ export default function DetailForm() {
 
             {/* Langues */}
             <div>
-              <p className="font-semibold mb-2">Langues</p>
-              <div className="grid grid-cols-1 items-center md:grid-cols-2 gap-4">
-                <FieldArray
-                  name="language"
-                  render={(arrayHelpers) => (
-                    <div className="flex flex-wrap gap-2">
-                      {LanguageInf.map((item, i) => {
-                        const active = !!(
-                          values.language && values.language.includes(item)
-                        );
-                        return (
-                          <button
-                            type="button"
-                            key={i}
-                            onClick={() =>
-                              active
-                                ? arrayHelpers.remove(
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <p className="font-semibold mb-2">Langues</p>
+                  <FieldArray
+                    name="language"
+                    render={(arrayHelpers) => (
+                      <div className="flex flex-wrap gap-2">
+                        {LanguageInf.map((item, i) => {
+                          const active = !!(
+                            values.language && values.language.includes(item)
+                          );
+                          return (
+                            <button
+                              type="button"
+                              key={i}
+                              onClick={() =>
+                                active
+                                  ? arrayHelpers.remove(
                                     values.language.indexOf(item)
                                   )
-                                : arrayHelpers.push(item)
-                            }
-                            className={`cursor-pointer rounded-xl h-fit px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
-                          >
-                            {item}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
-                />
+                                  : arrayHelpers.push(item)
+                              }
+                              className={`cursor-pointer rounded-xl h-fit px-4 py-2 border ${active ? "bg-[#0A1027] text-white" : "bg-blue-500 text-white"}`}
+                            >
+                              {item}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  />
+                </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="otherLang">Autres langues</label>
+                  <p>Autres langues</p>
                   <Field
                     as="textarea"
                     name="otherLang"

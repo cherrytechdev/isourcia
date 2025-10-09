@@ -1,11 +1,8 @@
 export const MenuNavInf = [
-  "Développement Web & e-commerce",
-  "Maintenance Web & Sécurité",
-  "Marketing Digital",
-  "Campagnes d’Emailing",
-  "Externalisation Comptable & Financière",
-  "Support administratif à la demande",
-  "ERP Intégré",
+  "Mise à disposition de ressources",
+  "Vente et intégration de logiciel ERP 8 sens",
+  "Solution de digitalisation clé en main",
+  "Support en externalisation"
 ];
 
 export const NavigationLink = [
@@ -211,14 +208,6 @@ export const FacturationModExtInf = [
   "À l'heure (au temps consommé)",
 ];
 
-export const BudgetExtInf = ["< 500 €", "500–2000 €", "+2000 €"];
-
-export const DetailExtInf = [
-  "Urgent (moins de 2 semaines)",
-  "Standard (1 mois)",
-  "Flexible",
-];
-
 export const ObjectiveMobileInf = [
   "Application vitrine (présentation d'une entreprise/produits)",
   "E-commerce (vente en ligne)",
@@ -267,14 +256,6 @@ export const MaintainMobileInf = [
   "Non, seulement la livraison initiale",
 ];
 
-export const BudgetMobileInf = ["< 3 000 €", "3 000 - 10 000 €", "> 10 000 €"];
-
-export const DelayMVPMobileInf = [
-  "Urgent (1 mois)",
-  "Standard (2-3 mois)",
-  "Flexible",
-];
-
 export const TechMobileInf = [
   "React Native",
   "Flutter",
@@ -320,14 +301,6 @@ export const MarketContactBaseInf = [
   "1000 – 5000",
   "5000 – 20 000",
   "20 000+",
-];
-
-export const MarketBudgetInf = ["< 500 €", "500 - 2 000 €", "> 2 000 €"];
-
-export const MarketTimelineInf = [
-  "Urgent (moins de 2 semaines)",
-  "Standard (1 mois)",
-  "Flexible",
 ];
 
 export const MarketOptionCompInf = [
@@ -386,12 +359,6 @@ export const WebMaintenanceInf = [
   "Oui, mises à jour simples",
   "Oui, sécurité & surveillance",
   "Non, livraison uniquement",
-];
-
-export const WebDelayInf = [
-  "Urgent (1 mois)",
-  "Standard (2-3 mois)",
-  "Flexible",
 ];
 
 export const WebOptionsInf = [

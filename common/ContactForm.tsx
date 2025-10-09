@@ -75,7 +75,6 @@ export default function ContactForm() {
         marketDateWish: values.marketDateWish,
         marketMailFreq: values.marketMailFreq,
         marketContactBase: values.marketContactBase,
-        marketBudget: values.marketBudget,
         marketTimeline: values.marketTimeline,
         marketOptionComp: values.marketOptionComp,
         otherMarketOptionComp: values.otherMarketOptionComp,
@@ -95,8 +94,6 @@ export default function ContactForm() {
         dataManageMobile: values.dataManageMobile,
         otherDataManageMobile: values.otherDataManageMobile,
         maintainMobile: values.maintainMobile,
-        budgetMobile: values.budgetMobile,
-        delayMvpMobile: values.delayMvpMobile,
         techMobile: values.techMobile,
         otherTechMobile: values.otherTechMobile,
 
@@ -116,7 +113,6 @@ export default function ContactForm() {
         modalityExt: values.modalityExt,
         facturationModExt: values.facturationModExt,
         maintenanceExt: values.maintenanceExt,
-        budgetExt: values.budgetExt,
 
         webObj: values.webObj,
         otherWebObj: values.otherWebObj,
@@ -127,8 +123,6 @@ export default function ContactForm() {
         webContentReady: values.webContentReady,
         webFunctionality: values.webFunctionality,
         webMaintenance: values.webMaintenance,
-        webBudget: values.webBudget,
-        webDelay: values.webDelay,
         webOptions: values.webOptions,
         webTechnology: values.webTechnology,
         otherWebTechnology: values.otherWebTechnology,

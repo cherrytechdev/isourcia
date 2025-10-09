@@ -35,7 +35,6 @@ interface EmailTemplateProps {
   marketDateWish: string;
   marketMailFreq: string;
   marketContactBase: string;
-  marketBudget: string;
   marketTimeline: string;
   marketOptionComp: string[];
   otherMarketOptionComp: string;
@@ -56,8 +55,6 @@ interface EmailTemplateProps {
   dataManageMobile: string[];
   otherDataManageMobile: string;
   maintainMobile: string;
-  budgetMobile: string;
-  delayMvpMobile: string[];
   techMobile: string[];
   otherTechMobile: string;
   promotionCode: string;
@@ -77,8 +74,6 @@ interface EmailTemplateProps {
   modalityExt: string[];
   facturationModExt: string[];
   maintenanceExt: string;
-  budgetExt: string;
-
   webObj: string[];
   otherWebObj: string;
   chooseChart: string;
@@ -88,8 +83,6 @@ interface EmailTemplateProps {
   webContentReady: string;
   webFunctionality: string[];
   webMaintenance: string;
-  webBudget: string;
-  webDelay: string;
   webOptions: string[];
   webTechnology: string[];
   otherWebTechnology: string;
@@ -105,7 +98,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   physicalAddress,
   commentary8Sens,
   contact,
-  detailExt,
   date,
   // contratDuration,
   // travelDuration,
@@ -132,8 +124,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   marketDateWish,
   marketMailFreq,
   marketContactBase,
-  marketBudget,
-  marketTimeline,
   marketOptionComp,
   otherMarketOptionComp,
   marketTechTools,
@@ -152,8 +142,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   dataManageMobile,
   otherDataManageMobile,
   maintainMobile,
-  budgetMobile,
-  delayMvpMobile,
   techMobile,
   otherTechMobile,
   promotionCode,
@@ -173,7 +161,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   modalityExt,
   facturationModExt,
   maintenanceExt,
-  budgetExt,
 
   webObj,
   otherWebObj,
@@ -184,8 +171,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   webContentReady,
   webFunctionality,
   webMaintenance,
-  webBudget,
-  webDelay,
   webOptions,
   webTechnology,
   otherWebTechnology,
@@ -549,17 +534,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                 </p>
               </div>
 
-              <h2 style={subSectionTitleStyle}>5. Budget & délais</h2>
-              <div style={highlightBoxStyle}>
-                <p style={{ margin: "8px 0", color: "#92400e" }}>
-                  <strong>Budget :</strong> {marketBudget}
-                </p>
-                <p style={{ margin: "8px 0", color: "#92400e" }}>
-                  <strong>Délais souhaités :</strong> {marketTimeline}
-                </p>
-              </div>
-
-              <h2 style={subSectionTitleStyle}>6. Options complémentaires</h2>
+              <h2 style={subSectionTitleStyle}>5. Options complémentaires</h2>
               <div>
                 {marketOptionComp.map((item, idx) => (
                   <span key={idx} style={tagStyle}>
@@ -573,7 +548,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                 </p>
               )}
 
-              <h2 style={subSectionTitleStyle}>7. Technologies & outils</h2>
+              <h2 style={subSectionTitleStyle}>6. Technologies & outils</h2>
               <div>
                 {marketTechTools.map((item, idx) => (
                   <span key={idx} style={tagStyle}>
@@ -668,17 +643,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <h2 style={subSectionTitleStyle}>7. Maintenance</h2>
               <p style={textStyle}>{maintainMobile || "—"}</p>
 
-              <h2 style={subSectionTitleStyle}>8. Budget & délais</h2>
-              <div style={highlightBoxStyle}>
-                <p style={{ margin: "8px 0", color: "#92400e" }}>
-                  <strong>Budget :</strong> {budgetMobile || "—"}
-                </p>
-                <p style={{ margin: "8px 0", color: "#92400e" }}>
-                  <strong>Délai MVP :</strong> {delayMvpMobile || "—"}
-                </p>
-              </div>
-
-              <h2 style={subSectionTitleStyle}>9. Technologies</h2>
+              <h2 style={subSectionTitleStyle}>8. Technologies</h2>
               <ul style={listStyle}>
                 {techMobile?.map((item: string, idx: number) => (
                   <li key={idx}>{item}</li>
@@ -769,14 +734,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
                   ? "Oui, maintenance prévue"
                   : "Non"}
               </p>
-
-              <h2 style={subSectionTitleStyle}>11. Budget</h2>
-              <div style={highlightBoxStyle}>
-                <p style={{ color: "#92400e", margin: "0" }}>
-                  {budgetExt || "Non spécifié"}
-                </p>
-              </div>
-              <p>Détail souhaités pour la mise en place : {detailExt || "—"}</p>
             </div>
           )}
 
@@ -847,15 +804,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <p style={textStyle}>
                 <strong>Maintenance :</strong> {webMaintenance || "—"}
               </p>
-
-              <div style={highlightBoxStyle}>
-                <p style={{ margin: "8px 0", color: "#92400e" }}>
-                  <strong>Budget :</strong> {webBudget || "—"}
-                </p>
-                <p style={{ margin: "8px 0", color: "#92400e" }}>
-                  <strong>Délai :</strong> {webDelay || "—"}
-                </p>
-              </div>
 
               <h2 style={subSectionTitleStyle}>Options supplémentaires</h2>
               <ul style={listStyle}>
