@@ -7,8 +7,8 @@ interface EmailTemplateProps {
   mail: string;
   company: string;
   physicalAddress: string;
+  commentary8Sens: string;
   contact: string[];
-  eightSens: string[];
   detailExt: string;
   date: string;
   contratDuration: string;
@@ -103,8 +103,8 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   mail,
   company,
   physicalAddress,
+  commentary8Sens,
   contact,
-  eightSens,
   detailExt,
   date,
   // contratDuration,
@@ -388,12 +388,10 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
               <span style={labelStyle}>Adresse</span>
               <span style={valueStyle}>{physicalAddress}</span>
             </div>
-            {tagResource === "Solution ERP" && (
-              <div style={infoRowStyle}>
-                <span style={labelStyle}>Services</span>
-                <ul style={valueStyle}>{eightSens.join(", ")}</ul>
-              </div>
-            )}
+            <div style={infoRowStyle}>
+              <span style={labelStyle}>Commentaire</span>
+              <span style={valueStyle}>{commentary8Sens}</span>
+            </div>
             <div style={{ ...infoRowStyle, borderBottom: "none" }}>
               <span style={labelStyle}>Contact préféré</span>
               <span style={valueStyle}>
