@@ -26,7 +26,8 @@ export default function RessourceForm() {
                             <button
                                 key={i}
                                 type="button"
-                                className="flex flex-col items-center text-xl font-semibold gap-2 border border-white/20 bg-white/10 backdrop-blur-2xl text-white cursor-pointer p-2 rounded-2xl transition-all 
+                                style={{backgroundImage: `url(${items.image})`}}
+                                className="flex justify-center items-end bg-cover bg-center text-xl font-semibold rounded-b-lg text-white cursor-pointer h-[260px] transition-all 
                                             hover:scale-105 hover:border-white hover:bg-white/20"
                                 onClick={() => {
                                         setFieldValue("ressourceRecrut", items.name);
@@ -34,8 +35,7 @@ export default function RessourceForm() {
                                         route.push(items.link);
                                 }}
                                 >   
-                                    <Image src={items.image} alt={items.name} width={2000} height={2000} className="w-40" />
-                                    {items.name}
+                                    <span style={{background: `${items.background}`}} className={`w-full p-4 rounded-md border-t border-t-white`}>{items.name}</span>
                                 </button>
                             ))}
                         </div>
