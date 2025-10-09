@@ -55,17 +55,20 @@ export default function Services() {
                         <div className="relative w-full h-full transition-transform duration-1000 [transform-style:preserve-3d] [perspective:1000px] group-hover:[transform:rotateY(180deg)]">
                           {/* Face avant */}
                           <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-700  p-4 [backface-visibility:hidden] [transform-style:preserve-3d]">
-                            <div className="[transform:translateZ(100px)] px-2 ">
-                              <Image
-                                src={items.image}
-                                alt={items.value}
-                                width={800}
-                                height={800}
-                                className="w-[100px] md:w-[138px] mx-auto"
+                            <Image
+                              src={items.image}
+                              alt={items.value}
+                              width={800}
+                              height={800}
+                              className="absolute w-full h-full object-cover object-center  "
+                            />
+                            <div className="[transform:translateZ(100px)] px-2 h-full flex items-end justify-center py-5 ">
+                              <h3
+                                className="font-light [&>strong]:font-bold text-xl text-blue-950 mt-4 px-5 relative text-balance "
+                                dangerouslySetInnerHTML={{
+                                  __html: items.title,
+                                }}
                               />
-                              <h3 className="font-light text-xl text-white mt-4 px-5  ">
-                                {items.title}
-                              </h3>
                             </div>
                           </div>
 
