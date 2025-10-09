@@ -5,7 +5,7 @@ import Separator from "../display/Separator";
 
 function Cta() {
   return (
-    <div id="contact" className="bg-red-500/80">
+    <div id="contact" className="bg-red-500/80 m-0 ">
       <Separator direction="down" background="#0A1027" />
       <Container className="flex flex-col gap-10 min-h-[50vh] items-center justify-center pt-10 ">
         <h2 className="font-medium text-4xl md:text-5xl lg:text-6xl  text-balance uppercase text-center lg:max-w-2/3 text-white">
