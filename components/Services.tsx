@@ -54,7 +54,7 @@ export default function Services() {
                         {/* Ajouter la perspective sur le conteneur 3D */}
                         <div className="relative w-full h-full transition-transform duration-1000 [transform-style:preserve-3d] [perspective:1000px] group-hover:[transform:rotateY(180deg)]">
                           {/* Face avant */}
-                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#E1EEFF] rounded-md p-4 [backface-visibility:hidden] [transform-style:preserve-3d]">
+                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-700  p-4 [backface-visibility:hidden] [transform-style:preserve-3d]">
                             <div className="[transform:translateZ(100px)] px-2 ">
                               <Image
                                 src={items.image}
@@ -63,16 +63,18 @@ export default function Services() {
                                 height={800}
                                 className="w-[100px] md:w-[138px] mx-auto"
                               />
-                              <h3 className="font-bold  text-[#040A18] mt-4">
+                              <h3 className="font-light text-xl text-white mt-4 px-5  ">
                                 {items.title}
                               </h3>
                             </div>
                           </div>
 
                           {/* Face arrière */}
-                          <div className="absolute inset-0 flex items-center justify-center bg-gray-700 text-white p-4 rounded-md [backface-visibility:hidden] [transform:rotateY(180deg)] [transform-style:preserve-3d] ">
+                          <div className="absolute inset-0 flex items-center justify-center bg-red-900 text-white p-4  [backface-visibility:hidden] [transform:rotateY(180deg)] [transform-style:preserve-3d] ">
                             <div className="[transform:translateZ(100px)] text-center  overflow-y-scroll w-full h-full hide-scrollbar flex items-center justify-center pt-2 ">
-                              <p>{items.text}</p>
+                              <p className="text-balance !font-light text-base md:text-lg ">
+                                {items.text}
+                              </p>
                             </div>
                           </div>
                         </div>
