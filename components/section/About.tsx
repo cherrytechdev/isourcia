@@ -25,20 +25,14 @@ function About() {
       "/img/about/5.webp",
       // "/img/about/6.webp",
     ],
-    [
-      "/img/about/7.webp",
-      "/img/about/9.webp",
-      "/img/about/10.webp",
-      "/img/about/11.webp",
-    ],
+    ["/img/about/7.webp", "/img/about/9.webp", "/img/about/10.webp"],
     [
       "/img/about/13.webp",
       "/img/about/14.webp",
       "/img/about/15.webp",
       // "/img/about/16.webp",
-      "/img/about/8.webp",
     ],
-    ["/img/about/18.webp", "/img/about/12.webp", "/img/about/17.webp"],
+    ["/img/about/18.webp", "/img/about/17.webp", "/img/about/8.webp"],
   ];
   const [displayedImage, setDisplayedImage] = useState("/img/about/1.webp");
   const [showPreview, setShowPreview] = useState(false);

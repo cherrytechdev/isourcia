@@ -1,27 +1,21 @@
 import Container from "@/common/Container";
+import Infinite from "@/components/icons/Infinite";
 import Mail from "@/components/icons/Mail";
 import Whatsapp from "@/components/icons/Whatsapp";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 function Footer() {
   return (
     <div>
-      <Container className="flex flex-col lg:flex-row items-center justify-between gap-5 text-white py-10 ">
+      <Container className="grid grid-cols-1 lg:grid-cols-3 gap-5 text-white py-10 items-center ">
         <p className="!font-light text-nowrap ">© Copyright - ISOURCIA 2025</p>
         <div className="w-full flex items-center gap-8 justify-center ">
           <span className="h-0.5 bg-white w-1/4 flex "></span>
-          <Image
-            src={"/favicon.png"}
-            alt="favicon image"
-            width={100}
-            height={100}
-            className=""
-          />
+          <Infinite />
           <span className="h-0.5 bg-white w-1/4 flex "></span>
         </div>
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-end gap-5 w-full  ">
           <Link href={"mailto:to@isourcia.ca"} target="_blank">
             <Mail />
           </Link>
