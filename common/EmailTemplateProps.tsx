@@ -174,7 +174,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
   webOptions,
   webTechnology,
   otherWebTechnology,
-  tagResource,
+  //tagResource,
 }) => {
   const containerStyle: React.CSSProperties = {
     backgroundColor: "#f8fafc",
@@ -306,14 +306,6 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
     margin: "12px 0",
     padding: "0 0 0 20px",
     color: "#475569",
-  };
-
-  const highlightBoxStyle: React.CSSProperties = {
-    backgroundColor: "#fef3c7",
-    borderRadius: "12px",
-    padding: "24px",
-    border: "2px solid #fbbf24",
-    marginTop: "16px",
   };
 
   const footerStyle: React.CSSProperties = {

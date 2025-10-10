@@ -1,6 +1,5 @@
 import React from "react";
 import FeatureTable from "./FeatureTable";
-import Container from "@/common/Container";
 import { Software } from "@/data/softwareData";
 import Image from "next/image";
 import Link from "next/link";
