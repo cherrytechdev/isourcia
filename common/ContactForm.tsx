@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const schema = Yup.object().shape({
@@ -36,7 +35,6 @@ const schema = Yup.object().shape({
 
 export default function ContactForm() {
   const { values } = useFormStore();
-  const router = useRouter();
   return (
     <Formik
       initialValues={{
@@ -145,7 +143,7 @@ export default function ContactForm() {
           console.error("Erreur d'envoi:", error);
         } finally {
           setSubmitting(false);
-          router.push("/");
+          window.location.href = "/";
         }
       }}
     >

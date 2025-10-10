@@ -72,6 +72,7 @@ export default function ContactForm() {
           console.error("Erreur d'envoi:", error);
         } finally {
           setSubmitting(false);
+          window.location.href = "/";
         }
       }}
     >
