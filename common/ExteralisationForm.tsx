@@ -11,8 +11,6 @@ import {
   TimeTravelExtInf,
   ModalityExtInf,
   FacturationModExtInf,
-  BudgetExtInf,
-  DetailExtInf,
 } from "@/constant";
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
@@ -357,37 +355,6 @@ export default function ExternalisationForm() {
                   />
                   <label>Non, uniquement la mission définie</label>
                 </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h4>5.Budget & délais</h4>
-              <div className="flex flex-col gap-2 pl-4">
-                <p>Budget approximatif</p>
-                {BudgetExtInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="budgetExt" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-                <ErrorMessage
-                  name="budgetExt"
-                  component="div"
-                  className="text-red-500 text-sm"
-                />
-
-                <p>Détails souhaités pour mise en place</p>
-                {DetailExtInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="detailExt" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-                <ErrorMessage
-                  name="detailExt"
-                  component="div"
-                  className="text-red-500 text-sm"
-                />
               </div>
             </div>
             <button

@@ -30,8 +30,6 @@ promotionCode: string;
   marketDateWish: string;
   marketMailFreq: string;
   marketContactBase: string;
-  marketBudget: string;
-  marketTimeline: string;
   marketOptionComp: string[];
   otherMarketOptionComp: string;
   marketTechTools: string[];
@@ -50,8 +48,6 @@ promotionCode: string;
   dataManageMobile: string[]
   otherDataManageMobile: string
   maintainMobile: string
-  budgetMobile: string
-  delayMvpMobile: string
   techMobile: string[]
   otherTechMobile: string
 
@@ -72,8 +68,6 @@ promotionCode: string;
   modalityExt: string[];
   facturationModExt: string[];
   maintenanceExt: string;
-  budgetExt: string;
-  detailExt: string
 
   webObj: string[];
   otherWebObj: string;
@@ -84,8 +78,6 @@ promotionCode: string;
   webContentReady: string;
   webFunctionality: string[];
   webMaintenance: string;
-  webBudget: string;
-  webDelay: string;
   webOptions: string[];
   webTechnology: string[];
   otherWebTechnology: string;
@@ -126,8 +118,6 @@ const initialValues: FormValues = {
   marketDateWish: "",
   marketMailFreq: "Ponctuelle",
   marketContactBase: "< 1000",
-  marketBudget: "< 500 €",
-  marketTimeline: "Urgent (moins de 2 semaines)",
   marketOptionComp: [],
   otherMarketOptionComp: "",
   marketTechTools: [],
@@ -146,8 +136,6 @@ const initialValues: FormValues = {
   dataManageMobile: ["Stockage local"],
   otherDataManageMobile: "",
   maintainMobile: "Oui, mises à jour simples",
-  budgetMobile: "< 3 000 €",
-  delayMvpMobile: "Urgent (1 mois)",
   techMobile: [],
   otherTechMobile: "",
   promotionCode:"",
@@ -168,8 +156,6 @@ const initialValues: FormValues = {
   modalityExt: [],
   facturationModExt: [],
   maintenanceExt: "Non, uniquement la mission définie",
-  budgetExt: "< 500 €",
-  detailExt: "Urgent (moins de 2 semaines)",
 
   webObj: [],
   otherWebObj: "",
@@ -180,8 +166,6 @@ const initialValues: FormValues = {
   webContentReady: "Déjà prêt (fourni par client)",
   webFunctionality: [],
   webMaintenance: "Non, livraison uniquement",
-  webBudget: "",
-  webDelay: "Flexible",
   webOptions: [],
   webTechnology: [],
   otherWebTechnology: "",

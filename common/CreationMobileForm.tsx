@@ -10,8 +10,6 @@ import {
   ApkContentMobileInf,
   DataManageMobileInf,
   MaintainMobileInf,
-  BudgetMobileInf,
-  DelayMVPMobileInf,
   TechMobileInf,
 } from "@/constant";
 import { useRouter } from "next/navigation";
@@ -376,33 +374,7 @@ export default function CreationMobileForm() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h4>7. Budget & délais</h4>
-              <div className="flex flex-col gap-2 pl-4">
-                <p>Budget approximatif</p>
-                {BudgetMobileInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="budgetMobile" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-
-                <p>Délais souhaités pour la première version (MVP)</p>
-                {DelayMVPMobileInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="delayMvpMobile" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-                <ErrorMessage
-                  name="delayMvpMobile"
-                  component="div"
-                  className="error-message"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h4>8. Technologies préférées (facultatif)</h4>
+              <h4>7. Technologies préférées (facultatif)</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {TechMobileInf.map((items, i) => {
                   const isOtherChecked = values.techMobile.includes("autre");

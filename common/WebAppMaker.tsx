@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import {
   WebContentInf,
-  WebDelayInf,
   WebDesignInf,
   WebFunctionalityInf,
   WebMaintenanceInf,
@@ -38,11 +37,6 @@ const schema = Yup.object().shape({
     1,
     "Veuillez indiquer les compétences requises pour le contenu web"
   ),
-
-  webBudget: Yup.number()
-    .required("Veuillez indiquer le budget approximatif")
-    .positive("Le prix doit être positive")
-    .min(100, "Le prix doit être supérieur à 100$"),
 });
 
 export default function WebAppMaker() {
@@ -234,33 +228,7 @@ export default function WebAppMaker() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h4>6. Budget & délais</h4>
-              <div className="flex flex-col gap-2 pl-4">
-                <p>Budget approximatif</p>
-                <Field
-                  type="number"
-                  name="webBudget"
-                  placeholder="en Dollar"
-                  min="100"
-                />
-                <ErrorMessage
-                  name="webBudget"
-                  component="div"
-                  className="error-message"
-                />
-
-                <p>Délais souhaités</p>
-                {WebDelayInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="webDelay" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h4>7. Options complémentaires</h4>
+              <h4>6. Options complémentaires</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {WebOptionsInf.map((items, i) => (
                   <div key={i} className="flex items-center gap-4">
@@ -272,7 +240,7 @@ export default function WebAppMaker() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h4>8. Technologies préférées (facultatif) </h4>
+              <h4>7. Technologies préférées (facultatif) </h4>
               <div className="flex flex-col gap-2 pl-4">
                 {WebTechnologyInf.map((items, i) => {
                   const isOtherChecked = values.webTechnology.includes("autre");

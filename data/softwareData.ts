@@ -1441,27 +1441,27 @@ export const softwareData: Record<string, Software> = {
         features: [
           {
             name: "Description",
-            catalogue: "HT",
+            catalogue: " ",
           },
           {
             name: "CODE 39 300 ppp – 30 pts – Légende et sans légende",
-            catalogue: "80€",
+            catalogue: " ",
           },
           {
             name: "2/5 Entrelacé 300 ppp – 30 pts – Légende et sans légende",
-            catalogue: "180€",
+            catalogue: " ",
           },
           {
             name: "EAN 8 et 13 300 ppp – 30 pts – Légende et sans légende (ISBN et ISSN)",
-            catalogue: "180€",
+            catalogue: " ",
           },
           {
             name: "Code 128 300 ppp – 30 pts – Légende et sans légende : Module A, B – Module C",
-            catalogue: "200€",
+            catalogue: " ",
           },
           {
             name: "EAN 128 300 ppp – 60 pts – Module A, B, C",
-            catalogue: "250€",
+            catalogue: " ",
           },
         ],
       },

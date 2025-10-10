@@ -10,10 +10,9 @@ import {
   MarketMissionDelayInf,
   MarketMailFreqInf,
   MarketContactBaseInf,
-  MarketBudgetInf,
-  MarketTimelineInf,
   MarketOptionCompInf,
   MarketTechToolsInf,
+
 } from "@/constant";
 import { useFormStore } from "@/store/formStore";
 import Link from "next/link";
@@ -259,30 +258,7 @@ export default function MarketAnalysis() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h4>5. Budget & délais</h4>
-              <div className="flex flex-col gap-2 pl-4">
-                <p>Budget approximatif</p>
-                {MarketBudgetInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="marketBudget" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col gap-2 pl-4">
-                <p>Délais souhaités pour mise en place</p>
-                {MarketTimelineInf.map((items, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <Field type="radio" name="marketTimeline" value={items} />
-                    <label>{items}</label>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h4>6. Options complémentaires</h4>
+              <h4>5. Options complémentaires</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {MarketOptionCompInf.map((items, i) => {
                   const isOtherChecked =
@@ -323,7 +299,7 @@ export default function MarketAnalysis() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h4>7. Technologies & outils préférés (facultatif)</h4>
+              <h4>6. Technologies & outils préférés (facultatif)</h4>
               <div className="flex flex-col gap-2 pl-4">
                 {MarketTechToolsInf.map((items, i) => {
                   const isOtherChecked =
