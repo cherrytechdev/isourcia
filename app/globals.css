@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
 }
 
+/* comment  */
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: linear-gradient(to right, #040a18, #0a1027);
