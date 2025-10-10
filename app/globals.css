@@ -53,15 +53,15 @@ input[type="number"]:focus {
   outline: 2px solid #3b82f6;
 }
 
-input[type=tel]:focus {
-  outline: 2px solid #3B82F6;
+input[type="tel"]:focus {
+  outline: 2px solid #3b82f6;
 }
 
-input[type=email]:focus {
-  outline: 2px solid #3B82F6;
+input[type="email"]:focus {
+  outline: 2px solid #3b82f6;
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   width: 13px;
 }
 
@@ -93,10 +93,10 @@ textarea:focus {
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
 }
