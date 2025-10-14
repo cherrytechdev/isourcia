@@ -6,7 +6,7 @@ import {
   TimeTravelInf,
   CompetenciesDesignerInf,
 } from "@/constant";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import * as Yup from "yup";
@@ -433,35 +433,20 @@ export default function DetailForm() {
                 <div>
                   <p className="font-semibold mb-2">Compétences requises</p>
 
-                  <FieldArray
-                    name="competencies"
-                    render={(arrayHelpers) => (
-                      <div className="flex flex-wrap gap-2">
-                        {CompetenciesDesignerInf.map((item, i) => {
-                          const active = values.competencies.includes(item);
-                          return (
-                            <button
-                              type="button"
-                              key={i}
-                              onClick={() =>
-                                active
-                                  ? arrayHelpers.remove(
-                                    values.competencies.indexOf(item)
-                                  )
-                                  : arrayHelpers.push(item)
-                              }
-                              className={`cursor-pointer rounded-xl px-4 py-2 border ${active
-                                ? "bg-[#0A1027] text-white"
-                                : "bg-blue-500 text-white"
-                                }`}
-                            >
-                              {item}
-                            </button>
-                          );
-                        })}
+                  <div className="flex flex-col gap-2 pl-4">
+                    {CompetenciesDesignerInf.map((item, i) => (
+                      <div key={i} className="flex flex-col gap-2">
+                        <div className="flex items-center gap-4">
+                          <Field
+                            type="checkbox"
+                            name="competencies"
+                            value={item}
+                          />
+                          <label>{item}</label>
+                        </div>
                       </div>
-                    )}
-                  />
+                    ))}
+                  </div>
                 </div>
                 <div className="flex flex-col gap-2">
                   <p >Autres compétences</p>
@@ -486,35 +471,20 @@ export default function DetailForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <p className="font-semibold mb-2">Langues</p>
-                  <FieldArray
-                    name="language"
-                    render={(arrayHelpers) => (
-                      <div className="flex flex-wrap gap-2">
-                        {LanguageInf.map((item, i) => {
-                          const active = values.language.includes(item);
-                          return (
-                            <button
-                              type="button"
-                              key={i}
-                              onClick={() =>
-                                active
-                                  ? arrayHelpers.remove(
-                                    values.language.indexOf(item)
-                                  )
-                                  : arrayHelpers.push(item)
-                              }
-                              className={`cursor-pointer rounded-xl h-fit px-4 py-2 border ${active
-                                ? "bg-[#0A1027] text-white"
-                                : "bg-blue-500 text-white"
-                                }`}
-                            >
-                              {item}
-                            </button>
-                          );
-                        })}
+                  <div className="flex flex-col gap-2 pl-4">
+                    {LanguageInf.map((item, i) => (
+                      <div key={i} className="flex flex-col gap-2">
+                        <div className="flex items-center gap-4">
+                          <Field
+                            type="checkbox"
+                            name="language"
+                            value={item}
+                          />
+                          <label>{item}</label>
+                        </div>
                       </div>
-                    )}
-                  />
+                    ))}
+                  </div>
                 </div>
                 <div className="flex flex-col gap-2">
                   <p>Autres langues</p>
