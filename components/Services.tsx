@@ -27,7 +27,7 @@ export default function Services() {
               <div className="min-h-screen flex flex-col items-center justify-center gap-10 pt-[100px] pb-10 ">
                 <div className="flex flex-col gap-3 ">
                   <h2 className="uppercase font-light text-4xl md:text-5xl lg:text-6xl ">
-                    <span className="text-red-500">nos </span> service
+                    <span className="text-red-500">nos </span> services
                   </h2>
                   <div className="flex items-center gap-3 justify-center ">
                     {" "}

@@ -21,7 +21,7 @@ function About() {
       "/img/about/1.webp",
       "/img/about/2.webp",
       "/img/about/3.webp",
-      "/img/about/4.webp",
+      // "/img/about/4.webp",
       "/img/about/5.webp",
       // "/img/about/6.webp",
     ],
